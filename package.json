@@ -1,0 +1,19 @@
+{
+  "name": "chainmail",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --project ./tsconfig.build.json",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "nbtify": "^1.68.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.7.2",
+    "typescript": "^5.2.2"
+  }
+}
