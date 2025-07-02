@@ -1,4 +1,4 @@
-export enum BiomeResource {
+pub enum BiomeResource {
   Rainforest = 0,
   Swampland,
   SeasonalForest,

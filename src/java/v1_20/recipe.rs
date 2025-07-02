@@ -1,4 +1,4 @@
-export enum RecipeResource {
+pub enum RecipeResource {
   yellow_dye_from_dandelion = "minecraft:yellow_dye_from_dandelion",
   charcoal = "minecraft:charcoal",
   dark_oak_button = "minecraft:dark_oak_button",

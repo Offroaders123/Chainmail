@@ -1,4 +1,4 @@
-export enum DimensionID {
+pub enum DimensionID {
   nether = -1,
   overworld
 }

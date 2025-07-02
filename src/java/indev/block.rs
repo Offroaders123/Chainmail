@@ -1,4 +1,4 @@
-export enum BlockResource {
+pub enum BlockResource {
   air = 0,
   stone,
   grass_block,

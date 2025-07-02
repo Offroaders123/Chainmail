@@ -1,4 +1,4 @@
-export enum BlockResource {
+pub enum BlockResource {
   // Indev
   air = 0,
   stone,

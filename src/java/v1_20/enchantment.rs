@@ -1,4 +1,4 @@
-export enum EnchantmentResource {
+pub enum EnchantmentResource {
   aqua_affinity = "minecraft:aqua_affinity",
   bane_of_arthropods = "minecraft:bane_of_arthropods",
   binding_curse = "minecraft:binding_curse",

@@ -1,4 +1,4 @@
-export enum BiomeResource {
+pub enum BiomeResource {
   the_void = "minecraft:the_void",
   plains = "minecraft:plains",
   sunflower_plains = "minecraft:sunflower_plains",
