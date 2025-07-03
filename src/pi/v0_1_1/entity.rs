@@ -2,29 +2,31 @@ import type { BooleanTag, ByteTag, ShortTag, IntTag, FloatTag } from "nbtify";
 import type { Item } from "./item.js";
 import type { DimensionID } from "./dimension.js";
 
+use crate::nbt::tag::{BooleanTag, FloatTag, IntTag, ShortTag};
+
 export type Entity<K extends keyof EntityNameKeyMap = keyof EntityNameKeyMap> = EntityNameKeyMap[K];
 
-export interface EntityNameKeyMap {
-  Particle: Particle;
-  Player: Player;
-  TripodCamera: TripodCamera;
-  CameraEntity: CameraEntity;
-  Chicken: Chicken;
-  Cow: Cow;
-  Pig: Pig;
-  Sheep: Sheep;
-  Zombie: Zombie;
-  Creeper: Creeper;
-  Skeleton: Skeleton;
-  Spider: Spider;
-  PigZombie: PigZombie;
-  ItemEntity: ItemEntity;
-  PrimedTNT: PrimedTNT;
-  FallingTile: FallingTile;
-  Arrow: Arrow;
-  Snowball: Snowball;
-  ThrownEgg: ThrownEgg;
-  Painting: Painting;
+pub enum Entity {
+  Particle(Particle),
+  Player(Player),
+  TripodCamera(TripodCamera),
+  CameraEntity(CameraEntity),
+  Chicken(Chicken),
+  Cow(Cow),
+  Pig(Pig),
+  Sheep(Sheep),
+  Zombie(Zombie),
+  Creeper(Creeper),
+  Skeleton(Skeleton),
+  Spider(Spider),
+  PigZombie(PigZombie),
+  ItemEntity(ItemEntity),
+  PrimedTNT(PrimedTNT),
+  FallingTile(FallingTile),
+  Arrow(Arrow),
+  Snowball(Snowball),
+  ThrownEgg(ThrownEgg),
+  Painting(Painting),
 }
 
 export interface Particle extends EntityLike<EntityResource.Particle> {}
@@ -106,22 +108,22 @@ export interface AnimalLike {
   Age: IntTag;
 }
 
-export interface EntityLike<EntityID extends number | undefined> {
-  id: EntityID extends number ? IntTag<EntityID> : EntityID;
-  Pos: [X: FloatTag, Y: FloatTag, Z: FloatTag];
-  Motion: [dX: FloatTag, dY: FloatTag, dZ: FloatTag]; // doesn't seem to mention optional
-  Rotation: [yaw: FloatTag, pitch: FloatTag];
-  FallDistance: FloatTag;
-  Fire: ShortTag;
-  Air: ShortTag;
-  OnGround: BooleanTag;
+pub struct EntityLike /*<EntityID extends number | undefined>*/ {
+  id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
+  Pos: [FloatTag; 3],
+  Motion: [FloatTag; 3], // doesn't seem to mention optional
+  Rotation: [FloatTag; 2],
+  FallDistance: FloatTag,
+  Fire: ShortTag,
+  Air: ShortTag,
+  OnGround: BooleanTag,
 }
 
-export enum EntityResource {
+pub enum EntityResource { // these first four are all actually `0`, this needs to be fixed with a `Into<u8>` block, or something similar.
   Particle = 0,
-  Player = 0,
-  TripodCamera = 0,
-  CameraEntity = 0,
+  Player = 01,
+  TripodCamera = 02,
+  CameraEntity = 03,
   // <Animals>
   Chicken = 10,
   Cow,

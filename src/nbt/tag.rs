@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 pub enum Tag {
+    Boolean(BooleanTag),
     Byte(ByteTag),
     Short(ShortTag),
     Int(IntTag),
@@ -17,9 +18,10 @@ pub enum Tag {
 
 pub trait TagLike {}
 
+pub type BooleanTag = bool;
 pub type ByteTag = i8;
 pub type ShortTag<T: Into<i16> = i16> = T;
-pub type IntTag = i32;
+pub type IntTag<T: Into<i32> = i32> = T;
 pub type LongTag = i64;
 pub type FloatTag = f32;
 pub type DoubleTag = f64;
@@ -31,6 +33,7 @@ pub struct IntArrayTag(Vec<i32>);
 pub struct LongArrayTag(Vec<i64>);
 
 impl TagLike for Tag {}
+impl TagLike for BooleanTag {}
 impl TagLike for ByteTag {}
 impl TagLike for ShortTag {}
 impl TagLike for IntTag {}
