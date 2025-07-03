@@ -1,11 +1,11 @@
 pub enum DimensionResource {
-    TheNether,
-    Overworld,
-    TheEnd,
+    the_nether,
+    overworld,
+    the_end,
 }
 
 pub enum DimensionID {
-    TheNether = -1,
-    Overworld,
-    TheEnd,
+    the_nether = -1,
+    overworld,
+    the_end,
 }
