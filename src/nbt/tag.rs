@@ -18,7 +18,7 @@ pub enum Tag {
 pub trait TagLike {}
 
 pub struct ByteTag(i8);
-pub struct ShortTag(i16);
+pub struct ShortTag<T: Into<i16> = i16>(T);
 pub struct IntTag(i32);
 pub struct LongTag(i64);
 pub struct FloatTag(f32);

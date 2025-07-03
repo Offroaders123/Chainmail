@@ -103,3 +103,9 @@ pub enum ItemResource {
   nether_quartz,
   camera = 456,
 }
+
+impl Into<i16> for ItemResource {
+    fn into(self) -> i16 {
+        self as i16
+    }
+}
