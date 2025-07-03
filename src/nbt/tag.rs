@@ -15,7 +15,7 @@ pub enum Tag {
     LongArray(LongArrayTag),
 }
 
-impl TagLike for Tag {}
+pub trait TagLike {}
 
 pub struct ByteTag(i8);
 pub struct ShortTag(i16);
@@ -30,8 +30,7 @@ pub struct CompoundTag(HashMap<String, Tag>);
 pub struct IntArrayTag(Vec<i32>);
 pub struct LongArrayTag(Vec<i64>);
 
-pub trait TagLike {}
-
+impl TagLike for Tag {}
 impl TagLike for ByteTag {}
 impl TagLike for ShortTag {}
 impl TagLike for IntTag {}
