@@ -1,4 +1,4 @@
 pub enum DimensionID {
-  Nether = -1,
-  Overworld
+    Nether = -1,
+    Overworld,
 }
