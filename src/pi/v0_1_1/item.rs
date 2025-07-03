@@ -1,12 +1,12 @@
-import type { ByteTag, ShortTag } from "nbtify";
+use crate::nbt::tag::{ByteTag, ShortTag};
 
-export interface Item {
-  id: ShortTag<ItemResource>; // how to wrap this enum as a number like you can for a string with template literals?
-  Damage: ShortTag;
-  Count: ByteTag;
+pub struct Item {
+  id: ShortTag<ItemResource>, // how to wrap this enum as a number like you can for a string with template literals?
+  Damage: ShortTag,
+  Count: ByteTag,
 }
 
-export enum ItemResource {
+pub enum ItemResource {
   iron_shovel = 256,
   iron_pickaxe,
   iron_axe,
