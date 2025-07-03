@@ -1,7 +1,7 @@
 pub enum DimensionResource {
-    TheNether = "minecraft:the_nether",
-    Overworld = "minecraft:overworld",
-    TheEnd = "minecraft:the_end",
+    TheNether,
+    Overworld,
+    TheEnd,
 }
 
 pub enum DimensionID {
