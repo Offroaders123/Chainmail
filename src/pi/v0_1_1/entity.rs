@@ -1,13 +1,7 @@
-import type { BooleanTag, ByteTag, ShortTag, IntTag, FloatTag } from "nbtify";
-import type { Item } from "./item.js";
-import type { DimensionID } from "./dimension.js";
-
 use injectables::{inject_fields, injectable};
 
 use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag};
 use crate::pi::v0_1_1::{dimension::DimensionID, item::Item};
-
-export type Entity<K extends keyof EntityNameKeyMap = keyof EntityNameKeyMap> = EntityNameKeyMap[K];
 
 pub enum Entity {
   Particle(Particle),
