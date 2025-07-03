@@ -1,3 +1,4 @@
+#[allow(non_camel_case_types)]
 pub enum EnchantmentResource {
     aqua_affinity,
     bane_of_arthropods,

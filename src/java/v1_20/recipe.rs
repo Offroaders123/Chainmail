@@ -1,3 +1,4 @@
+#[allow(non_camel_case_types)]
 pub enum RecipeResource {
     yellow_dye_from_dandelion,
     charcoal,

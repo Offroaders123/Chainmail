@@ -1,3 +1,4 @@
+#[allow(non_camel_case_types)]
 pub enum BlockResource {
     air = 0,
     stone,
