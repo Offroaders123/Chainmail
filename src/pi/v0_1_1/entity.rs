@@ -3,6 +3,7 @@ import type { Item } from "./item.js";
 import type { DimensionID } from "./dimension.js";
 
 use crate::nbt::tag::{BooleanTag, FloatTag, IntTag, ShortTag};
+use crate::pi::v0_1_1::item::Item;
 
 export type Entity<K extends keyof EntityNameKeyMap = keyof EntityNameKeyMap> = EntityNameKeyMap[K];
 
@@ -96,23 +97,23 @@ export interface Spider extends EntityLike<EntityResource.Spider>, MobLike {}
 
 export interface PigZombie extends EntityLike<EntityResource.PigZombie>, MobLike {}
 
-export interface ItemEntity extends EntityLike<EntityResource.ItemEntity> {
-  Health: ShortTag;
-  Age: ShortTag;
-  Item: Item;
+pub struct ItemEntity /*extends EntityLike<EntityResource.ItemEntity>*/ {
+  Health: ShortTag,
+  Age: ShortTag,
+  Item: Item,
 }
 
-export interface PrimedTNT extends EntityLike<EntityResource.PrimedTnt> {}
+pub struct PrimedTNT /*extends EntityLike<EntityResource.PrimedTnt>*/ {}
 
-export interface FallingTile extends EntityLike<EntityResource.FallingTile> {}
+pub struct FallingTile /*extends EntityLike<EntityResource.FallingTile>*/ {}
 
-export interface Arrow extends EntityLike<EntityResource.Arrow> {}
+pub struct Arrow /*extends EntityLike<EntityResource.Arrow>*/ {}
 
-export interface Snowball extends EntityLike<EntityResource.Snowball> {}
+pub struct Snowball /*extends EntityLike<EntityResource.Snowball>*/ {}
 
-export interface ThrownEgg extends EntityLike<EntityResource.ThrownEgg> {}
+pub struct ThrownEgg /*extends EntityLike<EntityResource.ThrownEgg>*/ {}
 
-export interface Painting extends EntityLike<EntityResource.Painting> {}
+pub struct Painting /*extends EntityLike<EntityResource.Painting>*/ {}
 
 pub struct MobLike {
   AttackTime: ShortTag,
