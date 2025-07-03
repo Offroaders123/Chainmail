@@ -44,12 +44,12 @@ export interface Player extends EntityLike<undefined>, MobLike {
   abilities: PlayerAbilities;
 }
 
-export interface PlayerAbilities {
-  mayfly: BooleanTag;
-  flying: BooleanTag;
-  invulnerable: BooleanTag;
-  mayBuild: BooleanTag;
-  instabuild: BooleanTag;
+pub struct PlayerAbilities {
+  mayfly: BooleanTag,
+  flying: BooleanTag,
+  invulnerable: BooleanTag,
+  mayBuild: BooleanTag,
+  instabuild: BooleanTag,
 }
 
 export interface TripodCamera extends EntityLike<EntityResource.TripodCamera> {}
@@ -114,15 +114,15 @@ export interface ThrownEgg extends EntityLike<EntityResource.ThrownEgg> {}
 
 export interface Painting extends EntityLike<EntityResource.Painting> {}
 
-export interface MobLike {
-  AttackTime: ShortTag;
-  DeathTime: ShortTag;
-  Health: ShortTag;
-  HurtTime: ShortTag;
+pub struct MobLike {
+  AttackTime: ShortTag,
+  DeathTime: ShortTag,
+  Health: ShortTag,
+  HurtTime: ShortTag,
 }
 
-export interface AnimalLike {
-  Age: IntTag;
+pub struct AnimalLike {
+  Age: IntTag,
 }
 
 pub struct EntityLike /*<EntityID extends number | undefined>*/ {
