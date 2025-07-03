@@ -26,6 +26,7 @@ pub enum Entity {
   Painting(Painting),
 }
 
+#[allow(non_snake_case)]
 #[injectable]
 pub struct EntityLike /*<EntityID extends number | undefined>*/ {
   id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
@@ -38,6 +39,7 @@ pub struct EntityLike /*<EntityID extends number | undefined>*/ {
   OnGround: BooleanTag,
 }
 
+#[allow(non_snake_case)]
 #[injectable]
 pub struct MobLike {
   AttackTime: ShortTag,
@@ -46,6 +48,7 @@ pub struct MobLike {
   HurtTime: ShortTag,
 }
 
+#[allow(non_snake_case)]
 #[injectable]
 pub struct AnimalLike {
   Age: IntTag,
@@ -68,6 +71,7 @@ pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
   abilities: PlayerAbilities,
 }
 
+#[allow(non_snake_case)]
 pub struct PlayerAbilities {
   mayfly: BooleanTag,
   flying: BooleanTag,
@@ -91,6 +95,7 @@ pub struct Cow /*extends EntityLike<EntityResource.Cow>, MobLike, AnimalLike*/ {
 #[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Pig /*extends EntityLike<EntityResource.Pig>, MobLike, AnimalLike*/ {}
 
+#[allow(non_snake_case)]
 #[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Sheep /*extends EntityLike<EntityResource.Sheep>, MobLike, AnimalLike*/ {
   Sheared: BooleanTag,
@@ -131,6 +136,7 @@ pub struct Spider /*extends EntityLike<EntityResource.Spider>, MobLike*/ {}
 #[inject_fields(EntityLike, MobLike)]
 pub struct PigZombie /*extends EntityLike<EntityResource.PigZombie>, MobLike*/ {}
 
+#[allow(non_snake_case)]
 #[inject_fields(EntityLike)]
 pub struct ItemEntity /*extends EntityLike<EntityResource.ItemEntity>*/ {
   Health: ShortTag,
