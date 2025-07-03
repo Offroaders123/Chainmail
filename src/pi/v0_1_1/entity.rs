@@ -30,6 +30,28 @@ pub enum Entity {
   Painting(Painting),
 }
 
+pub struct EntityLike /*<EntityID extends number | undefined>*/ {
+  id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
+  Pos: [FloatTag; 3],
+  Motion: [FloatTag; 3], // doesn't seem to mention optional
+  Rotation: [FloatTag; 2],
+  FallDistance: FloatTag,
+  Fire: ShortTag,
+  Air: ShortTag,
+  OnGround: BooleanTag,
+}
+
+pub struct MobLike {
+  AttackTime: ShortTag,
+  DeathTime: ShortTag,
+  Health: ShortTag,
+  HurtTime: ShortTag,
+}
+
+pub struct AnimalLike {
+  Age: IntTag,
+}
+
 export interface Particle extends EntityLike<EntityResource.Particle> {}
 
 export interface Player extends EntityLike<undefined>, MobLike {
@@ -114,28 +136,6 @@ pub struct Snowball /*extends EntityLike<EntityResource.Snowball>*/ {}
 pub struct ThrownEgg /*extends EntityLike<EntityResource.ThrownEgg>*/ {}
 
 pub struct Painting /*extends EntityLike<EntityResource.Painting>*/ {}
-
-pub struct MobLike {
-  AttackTime: ShortTag,
-  DeathTime: ShortTag,
-  Health: ShortTag,
-  HurtTime: ShortTag,
-}
-
-pub struct AnimalLike {
-  Age: IntTag,
-}
-
-pub struct EntityLike /*<EntityID extends number | undefined>*/ {
-  id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
-  Pos: [FloatTag; 3],
-  Motion: [FloatTag; 3], // doesn't seem to mention optional
-  Rotation: [FloatTag; 2],
-  FallDistance: FloatTag,
-  Fire: ShortTag,
-  Air: ShortTag,
-  OnGround: BooleanTag,
-}
 
 pub enum EntityResource { // these first four are all actually `0`, this needs to be fixed with a `Into<u8>` block, or something similar.
   Particle = 0,
