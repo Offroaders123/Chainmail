@@ -1,32 +1,29 @@
 use std::collections::HashMap;
 
-pub type ByteTag = i8;
-pub type ShortTag = i16;
-pub type IntTag = i32;
-pub type LongTag = i64;
-pub type FloatTag = f32;
-pub type DoubleTag = f64;
-pub type ByteArrayTag = Vec<i8>;
-pub type StringTag = String;
-pub type ListTag<T> = Vec<T>;
-pub type CompoundTag = HashMap<String, Tag>;
-pub type IntArrayTag = Vec<i32>;
-pub type LongArrayTag = Vec<i64>;
+pub struct ByteTag(i8);
+pub struct ShortTag(i16);
+pub struct IntTag(i32);
+pub struct LongTag(i64);
+pub struct FloatTag(f32);
+pub struct DoubleTag(f64);
+pub struct ByteArrayTag(Vec<i8>);
+pub struct StringTag(String);
+pub struct ListTag<T: Tag>(Vec<T>);
+pub struct CompoundTag(HashMap<String, Tag>);
+pub struct IntArrayTag(Vec<i32>);
+pub struct LongArrayTag(Vec<i64>);
 
-#[repr(u8)]
-#[derive(Debug)]
-pub enum Tag {
-    End,
-    Byte(ByteTag),
-    Short(ShortTag),
-    Int(IntTag),
-    Long(LongTag),
-    Float(FloatTag),
-    Double(DoubleTag),
-    ByteArray(ByteArrayTag),
-    String(StringTag),
-    List(ListTag<Tag>),
-    Compound(CompoundTag),
-    IntArray(IntArrayTag),
-    LongArray(LongArrayTag),
-}
+pub trait Tag {}
+
+impl Tag for ByteTag {}
+impl Tag for ShortTag {}
+impl Tag for IntTag {}
+impl Tag for LongTag {}
+impl Tag for FloatTag {}
+impl Tag for DoubleTag {}
+impl Tag for ByteArrayTag {}
+impl Tag for StringTag {}
+impl<T: Tag> Tag for ListTag<T> {}
+impl Tag for CompoundTag {}
+impl Tag for IntArrayTag {}
+impl Tag for LongArrayTag {}
