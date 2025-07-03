@@ -17,16 +17,16 @@ pub enum Tag {
 
 pub trait TagLike {}
 
-pub struct ByteTag(i8);
-pub struct ShortTag<T: Into<i16> = i16>(T);
-pub struct IntTag(i32);
-pub struct LongTag(i64);
-pub struct FloatTag(f32);
-pub struct DoubleTag(f64);
+pub type ByteTag = i8;
+pub type ShortTag<T: Into<i16> = i16> = T;
+pub type IntTag = i32;
+pub type LongTag = i64;
+pub type FloatTag = f32;
+pub type DoubleTag = f64;
 pub struct ByteArrayTag(Vec<i8>);
-pub struct StringTag(String);
-pub struct ListTag<T: TagLike>(Vec<T>);
-pub struct CompoundTag(HashMap<String, Tag>);
+pub type StringTag = String;
+pub type ListTag<T: TagLike> = Vec<T>;
+pub type CompoundTag = HashMap<String, Tag>;
 pub struct IntArrayTag(Vec<i32>);
 pub struct LongArrayTag(Vec<i64>);
 
