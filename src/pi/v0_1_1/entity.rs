@@ -2,6 +2,8 @@ import type { BooleanTag, ByteTag, ShortTag, IntTag, FloatTag } from "nbtify";
 import type { Item } from "./item.js";
 import type { DimensionID } from "./dimension.js";
 
+use injectables::{inject_fields, injectable};
+
 use crate::nbt::tag::{BooleanTag, FloatTag, IntTag, ShortTag};
 use crate::pi::v0_1_1::item::Item;
 
@@ -30,6 +32,7 @@ pub enum Entity {
   Painting(Painting),
 }
 
+#[injectable]
 pub struct EntityLike /*<EntityID extends number | undefined>*/ {
   id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
   Pos: [FloatTag; 3],
@@ -41,6 +44,7 @@ pub struct EntityLike /*<EntityID extends number | undefined>*/ {
   OnGround: BooleanTag,
 }
 
+#[injectable]
 pub struct MobLike {
   AttackTime: ShortTag,
   DeathTime: ShortTag,
@@ -48,6 +52,7 @@ pub struct MobLike {
   HurtTime: ShortTag,
 }
 
+#[injectable]
 pub struct AnimalLike {
   Age: IntTag,
 }
@@ -119,22 +124,29 @@ export interface Spider extends EntityLike<EntityResource.Spider>, MobLike {}
 
 export interface PigZombie extends EntityLike<EntityResource.PigZombie>, MobLike {}
 
+#[inject_fields(EntityLike)]
 pub struct ItemEntity /*extends EntityLike<EntityResource.ItemEntity>*/ {
   Health: ShortTag,
   Age: ShortTag,
   Item: Item,
 }
 
+#[inject_fields(EntityLike)]
 pub struct PrimedTNT /*extends EntityLike<EntityResource.PrimedTnt>*/ {}
 
+#[inject_fields(EntityLike)]
 pub struct FallingTile /*extends EntityLike<EntityResource.FallingTile>*/ {}
 
+#[inject_fields(EntityLike)]
 pub struct Arrow /*extends EntityLike<EntityResource.Arrow>*/ {}
 
+#[inject_fields(EntityLike)]
 pub struct Snowball /*extends EntityLike<EntityResource.Snowball>*/ {}
 
+#[inject_fields(EntityLike)]
 pub struct ThrownEgg /*extends EntityLike<EntityResource.ThrownEgg>*/ {}
 
+#[inject_fields(EntityLike)]
 pub struct Painting /*extends EntityLike<EntityResource.Painting>*/ {}
 
 pub enum EntityResource { // these first four are all actually `0`, this needs to be fixed with a `Into<u8>` block, or something similar.

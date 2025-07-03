@@ -7,3 +7,4 @@ edition = "2024"
 name = "chainmail"
 
 [dependencies]
+injectables = "0.1.0"
