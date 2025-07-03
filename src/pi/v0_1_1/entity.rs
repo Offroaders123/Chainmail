@@ -57,8 +57,10 @@ pub struct AnimalLike {
   Age: IntTag,
 }
 
+#[inject_fields(EntityLike)]
 pub struct Particle /*extends EntityLike<EntityResource.Particle>*/ {}
 
+#[inject_fields(EntityLike, MobLike)]
 pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
   Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
   Dimension: IntTag<DimensionID>,
@@ -80,16 +82,22 @@ pub struct PlayerAbilities {
   instabuild: BooleanTag,
 }
 
+#[inject_fields(EntityLike)]
 pub struct TripodCamera /*extends EntityLike<EntityResource.TripodCamera>*/ {}
 
+#[inject_fields(EntityLike)]
 pub struct CameraEntity /*extends EntityLike<EntityResource.CameraEntity>*/ {}
 
+#[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Chicken /*extends EntityLike<EntityResource.Chicken>, MobLike, AnimalLike*/ {}
 
+#[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Cow /*extends EntityLike<EntityResource.Cow>, MobLike, AnimalLike*/ {}
 
+#[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Pig /*extends EntityLike<EntityResource.Pig>, MobLike, AnimalLike*/ {}
 
+#[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Sheep /*extends EntityLike<EntityResource.Sheep>, MobLike, AnimalLike*/ {
   Sheared: BooleanTag,
   Color: ByteTag<SheepWoolColor>,
@@ -114,14 +122,19 @@ pub enum SheepWoolColor {
   Black
 }
 
+#[inject_fields(EntityLike, MobLike)]
 pub struct Zombie /*extends EntityLike<EntityResource.Zombie>, MobLike*/ {}
 
+#[inject_fields(EntityLike, MobLike)]
 pub struct Creeper /*extends EntityLike<EntityResource.Creeper>, MobLike*/ {}
 
+#[inject_fields(EntityLike, MobLike)]
 pub struct Skeleton /*extends EntityLike<EntityResource.Skeleton>, MobLike*/ {}
 
+#[inject_fields(EntityLike, MobLike)]
 pub struct Spider /*extends EntityLike<EntityResource.Spider>, MobLike*/ {}
 
+#[inject_fields(EntityLike, MobLike)]
 pub struct PigZombie /*extends EntityLike<EntityResource.PigZombie>, MobLike*/ {}
 
 #[inject_fields(EntityLike)]
