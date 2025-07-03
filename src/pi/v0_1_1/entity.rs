@@ -67,7 +67,24 @@ export interface Sheep extends EntityLike<EntityResource.Sheep>, MobLike, Animal
   Color: ByteTag<SheepWoolColor>;
 }
 
-export type SheepWoolColor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+pub enum SheepWoolColor {
+  White = 0,
+  Orange,
+  Magenta,
+  LightBlue,
+  Yellow,
+  Lime,
+  Pink,
+  Gray,
+  LightGray,
+  Cyan,
+  Purple,
+  Blue,
+  Brown,
+  Green,
+  Red,
+  Black
+}
 
 export interface Zombie extends EntityLike<EntityResource.Zombie>, MobLike {}
 
