@@ -4,8 +4,8 @@ import type { DimensionID } from "./dimension.js";
 
 use injectables::{inject_fields, injectable};
 
-use crate::nbt::tag::{BooleanTag, FloatTag, IntTag, ShortTag};
-use crate::pi::v0_1_1::item::Item;
+use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag};
+use crate::pi::v0_1_1::{dimension::DimensionID, item::Item};
 
 export type Entity<K extends keyof EntityNameKeyMap = keyof EntityNameKeyMap> = EntityNameKeyMap[K];
 
@@ -57,19 +57,19 @@ pub struct AnimalLike {
   Age: IntTag,
 }
 
-export interface Particle extends EntityLike<EntityResource.Particle> {}
+pub struct Particle /*extends EntityLike<EntityResource.Particle>*/ {}
 
-export interface Player extends EntityLike<undefined>, MobLike {
-  Armor: Item[]; // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
-  Dimension: IntTag<DimensionID>;
-  Inventory: Item[]; // slot tag for sure
-  Score: IntTag;
-  Sleeping: BooleanTag;
-  SleepTimer: ShortTag;
-  SpawnX: IntTag;
-  SpawnY: IntTag;
-  SpawnZ: IntTag;
-  abilities: PlayerAbilities;
+pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
+  Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
+  Dimension: IntTag<DimensionID>,
+  Inventory: ListTag<Item>, // slot tag for sure
+  Score: IntTag,
+  Sleeping: BooleanTag,
+  SleepTimer: ShortTag,
+  SpawnX: IntTag,
+  SpawnY: IntTag,
+  SpawnZ: IntTag,
+  abilities: PlayerAbilities,
 }
 
 pub struct PlayerAbilities {
@@ -80,19 +80,19 @@ pub struct PlayerAbilities {
   instabuild: BooleanTag,
 }
 
-export interface TripodCamera extends EntityLike<EntityResource.TripodCamera> {}
+pub struct TripodCamera /*extends EntityLike<EntityResource.TripodCamera>*/ {}
 
-export interface CameraEntity extends EntityLike<EntityResource.CameraEntity> {}
+pub struct CameraEntity /*extends EntityLike<EntityResource.CameraEntity>*/ {}
 
-export interface Chicken extends EntityLike<EntityResource.Chicken>, MobLike, AnimalLike {}
+pub struct Chicken /*extends EntityLike<EntityResource.Chicken>, MobLike, AnimalLike*/ {}
 
-export interface Cow extends EntityLike<EntityResource.Cow>, MobLike, AnimalLike {}
+pub struct Cow /*extends EntityLike<EntityResource.Cow>, MobLike, AnimalLike*/ {}
 
-export interface Pig extends EntityLike<EntityResource.Pig>, MobLike, AnimalLike {}
+pub struct Pig /*extends EntityLike<EntityResource.Pig>, MobLike, AnimalLike*/ {}
 
-export interface Sheep extends EntityLike<EntityResource.Sheep>, MobLike, AnimalLike {
-  Sheared: BooleanTag;
-  Color: ByteTag<SheepWoolColor>;
+pub struct Sheep /*extends EntityLike<EntityResource.Sheep>, MobLike, AnimalLike*/ {
+  Sheared: BooleanTag,
+  Color: ByteTag<SheepWoolColor>,
 }
 
 pub enum SheepWoolColor {
@@ -114,15 +114,15 @@ pub enum SheepWoolColor {
   Black
 }
 
-export interface Zombie extends EntityLike<EntityResource.Zombie>, MobLike {}
+pub struct Zombie /*extends EntityLike<EntityResource.Zombie>, MobLike*/ {}
 
-export interface Creeper extends EntityLike<EntityResource.Creeper>, MobLike {}
+pub struct Creeper /*extends EntityLike<EntityResource.Creeper>, MobLike*/ {}
 
-export interface Skeleton extends EntityLike<EntityResource.Skeleton>, MobLike {}
+pub struct Skeleton /*extends EntityLike<EntityResource.Skeleton>, MobLike*/ {}
 
-export interface Spider extends EntityLike<EntityResource.Spider>, MobLike {}
+pub struct Spider /*extends EntityLike<EntityResource.Spider>, MobLike*/ {}
 
-export interface PigZombie extends EntityLike<EntityResource.PigZombie>, MobLike {}
+pub struct PigZombie /*extends EntityLike<EntityResource.PigZombie>, MobLike*/ {}
 
 #[inject_fields(EntityLike)]
 pub struct ItemEntity /*extends EntityLike<EntityResource.ItemEntity>*/ {

@@ -19,7 +19,7 @@ pub enum Tag {
 pub trait TagLike {}
 
 pub type BooleanTag = bool;
-pub type ByteTag = i8;
+pub type ByteTag<T: Into<i8> = i8> = T;
 pub type ShortTag<T: Into<i16> = i16> = T;
 pub type IntTag<T: Into<i32> = i32> = T;
 pub type LongTag = i64;
