@@ -9,6 +9,5 @@ pub mod entity;
 pub mod item;
 pub mod level;
 pub mod recipe;
-pub mod registry;
 pub mod structure;
 pub mod tile_tick;

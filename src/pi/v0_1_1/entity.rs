@@ -163,7 +163,8 @@ pub struct ThrownEgg {}
 #[inject_fields(EntityLike)]
 pub struct Painting {}
 
-pub enum EntityResource { // these first four are all actually `0`, this needs to be fixed with a `Into<u8>` block, or something similar.
+pub enum EntityResource {
+    // these first four are all actually `0`, this needs to be fixed with a `Into<u8>` block, or something similar.
     Particle = 0,
     Player = 01,
     TripodCamera = 02,
