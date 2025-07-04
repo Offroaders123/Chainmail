@@ -57,6 +57,7 @@ pub struct AnimalLike {
 #[inject_fields(EntityLike)]
 pub struct Particle /*extends EntityLike<EntityResource.Particle>*/ {}
 
+#[allow(non_snake_case)]
 #[inject_fields(EntityLike, MobLike)]
 pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
     Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
