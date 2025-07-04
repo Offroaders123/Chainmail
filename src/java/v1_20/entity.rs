@@ -136,6 +136,447 @@ pub enum Entity {
     interaction(Interaction),
 }
 
+#[allow(non_snake_case)]
+pub struct ContainerEntityLike {
+    Items: ListTag<Item>,         // `Slot` tag as well, need to add that
+    LootTable: Option<StringTag>, // LootTableResource
+    LootTableSeed: Option<LongTag>,
+}
+
+#[allow(non_snake_case)]
+pub struct ProjectileLike {
+    HasBeenShot: BooleanTag,
+    LeftOwner: Option<BooleanTag>, // `Option<TrueTag>`
+    Owner: Option<IntArrayTag>,    // `IntArrayTag<[number, number, number, number]>`
+}
+
+// should this be generic?
+#[allow(non_snake_case)]
+pub struct ThrownItemLike {
+    Item: Option<Item>,
+}
+
+#[allow(non_snake_case)]
+pub struct HangableLike {
+    Facing: ByteTag<HangableFacing>,
+    TileX: IntTag,
+    TileY: IntTag,
+    TileZ: IntTag,
+}
+
+pub enum HangableFacing {
+    Bottom = 0,
+    Top,
+    North,
+    South,
+    West,
+    East,
+}
+
+pub struct FireballLike {
+    power: FireballPower,
+}
+
+pub type FireballPower = [DoubleTag; 3];
+
+pub struct DisplayLike {
+    billboard: StringTag<DisplayBillboard>,
+    brightness: DisplayBrightness,
+    glow_color_override: IntTag,
+    height: FloatTag,
+    width: FloatTag,
+    interpolation_duration: IntTag,
+    teleport_duration: IntTag,
+    start_interpolation: IntTag,
+    shadow_radius: FloatTag,
+    shadow_strength: FloatTag,
+    view_range: FloatTag,
+    transformation: DisplayTransformation,
+}
+
+#[allow(non_camel_case_types)]
+pub enum DisplayBillboard {
+    fixed,
+    vertical,
+    horizontal,
+    center,
+}
+
+pub struct DisplayBrightness {
+    block: IntTag<DisplayBrightnessLevel>,
+    sky: IntTag<DisplayBrightnessLevel>,
+}
+
+pub enum DisplayBrightnessLevel {
+    Zero = 0,
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Eleven,
+    Twelve,
+    Thirteen,
+    Fourteen,
+    Fifteen,
+}
+
+pub enum DisplayTransformation {
+    Matrix(DisplayTransformationMatrix),
+    Decomposed(DisplayTransformationDecomposed),
+}
+
+pub type DisplayTransformationMatrix = [FloatTag; 16];
+
+pub struct DisplayTransformationDecomposed {
+    left_rotation: DisplayRotation,
+    translation: DisplayTranslation,
+    right_rotation: DisplayRotation,
+    scale: DisplayScale,
+}
+
+pub enum DisplayRotation {
+    Quaternion(DisplayRotationQuaternion),
+    AxisAngle(DisplayRotationAxisAngle),
+}
+
+pub type DisplayRotationQuaternion = [FloatTag; 4];
+
+pub struct DisplayRotationAxisAngle {
+    angle: FloatTag,
+    axis: DisplayRotationAxis,
+}
+
+pub type DisplayRotationAxis = [FloatTag; 3];
+
+pub type DisplayTranslation = [FloatTag; 3];
+
+pub type DisplayScale = [FloatTag; 3];
+
+#[allow(non_snake_case)]
+pub struct PotionEffectLike {
+    custom_potion_effects: ListTag<PotionEffectEntry>,
+    Potion: StringTag, // not fully fleshed out <https://minecraft.wiki/w/Arrow#Data_values>, <https://minecraft.wiki/w/Potion#Item_data>
+    CustomPotionColor: IntTag,
+    Color: IntTag, // specific to Arrows..?
+}
+
+pub struct PotionEffectEntry {
+    id: IntTag<EffectID>,
+    amplifier: Option<ByteTag>,
+    duration: Option<IntTag>,
+    ambient: Option<BooleanTag>,
+    show_particles: Option<BooleanTag>,
+    show_icon: BooleanTag, // also optional?
+}
+
+#[allow(non_snake_case)]
+pub struct MobLike {
+    AbsorptionAmount: FloatTag,
+    ActiveEffects: ListTag<Effect>,
+    ArmorDropChances: ArmorDropChances,
+    ArmorItems: ArmorItems,
+    Attributes: ListTag<Attribute>,
+    Brain: MobBrain,
+    CanPickUpLoot: BooleanTag,
+    DeathLootTable: Option<StringTag>, // `LootTableResource`
+    DeathLootTableSeed: Option<LongTag>,
+    DeathTime: ShortTag,
+    FallFlying: ByteTag,
+    Health: FloatTag,
+    HurtByTimestamp: IntTag,
+    HurtTime: ShortTag,
+    HandDropChances: HandDropChances,
+    HandItems: HandItems,
+    Leash: Option<Leash>,
+    LeftHanded: BooleanTag,
+    NoAI: BooleanTag,
+    PersistenceRequired: BooleanTag,
+    SleepingX: IntTag,
+    SleepingY: IntTag,
+    SleepingZ: IntTag,
+    Team: Option<StringTag>, // `ScoreboardTeam` ?
+}
+
+pub struct MobBrain {
+    memories: CompoundTag, // `Memories`, needs to be typed eventually. Just an empty object right now, in practice. `{}` in TypeScript.
+}
+
+#[allow(non_snake_case)]
+pub struct BreedableLike {
+    Age: IntTag,
+    ForcedAge: IntTag,
+    InLove: IntTag,
+    LoveCause: IntArrayTag, // `UUIDLike`
+}
+
+#[allow(non_snake_case)]
+pub struct BucketableLike {
+    FromBucket: BooleanTag,
+}
+
+#[allow(non_snake_case)]
+pub struct TameableLike {
+    Owner: Option<IntArrayTag>, // `UUIDLike`
+    Sitting: BooleanTag,
+}
+
+#[allow(non_snake_case)]
+pub struct CollaredLike {
+    CollarColor: ByteTag<CollarColor>,
+}
+
+pub enum CollarColor {
+    White = 0,
+    Orange,
+    Magenta,
+    LightBlue,
+    Yellow,
+    Lime,
+    Pink,
+    Gray,
+    LightGray,
+    Cyan,
+    Purple,
+    Blue,
+    Brown,
+    Green,
+    Red,
+    Black,
+}
+
+#[allow(non_snake_case)]
+pub struct SaddledLike {
+    Saddle: BooleanTag,
+}
+
+#[allow(non_snake_case)]
+pub struct AngeredLike {
+    AngerTime: IntTag,
+    AngryAt: IntArrayTag, // `UUIDLike`
+}
+
+#[allow(non_snake_case)]
+pub struct HorseLike {
+    Bred: BooleanTag,
+    EatingHaystack: BooleanTag,
+    Owner: Option<IntArrayTag>, // `UUIDLike`
+    SaddleItem: Option<Item>,   // `Item<"minecraft:saddle">`
+    Tame: BooleanTag,
+    Temper: IntTag,
+}
+
+#[allow(non_snake_case)]
+pub struct VillagerLike {
+    Gossips: ListTag<VillagerGossip>,
+    Offers: Option<VillagerOffers>, // "Is generated when the trading menu is opened for the first time.", optional?
+    VillagerData: VillagerData,
+    Xp: IntTag,
+}
+
+#[allow(non_snake_case)]
+pub struct VillagerGossip {
+    Value: IntTag,
+    Target: IntArrayTag, // `UUIDLike`
+    Type: StringTag<VillagerGossipType>,
+}
+
+#[allow(non_camel_case_types)]
+pub enum VillagerGossipType {
+    major_negative,
+    minor_negative,
+    major_positive,
+    minor_positive,
+    trading,
+}
+
+#[allow(non_snake_case)]
+pub struct VillagerOffers {
+    Recipes: ListTag<VillagerTradeOption>,
+}
+
+#[allow(non_snake_case)]
+pub struct TradeOptionLike {
+    buy: Item,
+    buyB: Option<Item>,
+    maxUses: IntTag,
+    rewardExp: BooleanTag,
+    sell: Item,
+    uses: IntTag,
+}
+
+#[allow(non_snake_case)]
+// extends TradeOptionLike {
+pub struct VillagerTradeOption {
+    demand: IntTag,
+    priceMultiplier: FloatTag,
+    specialPrice: IntTag,
+    xp: IntTag,
+}
+
+pub struct VillagerData {
+    level: IntTag<VillagerLevel>,
+    profession: StringTag<VillagerProfession>,
+    r#type: StringTag<VillagerType>,
+}
+
+pub enum VillagerLevel {
+    Novice = 1,
+    Apprentice,
+    Journeyman,
+    Expert,
+    Master,
+}
+
+#[allow(non_camel_case_types)]
+pub enum VillagerProfession {
+    // needs to be `minecraft:` prefixed when stringified!!
+    armorer,
+    butcher,
+    cartographer,
+    cleric,
+    farmer,
+    fisherman,
+    fletcher,
+    leatherworker,
+    librarian,
+    nitwit,
+    none,
+    mason,
+    shepherd,
+    toolsmith,
+    weaponsmith,
+}
+
+#[allow(non_camel_case_types)]
+pub enum VillagerType {
+    // needs to be `minecraft:` prefixed when stringified!!
+    desert,
+    jungle,
+    plains,
+    savanna,
+    snow,
+    swamp,
+    taiga,
+}
+
+#[allow(non_snake_case)]
+pub struct ZombieLike {
+    CanBreakDoors: BooleanTag,
+    DrownedConversionTime: IntTag,
+    InWaterTime: IntTag,
+    IsBaby: Option<BooleanTag>,
+}
+
+#[allow(non_snake_case)]
+pub struct PiglinLike {
+    IsImmuneToZombification: BooleanTag,
+    TimeInOverworld: IntTag,
+}
+
+#[allow(non_snake_case)]
+pub struct SlimeLike {
+    Size: IntTag<SlimeSize>,
+    wasOnGround: BooleanTag,
+}
+
+pub enum SlimeSize {
+    // not a mistake, weird I know lol; allows for larger values, these are the natural ones though.
+    Small = 0,
+    Medium,
+    Large = 3,
+}
+
+#[allow(non_snake_case)]
+pub struct RaidLike {
+    CanJoinRaid: BooleanTag,
+    PatrolLeader: BooleanTag,
+    Patrolling: BooleanTag,
+    PatrolTarget: RaidPatrolTarget, // This can be made generic to a `Position` kind of thing.
+    RaidId: IntTag,
+    Wave: IntTag, // union of values? probably a min/max for each difficulty I'd assume?
+}
+
+#[allow(non_snake_case)]
+pub struct RaidPatrolTarget {
+    X: IntTag,
+    Y: IntTag,
+    Z: IntTag,
+}
+
+pub type ArmorDropChances = [FloatTag; 4];
+
+pub type ArmorItems = [Item; 4];
+
+#[allow(non_snake_case)]
+pub struct Attribute {
+    Base: DoubleTag,
+    Modifiers: ListTag<Modifier>,
+    Name: StringTag, // `AttributeResource` ?
+}
+
+#[allow(non_snake_case)]
+pub struct Modifier {
+    Amount: DoubleTag,
+    Name: StringTag, // `ModifierResource` ?
+    Operation: IntTag<ModifierOperation>,
+    UUID: IntArrayTag,
+}
+
+pub enum ModifierOperation {
+    Zero = 0,
+    One,
+    Two,
+}
+
+pub type HandDropChances = [FloatTag; 2];
+
+pub type HandItems = [Item; 2];
+
+#[allow(non_snake_case)]
+pub enum Leash {
+    Array(IntArrayTag),
+    Object { X: IntTag, Y: IntTag, Z: IntTag },
+}
+
+// <EntityID extends string | undefined>
+#[allow(non_snake_case)]
+pub struct EntityLike {
+    Air: ShortTag,
+    CustomName: Option<StringTag>,
+    CustomNameVisible: Option<BooleanTag>,
+    FallDistance: FloatTag,
+    Fire: ShortTag,
+    Glowing: BooleanTag,
+    HasVisualFire: BooleanTag,
+    id: StringTag, // <--- could probably be `EntityResource` // EntityID extends string ? `${EntityID}` : EntityID,
+    Invulnerable: BooleanTag,
+    Motion: EntityMotion,
+    NoGravity: BooleanTag,
+    OnGround: BooleanTag,
+    Passengers: ListTag<Entity>,
+    PortalCooldown: IntTag,
+    Pos: EntityPos,
+    Rotation: EntityRotation,
+    Silent: Option<BooleanTag>,
+    Tags: ListTag<ScoreboardTag>,
+    TicksFrozen: Option<IntTag>,
+    UUID: IntArrayTag,
+}
+
+pub type EntityMotion = [DoubleTag; 3];
+
+pub type EntityPos = [DoubleTag; 3];
+
+pub type EntityRotation = [FloatTag; 2];
+
+pub type ScoreboardTag = String; // I think this was/is eventually meant to be an union/enum of strings
+
 // Tags for all entities, except the id, CustomName and CustomNameVisible
 // Tags for all mobs, except HandItems, ArmorItems, HandDropChances, ArmorDropChances, CanPickUpLoot, PersistenceRequired and Leash
 #[allow(non_snake_case)]
@@ -1405,447 +1846,6 @@ pub struct InteractionEvent {
     player: IntArrayTag, // `UUIDLike`
     timestamp: LongTag,
 }
-
-#[allow(non_snake_case)]
-pub struct ContainerEntityLike {
-    Items: ListTag<Item>,         // `Slot` tag as well, need to add that
-    LootTable: Option<StringTag>, // LootTableResource
-    LootTableSeed: Option<LongTag>,
-}
-
-#[allow(non_snake_case)]
-pub struct ProjectileLike {
-    HasBeenShot: BooleanTag,
-    LeftOwner: Option<BooleanTag>, // `Option<TrueTag>`
-    Owner: Option<IntArrayTag>,    // `IntArrayTag<[number, number, number, number]>`
-}
-
-// should this be generic?
-#[allow(non_snake_case)]
-pub struct ThrownItemLike {
-    Item: Option<Item>,
-}
-
-#[allow(non_snake_case)]
-pub struct HangableLike {
-    Facing: ByteTag<HangableFacing>,
-    TileX: IntTag,
-    TileY: IntTag,
-    TileZ: IntTag,
-}
-
-pub enum HangableFacing {
-    Bottom = 0,
-    Top,
-    North,
-    South,
-    West,
-    East,
-}
-
-pub struct FireballLike {
-    power: FireballPower,
-}
-
-pub type FireballPower = [DoubleTag; 3];
-
-pub struct DisplayLike {
-    billboard: StringTag<DisplayBillboard>,
-    brightness: DisplayBrightness,
-    glow_color_override: IntTag,
-    height: FloatTag,
-    width: FloatTag,
-    interpolation_duration: IntTag,
-    teleport_duration: IntTag,
-    start_interpolation: IntTag,
-    shadow_radius: FloatTag,
-    shadow_strength: FloatTag,
-    view_range: FloatTag,
-    transformation: DisplayTransformation,
-}
-
-#[allow(non_camel_case_types)]
-pub enum DisplayBillboard {
-    fixed,
-    vertical,
-    horizontal,
-    center,
-}
-
-pub struct DisplayBrightness {
-    block: IntTag<DisplayBrightnessLevel>,
-    sky: IntTag<DisplayBrightnessLevel>,
-}
-
-pub enum DisplayBrightnessLevel {
-    Zero = 0,
-    One,
-    Two,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
-    Eight,
-    Nine,
-    Ten,
-    Eleven,
-    Twelve,
-    Thirteen,
-    Fourteen,
-    Fifteen,
-}
-
-pub enum DisplayTransformation {
-    Matrix(DisplayTransformationMatrix),
-    Decomposed(DisplayTransformationDecomposed),
-}
-
-pub type DisplayTransformationMatrix = [FloatTag; 16];
-
-pub struct DisplayTransformationDecomposed {
-    left_rotation: DisplayRotation,
-    translation: DisplayTranslation,
-    right_rotation: DisplayRotation,
-    scale: DisplayScale,
-}
-
-pub enum DisplayRotation {
-    Quaternion(DisplayRotationQuaternion),
-    AxisAngle(DisplayRotationAxisAngle),
-}
-
-pub type DisplayRotationQuaternion = [FloatTag; 4];
-
-pub struct DisplayRotationAxisAngle {
-    angle: FloatTag,
-    axis: DisplayRotationAxis,
-}
-
-pub type DisplayRotationAxis = [FloatTag; 3];
-
-pub type DisplayTranslation = [FloatTag; 3];
-
-pub type DisplayScale = [FloatTag; 3];
-
-#[allow(non_snake_case)]
-pub struct PotionEffectLike {
-    custom_potion_effects: ListTag<PotionEffectEntry>,
-    Potion: StringTag, // not fully fleshed out <https://minecraft.wiki/w/Arrow#Data_values>, <https://minecraft.wiki/w/Potion#Item_data>
-    CustomPotionColor: IntTag,
-    Color: IntTag, // specific to Arrows..?
-}
-
-pub struct PotionEffectEntry {
-    id: IntTag<EffectID>,
-    amplifier: Option<ByteTag>,
-    duration: Option<IntTag>,
-    ambient: Option<BooleanTag>,
-    show_particles: Option<BooleanTag>,
-    show_icon: BooleanTag, // also optional?
-}
-
-#[allow(non_snake_case)]
-pub struct MobLike {
-    AbsorptionAmount: FloatTag,
-    ActiveEffects: ListTag<Effect>,
-    ArmorDropChances: ArmorDropChances,
-    ArmorItems: ArmorItems,
-    Attributes: ListTag<Attribute>,
-    Brain: MobBrain,
-    CanPickUpLoot: BooleanTag,
-    DeathLootTable: Option<StringTag>, // `LootTableResource`
-    DeathLootTableSeed: Option<LongTag>,
-    DeathTime: ShortTag,
-    FallFlying: ByteTag,
-    Health: FloatTag,
-    HurtByTimestamp: IntTag,
-    HurtTime: ShortTag,
-    HandDropChances: HandDropChances,
-    HandItems: HandItems,
-    Leash: Option<Leash>,
-    LeftHanded: BooleanTag,
-    NoAI: BooleanTag,
-    PersistenceRequired: BooleanTag,
-    SleepingX: IntTag,
-    SleepingY: IntTag,
-    SleepingZ: IntTag,
-    Team: Option<StringTag>, // `ScoreboardTeam` ?
-}
-
-pub struct MobBrain {
-    memories: CompoundTag, // `Memories`, needs to be typed eventually. Just an empty object right now, in practice. `{}` in TypeScript.
-}
-
-#[allow(non_snake_case)]
-pub struct BreedableLike {
-    Age: IntTag,
-    ForcedAge: IntTag,
-    InLove: IntTag,
-    LoveCause: IntArrayTag, // `UUIDLike`
-}
-
-#[allow(non_snake_case)]
-pub struct BucketableLike {
-    FromBucket: BooleanTag,
-}
-
-#[allow(non_snake_case)]
-pub struct TameableLike {
-    Owner: Option<IntArrayTag>, // `UUIDLike`
-    Sitting: BooleanTag,
-}
-
-#[allow(non_snake_case)]
-pub struct CollaredLike {
-    CollarColor: ByteTag<CollarColor>,
-}
-
-pub enum CollarColor {
-    White = 0,
-    Orange,
-    Magenta,
-    LightBlue,
-    Yellow,
-    Lime,
-    Pink,
-    Gray,
-    LightGray,
-    Cyan,
-    Purple,
-    Blue,
-    Brown,
-    Green,
-    Red,
-    Black,
-}
-
-#[allow(non_snake_case)]
-pub struct SaddledLike {
-    Saddle: BooleanTag,
-}
-
-#[allow(non_snake_case)]
-pub struct AngeredLike {
-    AngerTime: IntTag,
-    AngryAt: IntArrayTag, // `UUIDLike`
-}
-
-#[allow(non_snake_case)]
-pub struct HorseLike {
-    Bred: BooleanTag,
-    EatingHaystack: BooleanTag,
-    Owner: Option<IntArrayTag>, // `UUIDLike`
-    SaddleItem: Option<Item>,   // `Item<"minecraft:saddle">`
-    Tame: BooleanTag,
-    Temper: IntTag,
-}
-
-#[allow(non_snake_case)]
-pub struct VillagerLike {
-    Gossips: ListTag<VillagerGossip>,
-    Offers: Option<VillagerOffers>, // "Is generated when the trading menu is opened for the first time.", optional?
-    VillagerData: VillagerData,
-    Xp: IntTag,
-}
-
-#[allow(non_snake_case)]
-pub struct VillagerGossip {
-    Value: IntTag,
-    Target: IntArrayTag, // `UUIDLike`
-    Type: StringTag<VillagerGossipType>,
-}
-
-#[allow(non_camel_case_types)]
-pub enum VillagerGossipType {
-    major_negative,
-    minor_negative,
-    major_positive,
-    minor_positive,
-    trading,
-}
-
-#[allow(non_snake_case)]
-pub struct VillagerOffers {
-    Recipes: ListTag<VillagerTradeOption>,
-}
-
-#[allow(non_snake_case)]
-pub struct TradeOptionLike {
-    buy: Item,
-    buyB: Option<Item>,
-    maxUses: IntTag,
-    rewardExp: BooleanTag,
-    sell: Item,
-    uses: IntTag,
-}
-
-#[allow(non_snake_case)]
-// extends TradeOptionLike {
-pub struct VillagerTradeOption {
-    demand: IntTag,
-    priceMultiplier: FloatTag,
-    specialPrice: IntTag,
-    xp: IntTag,
-}
-
-pub struct VillagerData {
-    level: IntTag<VillagerLevel>,
-    profession: StringTag<VillagerProfession>,
-    r#type: StringTag<VillagerType>,
-}
-
-pub enum VillagerLevel {
-    Novice = 1,
-    Apprentice,
-    Journeyman,
-    Expert,
-    Master,
-}
-
-#[allow(non_camel_case_types)]
-pub enum VillagerProfession {
-    // needs to be `minecraft:` prefixed when stringified!!
-    armorer,
-    butcher,
-    cartographer,
-    cleric,
-    farmer,
-    fisherman,
-    fletcher,
-    leatherworker,
-    librarian,
-    nitwit,
-    none,
-    mason,
-    shepherd,
-    toolsmith,
-    weaponsmith,
-}
-
-#[allow(non_camel_case_types)]
-pub enum VillagerType {
-    // needs to be `minecraft:` prefixed when stringified!!
-    desert,
-    jungle,
-    plains,
-    savanna,
-    snow,
-    swamp,
-    taiga,
-}
-
-#[allow(non_snake_case)]
-pub struct ZombieLike {
-    CanBreakDoors: BooleanTag,
-    DrownedConversionTime: IntTag,
-    InWaterTime: IntTag,
-    IsBaby: Option<BooleanTag>,
-}
-
-#[allow(non_snake_case)]
-pub struct PiglinLike {
-    IsImmuneToZombification: BooleanTag,
-    TimeInOverworld: IntTag,
-}
-
-#[allow(non_snake_case)]
-pub struct SlimeLike {
-    Size: IntTag<SlimeSize>,
-    wasOnGround: BooleanTag,
-}
-
-pub enum SlimeSize {
-    // not a mistake, weird I know lol; allows for larger values, these are the natural ones though.
-    Small = 0,
-    Medium,
-    Large = 3,
-}
-
-#[allow(non_snake_case)]
-pub struct RaidLike {
-    CanJoinRaid: BooleanTag,
-    PatrolLeader: BooleanTag,
-    Patrolling: BooleanTag,
-    PatrolTarget: RaidPatrolTarget, // This can be made generic to a `Position` kind of thing.
-    RaidId: IntTag,
-    Wave: IntTag, // union of values? probably a min/max for each difficulty I'd assume?
-}
-
-#[allow(non_snake_case)]
-pub struct RaidPatrolTarget {
-    X: IntTag,
-    Y: IntTag,
-    Z: IntTag,
-}
-
-pub type ArmorDropChances = [FloatTag; 4];
-
-pub type ArmorItems = [Item; 4];
-
-#[allow(non_snake_case)]
-pub struct Attribute {
-    Base: DoubleTag,
-    Modifiers: ListTag<Modifier>,
-    Name: StringTag, // `AttributeResource` ?
-}
-
-#[allow(non_snake_case)]
-pub struct Modifier {
-    Amount: DoubleTag,
-    Name: StringTag, // `ModifierResource` ?
-    Operation: IntTag<ModifierOperation>,
-    UUID: IntArrayTag,
-}
-
-pub enum ModifierOperation {
-    Zero = 0,
-    One,
-    Two,
-}
-
-pub type HandDropChances = [FloatTag; 2];
-
-pub type HandItems = [Item; 2];
-
-#[allow(non_snake_case)]
-pub enum Leash {
-    Array(IntArrayTag),
-    Object { X: IntTag, Y: IntTag, Z: IntTag },
-}
-
-// <EntityID extends string | undefined>
-#[allow(non_snake_case)]
-pub struct EntityLike {
-    Air: ShortTag,
-    CustomName: Option<StringTag>,
-    CustomNameVisible: Option<BooleanTag>,
-    FallDistance: FloatTag,
-    Fire: ShortTag,
-    Glowing: BooleanTag,
-    HasVisualFire: BooleanTag,
-    id: StringTag, // <--- could probably be `EntityResource` // EntityID extends string ? `${EntityID}` : EntityID,
-    Invulnerable: BooleanTag,
-    Motion: EntityMotion,
-    NoGravity: BooleanTag,
-    OnGround: BooleanTag,
-    Passengers: ListTag<Entity>,
-    PortalCooldown: IntTag,
-    Pos: EntityPos,
-    Rotation: EntityRotation,
-    Silent: Option<BooleanTag>,
-    Tags: ListTag<ScoreboardTag>,
-    TicksFrozen: Option<IntTag>,
-    UUID: IntArrayTag,
-}
-
-pub type EntityMotion = [DoubleTag; 3];
-
-pub type EntityPos = [DoubleTag; 3];
-
-pub type EntityRotation = [FloatTag; 2];
-
-pub type ScoreboardTag = String; // I think this was/is eventually meant to be an union/enum of strings
 
 #[allow(non_camel_case_types)]
 pub enum EntityResource {
