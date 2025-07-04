@@ -1,68 +1,77 @@
-import type { ByteTag, ShortTag, IntTag, LongTag, StringTag, ByteArrayTag, LongArrayTag } from "nbtify";
-import type { BiomeResource } from "./biome.js";
-import type { BlockState } from "./block.js";
-import type { BlockEntity } from "./block-entity.js";
-import type { Entity } from "./entity.js";
-import type { Structure, StructureResource } from "./structure.js";
-import type { TileTick } from "./tile-tick.js";
+use crate::java::v1_20::{
+    biome::BiomeResource, block::BlockState, block_entity::BlockEntity, entity::Entity,
+    structure::Structure, tile_tick::TileTick,
+};
+use crate::nbt::tag::{
+    ByteArrayTag, ByteTag, CompoundTag, IntTag, ListTag, LongArrayTag, LongTag, ShortTag, StringTag,
+};
 
-export interface Chunk {
-  DataVersion: IntTag;
-  xPos: IntTag;
-  zPos: IntTag;
-  yPos: IntTag;
-  Status: StringTag;
-  LastUpdate: LongTag;
-  sections: Section[];
-  block_entities: BlockEntity[];
-  CarvingMasks: CarvingMasks;
-  Heightmaps: Heightmaps;
-  Lights: Lights;
-  Entities: Entity[];
-  fluid_ticks: TileTick[];
-  block_ticks: TileTick[];
-  InhabitedTime: LongTag;
-  PostProcessing: ToBeTicked[];
-  structures: Structures;
+#[allow(non_snake_case)]
+pub struct Chunk {
+    DataVersion: IntTag,
+    xPos: IntTag,
+    zPos: IntTag,
+    yPos: IntTag,
+    Status: StringTag,
+    LastUpdate: LongTag,
+    sections: ListTag<Section>,
+    block_entities: ListTag<BlockEntity>,
+    CarvingMasks: CarvingMasks,
+    Heightmaps: Heightmaps,
+    Lights: Lights,
+    Entities: ListTag<Entity>,
+    fluid_ticks: ListTag<TileTick>,
+    block_ticks: ListTag<TileTick>,
+    InhabitedTime: LongTag,
+    PostProcessing: ListTag<ToBeTicked>,
+    structures: Structures,
 }
 
-export interface Section {
-  Y: ByteTag;
-  block_states: {
-    palette: BlockState[];
-    data?: LongArrayTag;
-  };
-  biomes: {
-    palette: `${BiomeResource}`[];
-    data?: LongArrayTag;
-  };
-  BlockLight: ByteArrayTag;
-  SkyLight: ByteArrayTag;
+#[allow(non_snake_case)]
+pub struct Section {
+    Y: ByteTag,
+    block_states: BlockStates,
+    biomes: Biomes,
+    BlockLight: ByteArrayTag,
+    SkyLight: ByteArrayTag,
 }
 
-export interface CarvingMasks {
-  AIR: ByteArrayTag;
-  LIQUID: ByteArrayTag;
+pub struct BlockStates {
+    palette: ListTag<BlockState>,
+    data: Option<LongArrayTag>,
 }
 
-export interface Heightmaps {
-  MOTION_BLOCKING: LongArrayTag;
-  MOTION_BLOCKING_NO_LEAVES: LongArrayTag;
-  OCEAN_FLOOR: LongArrayTag;
-  OCEAN_FLOOR_WG: LongArrayTag;
-  WORLD_SURFACE: LongArrayTag;
-  WORLD_SURFACE_WG: LongArrayTag;
+pub struct Biomes {
+    palette: ListTag<StringTag<BiomeResource>>,
+    data: Option<LongArrayTag>,
 }
 
-export type Lights = ShortTag[][];
-
-export type ToBeTicked = ShortTag[];
-
-export interface Structures {
-  References: {
-    [K in StructureResource]?: LongArrayTag;
-  };
-  starts: {
-    [K in StructureResource]?: Structure;
-  };
+#[allow(non_snake_case)]
+pub struct CarvingMasks {
+    AIR: ByteArrayTag,
+    LIQUID: ByteArrayTag,
 }
+
+#[allow(non_snake_case)]
+pub struct Heightmaps {
+    MOTION_BLOCKING: LongArrayTag,
+    MOTION_BLOCKING_NO_LEAVES: LongArrayTag,
+    OCEAN_FLOOR: LongArrayTag,
+    OCEAN_FLOOR_WG: LongArrayTag,
+    WORLD_SURFACE: LongArrayTag,
+    WORLD_SURFACE_WG: LongArrayTag,
+}
+
+pub type Lights = ListTag<ListTag<ShortTag>>;
+
+pub type ToBeTicked = ListTag<ShortTag>;
+
+#[allow(non_snake_case)]
+pub struct Structures {
+    References: References,
+    starts: Starts,
+}
+
+pub type References = CompoundTag<Option<LongArrayTag>>; // { [K in StructureResource]: Option<LongArrayTag>, }
+
+pub type Starts = CompoundTag<Option<Structure>>; // { [K in StructureResource]: Option<Structure>, }
