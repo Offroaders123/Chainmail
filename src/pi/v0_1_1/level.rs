@@ -1,27 +1,43 @@
-import type { IntTag, LongTag, StringTag } from "nbtify";
-import type { Entity, Player } from "./entity.js";
-import type { TileEntity } from "./tile-entity.js";
+use crate::nbt::tag::{IntTag, ListTag, LongTag, StringTag};
+use crate::pi::v0_1_1::{
+    entity::{Entity, Player},
+    tile_entity::TileEntity,
+};
 
-export interface LevelDat {
-  GameType: IntTag<GameMode>;
-  LastPlayed: LongTag;
-  LevelName: StringTag;
-  Platform: IntTag; // might be an enum of values; likely the same case for Bedrock types too, since this is PE essentially
-  Player: Player;
-  RandomSeed: LongTag;
-  SizeOnDisk: LongTag;
-  SpawnX: IntTag;
-  SpawnY: IntTag;
-  SpawnZ: IntTag;
-  StorageVersion: IntTag<3>; // always 3?
-  Time: LongTag;
-  dayCycleStopTime: LongTag;
-  spawnMobs: IntTag<0 | 1>;
+#[allow(non_snake_case)]
+pub struct LevelDat {
+    GameType: IntTag<GameMode>,
+    LastPlayed: LongTag,
+    LevelName: StringTag,
+    Platform: IntTag, // might be an enum of values; likely the same case for Bedrock types too, since this is PE essentially
+    Player: Player,
+    RandomSeed: LongTag,
+    SizeOnDisk: LongTag,
+    SpawnX: IntTag,
+    SpawnY: IntTag,
+    SpawnZ: IntTag,
+    StorageVersion: IntTag<StorageVersion>, // always 3?
+    Time: LongTag,
+    dayCycleStopTime: LongTag,
+    spawnMobs: IntTag<SpawnMobs>,
 }
 
-export type GameMode = 0 | 1;
+pub enum GameMode {
+    Survival = 0,
+    Creative,
+}
 
-export interface EntityDat {
-  Entities: Entity[];
-  TileEntities: TileEntity[];
+pub enum StorageVersion {
+    Version = 3,
+}
+
+pub enum SpawnMobs {
+    True = 0,
+    False,
+}
+
+#[allow(non_snake_case)]
+pub struct EntityDat {
+    Entities: ListTag<Entity>,
+    TileEntities: ListTag<TileEntity>,
 }

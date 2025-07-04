@@ -1,1 +1,1 @@
-export type TileEntity = unknown; // temp
+pub type TileEntity = (); // 'unknown', temp
