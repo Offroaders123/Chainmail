@@ -1,1373 +1,1975 @@
-import type { BooleanTag, ByteTag, ShortTag, IntTag, LongTag, FloatTag, DoubleTag, StringTag, IntArrayTag } from "nbtify";
-import type { BlockState, BlockResource } from "./block.js";
-import type { BlockEntity, MobSpawnerLike } from "./block-entity.js";
-import type { DimensionResource } from "./dimension.js";
-import type { Effect, EffectID } from "./effect.js";
-import type { Item, ItemResource } from "./item.js";
-import type { RecipeResource } from "./recipe.js";
+use crate::{
+    java::v1_20::{
+        block::{BlockResource, BlockState},
+        block_entity::BlockEntity,
+        dimension::DimensionResource,
+        effect::{Effect, EffectID},
+        item::Item,
+        recipe::RecipeResource,
+    },
+    nbt::tag::{
+        BooleanTag, ByteTag, CompoundTag, DoubleTag, FloatTag, IntArrayTag, IntTag, ListTag,
+        LongTag, ShortTag, StringTag,
+    },
+};
 
-export type Entity<K extends keyof EntityNameMap = keyof EntityNameMap> = EntityNameMap[K];
-
-export interface EntityNameMap {
-  player: Player;
-  allay: Allay;
-  axolotl: Axolotl;
-  bat: Bat;
-  bee: Bee;
-  blaze: Blaze;
-  camel: Camel;
-  cat: Cat;
-  cave_spider: CaveSpider;
-  chicken: Chicken;
-  cod: Cod;
-  cow: Cow;
-  creeper: Creeper;
-  dolphin: Dolphin;
-  donkey: Donkey;
-  drowned: Drowned;
-  elder_guardian: ElderGuardian;
-  ender_dragon: EnderDragon;
-  enderman: Enderman;
-  endermite: Endermite;
-  evoker: Evoker;
-  fox: Fox;
-  frog: Frog;
-  ghast: Ghast;
-  giant: Giant;
-  glow_squid: GlowSquid;
-  goat: Goat;
-  guardian: Guardian;
-  horse: Horse;
-  hoglin: Hoglin;
-  husk: Husk;
-  illusioner: Illusioner;
-  iron_golem: IronGolem;
-  llama: Llama;
-  magma_cube: MagmaCube;
-  mooshroom: Mooshroom;
-  mule: Mule;
-  ocelot: Ocelot;
-  panda: Panda;
-  parrot: Parrot;
-  phantom: Phantom;
-  pig: Pig;
-  piglin: Piglin;
-  piglin_brute: PiglinBrute;
-  pillager: Pillager;
-  polar_bear: PolarBear;
-  pufferfish: Pufferfish;
-  rabbit: Rabbit;
-  ravager: Ravager;
-  salmon: Salmon;
-  sheep: Sheep;
-  shulker: Shulker;
-  silverfish: Silverfish;
-  skeleton: Skeleton;
-  skeleton_horse: SkeletonHorse;
-  slime: Slime;
-  snow_golem: SnowGolem;
-  sniffer: Sniffer;
-  spider: Spider;
-  squid: Squid;
-  stray: Stray;
-  strider: Strider;
-  tadpole: Tadpole;
-  trader_llama: TraderLlama;
-  tropical_fish: TropicalFish;
-  turtle: Turtle;
-  vex: Vex;
-  villager: Villager;
-  vindicator: Vindicator;
-  wandering_trader: WanderingTrader;
-  warden: Warden;
-  witch: Witch;
-  wither: Wither;
-  wither_skeleton: WitherSkeleton;
-  wolf: Wolf;
-  zoglin: Zoglin;
-  zombie: Zombie;
-  zombie_horse: ZombieHorse;
-  zombie_villager: ZombieVillager;
-  zombified_piglin: ZombifiedPiglin;
-  boat: Boat;
-  chest_boat: ChestBoat;
-  minecart: Minecart;
-  chest_minecart: ChestMinecart;
-  furnace_minecart: FurnaceMinecart;
-  tnt_minecart: TNTMinecart;
-  hopper_minecart: HopperMinecart;
-  spawner_minecart: SpawnerMinecart;
-  command_block_minecart: CommandBlockMinecart;
-  item: ItemEntity;
-  experience_orb: ExperienceOrb;
-  arrow: Arrow;
-  spectral_arrow: SpectralArrow;
-  trident: Trident;
-  snowball: Snowball;
-  egg: Egg;
-  llama_spit: LlamaSpit;
-  ender_pearl: EnderPearl;
-  eye_of_ender: EyeOfEnder;
-  firework_rocket: FireworkRocket;
-  tnt: TNT;
-  falling_block: FallingBlock;
-  fishing_bobber: FishingBobber;
-  lightning_bolt: LightningBolt;
-  leash_knot: LeashKnot;
-  painting: Painting;
-  item_frame: ItemFrame;
-  armor_stand: ArmorStand;
-  fireball: Fireball;
-  wither_skull: WitherSkull;
-  dragon_fireball: DragonFireball;
-  shulker_bullet: ShulkerBullet;
-  end_crystal: EndCrystal;
-  evoker_fangs: EvokerFangs;
-  marker: Marker;
-  item_display: ItemDisplay;
-  block_display: BlockDisplay;
-  text_display: TextDisplay;
-  interaction: Interaction;
+#[allow(non_camel_case_types)]
+pub enum Entity {
+    player(Player),
+    allay(Allay),
+    axolotl(Axolotl),
+    bat(Bat),
+    bee(Bee),
+    blaze(Blaze),
+    camel(Camel),
+    cat(Cat),
+    cave_spider(CaveSpider),
+    chicken(Chicken),
+    cod(Cod),
+    cow(Cow),
+    creeper(Creeper),
+    dolphin(Dolphin),
+    donkey(Donkey),
+    drowned(Drowned),
+    elder_guardian(ElderGuardian),
+    ender_dragon(EnderDragon),
+    enderman(Enderman),
+    endermite(Endermite),
+    evoker(Evoker),
+    fox(Fox),
+    frog(Frog),
+    ghast(Ghast),
+    giant(Giant),
+    glow_squid(GlowSquid),
+    goat(Goat),
+    guardian(Guardian),
+    horse(Horse),
+    hoglin(Hoglin),
+    husk(Husk),
+    illusioner(Illusioner),
+    iron_golem(IronGolem),
+    llama(Llama),
+    magma_cube(MagmaCube),
+    mooshroom(Mooshroom),
+    mule(Mule),
+    ocelot(Ocelot),
+    panda(Panda),
+    parrot(Parrot),
+    phantom(Phantom),
+    pig(Pig),
+    piglin(Piglin),
+    piglin_brute(PiglinBrute),
+    pillager(Pillager),
+    polar_bear(PolarBear),
+    pufferfish(Pufferfish),
+    rabbit(Rabbit),
+    ravager(Ravager),
+    salmon(Salmon),
+    sheep(Sheep),
+    shulker(Shulker),
+    silverfish(Silverfish),
+    skeleton(Skeleton),
+    skeleton_horse(SkeletonHorse),
+    slime(Slime),
+    snow_golem(SnowGolem),
+    sniffer(Sniffer),
+    spider(Spider),
+    squid(Squid),
+    stray(Stray),
+    strider(Strider),
+    tadpole(Tadpole),
+    trader_llama(TraderLlama),
+    tropical_fish(TropicalFish),
+    turtle(Turtle),
+    vex(Vex),
+    villager(Villager),
+    vindicator(Vindicator),
+    wandering_trader(WanderingTrader),
+    warden(Warden),
+    witch(Witch),
+    wither(Wither),
+    wither_skeleton(WitherSkeleton),
+    wolf(Wolf),
+    zoglin(Zoglin),
+    zombie(Zombie),
+    zombie_horse(ZombieHorse),
+    zombie_villager(ZombieVillager),
+    zombified_piglin(ZombifiedPiglin),
+    boat(Boat),
+    chest_boat(ChestBoat),
+    minecart(Minecart),
+    chest_minecart(ChestMinecart),
+    furnace_minecart(FurnaceMinecart),
+    tnt_minecart(TNTMinecart),
+    hopper_minecart(HopperMinecart),
+    spawner_minecart(SpawnerMinecart),
+    command_block_minecart(CommandBlockMinecart),
+    item(ItemEntity),
+    experience_orb(ExperienceOrb),
+    arrow(Arrow),
+    spectral_arrow(SpectralArrow),
+    trident(Trident),
+    snowball(Snowball),
+    egg(Egg),
+    llama_spit(LlamaSpit),
+    ender_pearl(EnderPearl),
+    eye_of_ender(EyeOfEnder),
+    firework_rocket(FireworkRocket),
+    tnt(TNT),
+    falling_block(FallingBlock),
+    fishing_bobber(FishingBobber),
+    lightning_bolt(LightningBolt),
+    leash_knot(LeashKnot),
+    painting(Painting),
+    item_frame(ItemFrame),
+    armor_stand(ArmorStand),
+    fireball(Fireball),
+    wither_skull(WitherSkull),
+    dragon_fireball(DragonFireball),
+    shulker_bullet(ShulkerBullet),
+    end_crystal(EndCrystal),
+    evoker_fangs(EvokerFangs),
+    marker(Marker),
+    item_display(ItemDisplay),
+    block_display(BlockDisplay),
+    text_display(TextDisplay),
+    interaction(Interaction),
 }
 
 // Tags for all entities, except the id, CustomName and CustomNameVisible
 // Tags for all mobs, except HandItems, ArmorItems, HandDropChances, ArmorDropChances, CanPickUpLoot, PersistenceRequired and Leash
-export interface Player extends EntityLike<undefined>, MobLike {
-  abilities: Abilities;
-  DataVersion: IntTag;
-  Dimension: `${DimensionResource}`;
-  EnderItems: Item[];
-  enteredNetherPosition?: EnteredNetherPosition;
-  foodExhaustionLevel: FloatTag;
-  foodLevel: IntTag;
-  foodSaturationLevel: FloatTag;
-  foodTickTimer: IntTag;
-  Inventory: Item[];
-  LastDeathLocation?: LastDeathLocation;
-  playerGameType: IntTag<GameMode>;
-  previousPlayerGameType: IntTag<GameMode>;
-  recipeBook: RecipeBook;
-  RootVehicle?: RootVehicle;
-  Score: IntTag;
-  seenCredits: BooleanTag;
-  SelectedItem?: Item;
-  SelectedItemSlot: IntTag;
-  // I think this is `minecraft:parrot` only, but I'm curious if you can put any entity on your shoulder in-game
-  ShoulderEntityLeft?: Entity<"parrot">;
-  ShoulderEntityRight?: Entity<"parrot">;
-  SleepTimer: ShortTag;
-  SpawnDimension?: `${DimensionResource}`;
-  SpawnForced?: BooleanTag;
-  SpawnX?: IntTag;
-  SpawnY?: IntTag;
-  SpawnZ?: IntTag;
-  warden_spawn_tracker: WardenSpawnTracker; // Optional? Doesn't specify on the wiki
-  XpLevel: IntTag;
-  XpP: FloatTag;
-  XpSeed: IntTag;
-  XpTotal: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike<undefined>, MobLike
+pub struct Player {
+    abilities: Abilities,
+    DataVersion: IntTag,
+    Dimension: StringTag<DimensionResource>,
+    EnderItems: ListTag<Item>,
+    enteredNetherPosition: Option<EnteredNetherPosition>,
+    foodExhaustionLevel: FloatTag,
+    foodLevel: IntTag,
+    foodSaturationLevel: FloatTag,
+    foodTickTimer: IntTag,
+    Inventory: ListTag<Item>,
+    LastDeathLocation: Option<LastDeathLocation>,
+    playerGameType: IntTag<GameMode>,
+    previousPlayerGameType: IntTag<GameMode>,
+    recipeBook: RecipeBook,
+    RootVehicle: Option<RootVehicle>,
+    Score: IntTag,
+    seenCredits: BooleanTag,
+    SelectedItem: Option<Item>,
+    SelectedItemSlot: IntTag,
+    // I think this is `minecraft:parrot` only, but I'm curious if you can put any entity on your shoulder in-game
+    ShoulderEntityLeft: Box<Entity>, // Entity::parrot, // Entity<"parrot">,
+    ShoulderEntityRight: Box<Entity>, // Entity::parrot, // Entity<"parrot">,
+    SleepTimer: ShortTag,
+    SpawnDimension: Option<StringTag<DimensionResource>>,
+    SpawnForced: Option<BooleanTag>,
+    SpawnX: Option<IntTag>,
+    SpawnY: Option<IntTag>,
+    SpawnZ: Option<IntTag>,
+    warden_spawn_tracker: WardenSpawnTracker, // Optional? Doesn't specify on the wiki
+    XpLevel: IntTag,
+    XpP: FloatTag,
+    XpSeed: IntTag,
+    XpTotal: IntTag,
 }
 
-export interface Abilities {
-  flying: BooleanTag;
-  flySpeed: FloatTag<0.05>; // It says it's always only ever `0.05`, but I feel like it might change for Spectator Mode?
-  instabuild: BooleanTag;
-  invulnerable: BooleanTag;
-  mayBuild: BooleanTag;
-  mayfly: BooleanTag;
-  walkSpeed: FloatTag<0.1>; // Same here, this apparently always stays the same
+#[allow(non_snake_case)]
+pub struct Abilities {
+    flying: BooleanTag,
+    flySpeed: FloatTag, // It says it's always only ever `0.05`, but I feel like it might change for Spectator Mode?
+    instabuild: BooleanTag,
+    invulnerable: BooleanTag,
+    mayBuild: BooleanTag,
+    mayfly: BooleanTag,
+    walkSpeed: FloatTag, // Same here, this apparently always stays the same (0.1)
 }
 
-export interface EnteredNetherPosition {
-  x: DoubleTag;
-  y: DoubleTag;
-  z: DoubleTag;
+pub struct EnteredNetherPosition {
+    x: DoubleTag,
+    y: DoubleTag,
+    z: DoubleTag,
 }
 
-export interface LastDeathLocation {
-  dimension: `${DimensionResource}`;
-  pos: IntArrayTag;
+pub struct LastDeathLocation {
+    dimension: StringTag<DimensionResource>,
+    pos: IntArrayTag,
 }
 
-export type GameMode = 0 | 1 | 2 | 3;
-
-export interface RecipeBook {
-  recipes: `${RecipeResource}`[];
-  toBeDisplayed: `${RecipeResource}`[];
-  isFilteringCraftable: BooleanTag;
-  isGuiOpen: BooleanTag;
-  isFurnaceFilteringCraftable: BooleanTag;
-  isFurnaceGuiOpen: BooleanTag;
-  isBlastingFurnaceFilteringCraftable: BooleanTag;
-  isBlastingFurnaceGuiOpen: BooleanTag;
-  isSmokerFilteringCraftable: BooleanTag;
-  isSmokerGuiOpen: BooleanTag;
+pub enum GameMode {
+    Survival = 0,
+    Creative,
+    Adventure,
+    Spectator,
 }
 
-export interface RootVehicle {
-  Attach: IntArrayTag;
-  Entity: Entity;
+#[allow(non_snake_case)]
+pub struct RecipeBook {
+    recipes: ListTag<StringTag<RecipeResource>>,
+    toBeDisplayed: ListTag<StringTag<RecipeResource>>,
+    isFilteringCraftable: BooleanTag,
+    isGuiOpen: BooleanTag,
+    isFurnaceFilteringCraftable: BooleanTag,
+    isFurnaceGuiOpen: BooleanTag,
+    isBlastingFurnaceFilteringCraftable: BooleanTag,
+    isBlastingFurnaceGuiOpen: BooleanTag,
+    isSmokerFilteringCraftable: BooleanTag,
+    isSmokerGuiOpen: BooleanTag,
 }
 
-export interface WardenSpawnTracker {
-  cooldown_ticks: IntTag;
-  ticks_since_last_warning: IntTag;
-  warning_level: IntTag<WardenWarningLevel>;
+#[allow(non_snake_case)]
+pub struct RootVehicle {
+    Attach: IntArrayTag,
+    Entity: Box<Entity>,
 }
 
-export type WardenWarningLevel = 0 | 1 | 2 | 3;
-
-export interface Allay extends EntityLike<EntityResource.allay>, MobLike {
-  CanDuplicate: BooleanTag;
-  DuplicationCooldown: LongTag;
-  Inventory: [Item?];
-  listener: AllayVibrationListener;
+pub struct WardenSpawnTracker {
+    cooldown_ticks: IntTag,
+    ticks_since_last_warning: IntTag,
+    warning_level: IntTag<WardenWarningLevel>,
 }
 
-export interface AllayVibrationListener {
-  distance: IntTag;
-  event?: AllayVibrationEvent;
-  event_delay: IntTag;
-  event_distance: IntTag;
-  range: IntTag;
-  source: AllayVibrationListenerSource;
+pub enum WardenWarningLevel {
+    // wasn't sure what else to call these when moving to an enum
+    Zero = 0,
+    One,
+    Two,
+    Three,
 }
 
-export interface AllayVibrationEvent {
-  distance: IntTag;
-  game_event: StringTag; // Resource location of the game event
-  pos: [DoubleTag, DoubleTag, DoubleTag]; // `PositionLike<DoubleTag>` maybe? I want to make a regular type for this pattern.
-  projectile_owner?: IntArrayTag; // `UUIDLike`
-  source?: IntArrayTag; // `UUIDLike`
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Allay {
+    CanDuplicate: BooleanTag,
+    DuplicationCooldown: LongTag,
+    Inventory: [Option<Item>; 1],
+    listener: AllayVibrationListener,
 }
 
-export type AllayVibrationListenerSource = AllayVibrationListenerSourceBlock | AllayVibrationListenerSourceEntity;
-
-export interface AllayVibrationListenerSourceBlock {
-  type: "block";
-  pos: IntArrayTag; // `IntArrayTag<[number, number, number]>`
+pub struct AllayVibrationListener {
+    distance: IntTag,
+    event: Option<AllayVibrationEvent>,
+    event_delay: IntTag,
+    event_distance: IntTag,
+    range: IntTag,
+    source: AllayVibrationListenerSource,
 }
 
-export interface AllayVibrationListenerSourceEntity {
-  type: "entity";
-  source_entity: IntArrayTag; // `UUIDLike`
-  y_offset: FloatTag;
+pub struct AllayVibrationEvent {
+    distance: IntTag,
+    game_event: StringTag, // Resource location of the game event
+    pos: [DoubleTag; 3], // `PositionLike<DoubleTag>` maybe? I want to make a regular type for this pattern.
+    projectile_owner: Option<IntArrayTag>, // `UUIDLike`
+    source: Option<IntArrayTag>, // `UUIDLike`
 }
 
-export interface Axolotl extends EntityLike<EntityResource.axolotl>, MobLike, BreedableLike, BucketableLike {
-  Variant: IntTag<AxolotlVariant>;
+pub enum AllayVibrationListenerSource {
+    Block(AllayVibrationListenerSourceBlock),
+    Entity(AllayVibrationListenerSourceEntity),
 }
 
-export type AxolotlVariant = 0 | 1 | 2 | 3 | 4;
-
-export interface Bat extends EntityLike<EntityResource.bat>, MobLike {
-  BatFlags: BooleanTag;
+pub struct AllayVibrationListenerSourceBlock {
+    r#type: StringTag, // StringTag<AllayVibrationListenerSource::Block>,
+    pos: IntArrayTag,  // `IntArrayTag<[number, number, number]>`
 }
 
-export interface Bee extends EntityLike<EntityResource.bee>, MobLike, BreedableLike, AngeredLike {
-  CannotEnterHiveTicks: IntTag;
-  CropsGrownSincePollination: IntTag;
-  FlowerPos: BeePositionLike;
-  HasNectar: BooleanTag;
-  HasStung: BooleanTag;
-  HivePosition: BeePositionLike;
-  TicksSincePollination: IntTag;
+pub struct AllayVibrationListenerSourceEntity {
+    r#type: StringTag,          // StringTag<AllayVibrationListenerSource::Entity>,
+    source_entity: IntArrayTag, // `UUIDLike`
+    y_offset: FloatTag,
 }
 
-export interface BeePositionLike {
-  X: IntTag;
-  Y: IntTag;
-  Z: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike, BucketableLike
+pub struct Axolotl {
+    Variant: IntTag<AxolotlVariant>,
 }
 
-export interface Blaze extends EntityLike<EntityResource.blaze>, MobLike {}
-
-export interface Camel extends EntityLike<EntityResource.camel>, MobLike, BreedableLike, HorseLike {
-  LastPoseTick: LongTag;
+#[allow(non_camel_case_types)]
+pub enum AxolotlVariant {
+    lucy = 0,
+    wild,
+    gold,
+    cyan,
+    blue,
 }
 
-export interface Cat extends EntityLike<EntityResource.cat>, MobLike, BreedableLike, TameableLike, CollaredLike {
-  variant: CatVariant;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Bat {
+    BatFlags: BooleanTag,
 }
 
-export type CatVariant = "minecraft:white" | "minecraft:black" | "minecraft:red" | "minecraft:siamese" | "minecraft:british_shorthair" | "minecraft:calico" | "minecraft:persian" | "minecraft:ragdoll" | "minecraft:tabby" | "minecraft:all_black" | "minecraft:jellie";
-
-export interface CaveSpider extends EntityLike<EntityResource.cave_spider>, MobLike {}
-
-export interface Chicken extends EntityLike<EntityResource.chicken>, MobLike, BreedableLike {
-  EggLayTime: IntTag;
-  IsChickenJockey: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike, AngeredLike
+pub struct Bee {
+    CannotEnterHiveTicks: IntTag,
+    CropsGrownSincePollination: IntTag,
+    FlowerPos: BeePositionLike,
+    HasNectar: BooleanTag,
+    HasStung: BooleanTag,
+    HivePosition: BeePositionLike,
+    TicksSincePollination: IntTag,
 }
 
-export interface Cod extends EntityLike<EntityResource.cod>, MobLike, BucketableLike {}
-
-export interface Cow extends EntityLike<EntityResource.cow>, MobLike, BreedableLike {}
-
-export interface Creeper extends EntityLike<EntityResource.creeper>, MobLike {
-  ExplosionRadius: ByteTag;
-  Fuse: ShortTag;
-  ignited: BooleanTag;
-  powered?: BooleanTag;
+#[allow(non_snake_case)]
+pub struct BeePositionLike {
+    X: IntTag,
+    Y: IntTag,
+    Z: IntTag,
 }
 
-export interface Dolphin extends EntityLike<EntityResource.dolphin>, MobLike {
-  CanFindTreasure: BooleanTag;
-  GotFish: BooleanTag;
-  TreasurePosX: IntTag;
-  TreasurePosY: IntTag;
-  TreasurePosZ: IntTag;
+// extends EntityLike, MobLike
+pub struct Blaze {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike, HorseLike
+pub struct Camel {
+    LastPoseTick: LongTag,
 }
 
-export interface Donkey extends EntityLike<EntityResource.donkey>, MobLike, BreedableLike, HorseLike {
-  ChestedHorse: BooleanTag;
-  Items?: Item[]; // only if `!!ChestedHorse`, with slot tag, 2-16
+// extends EntityLike, MobLike, BreedableLike, TameableLike, CollaredLike
+pub struct Cat {
+    variant: StringTag<CatVariant>,
 }
 
-export interface Drowned extends EntityLike<EntityResource.drowned>, MobLike, ZombieLike {}
-
-export interface ElderGuardian extends EntityLike<EntityResource.elder_guardian>, MobLike {}
-
-export interface EnderDragon extends EntityLike<EntityResource.ender_dragon>, MobLike {
-  DragonPhase: IntTag<EnderDragonPhase>;
+#[allow(non_camel_case_types)]
+// When stringified, these should have the `minecraft:` prefix! pls and thank you :)
+pub enum CatVariant {
+    white,
+    black,
+    red,
+    siamese,
+    british_shorthair,
+    calico,
+    persian,
+    ragdoll,
+    tabby,
+    all_black,
+    jellie,
 }
 
-export type EnderDragonPhase = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+// extends EntityLike, MobLike
+pub struct CaveSpider {}
 
-export interface Enderman extends EntityLike<EntityResource.enderman>, MobLike, AngeredLike {
-  // Another funky block state shape
-  carriedBlockState?: {
-    Name: `${BlockResource}`;
-    Properties?: BlockState;
-  };
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Chicken {
+    EggLayTime: IntTag,
+    IsChickenJockey: BooleanTag,
 }
 
-export interface Endermite extends EntityLike<EntityResource.endermite>, MobLike {
-  Lifetime: IntTag;
+// extends EntityLike, MobLike, BucketableLike
+pub struct Cod {}
+
+// extends EntityLike, MobLike, BreedableLike
+pub struct Cow {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Creeper {
+    ExplosionRadius: ByteTag,
+    Fuse: ShortTag,
+    ignited: BooleanTag,
+    powered: Option<BooleanTag>,
 }
 
-export interface Evoker extends EntityLike<EntityResource.evoker>, MobLike, RaidLike {
-  SpellTicks: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Dolphin {
+    CanFindTreasure: BooleanTag,
+    GotFish: BooleanTag,
+    TreasurePosX: IntTag,
+    TreasurePosY: IntTag,
+    TreasurePosZ: IntTag,
 }
 
-export interface Fox extends EntityLike<EntityResource.fox>, MobLike, BreedableLike {
-  Crouching: BooleanTag;
-  Sitting: BooleanTag;
-  Sleeping: BooleanTag;
-  Trusted: IntArrayTag[]; // `UUIDLike[]`
-  Type: FoxType;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike, HorseLike
+pub struct Donkey {
+    ChestedHorse: BooleanTag,
+    Items: Option<ListTag<Item>>, // only if `!!ChestedHorse`, with slot tag, 2-16
 }
 
+// extends EntityLike, MobLike, ZombieLike
+pub struct Drowned {}
+
+// extends EntityLike, MobLike
+pub struct ElderGuardian {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct EnderDragon {
+    DragonPhase: IntTag<EnderDragonPhase>,
+}
+
+pub enum EnderDragonPhase {
+    Circling = 0,
+    Strafing,
+    FlyingToThePortalToLand,
+    LandingOnThePortal,
+    TakingOffFromThePortal,
+    LandedPerformingBreathAttack,
+    LandedLookingForAPlayerForBreathAttack,
+    LandedRoarBeforeBeginningBreathAttack,
+    ChargingPlayer,
+    FlyingToPortalToDie,
+    Hovering,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, AngeredLike
+pub struct Enderman {
+    // Another funky block state shape
+    carriedBlockState: Option<CarriedBlockState>,
+}
+
+#[allow(non_snake_case)]
+pub struct CarriedBlockState {
+    Name: StringTag<BlockResource>,
+    Properties: Option<BlockState>,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Endermite {
+    Lifetime: IntTag,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, RaidLike
+pub struct Evoker {
+    SpellTicks: IntTag,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Fox {
+    Crouching: BooleanTag,
+    Sitting: BooleanTag,
+    Sleeping: BooleanTag,
+    Trusted: ListTag<IntArrayTag>, // `UUIDLike[]`
+    Type: StringTag<FoxType>,
+}
+
+#[allow(non_camel_case_types)]
 // Is this `minecraft:`-prefixed like `CatVariant`?
-export type FoxType = "red" | "snow";
-
-export interface Frog extends EntityLike<EntityResource.frog>, MobLike, BreedableLike {
-  variant: FrogVariant;
+pub enum FoxType {
+    red,
+    snow,
 }
 
-export type FrogVariant = "minecraft:temperate" | "minecraft:warm" | "minecraft:cold";
-
-export interface Ghast extends EntityLike<EntityResource.ghast>, MobLike {
-  ExplosionPower: ByteTag;
+// extends EntityLike, MobLike, BreedableLike
+pub struct Frog {
+    variant: StringTag<FrogVariant>,
 }
 
-export interface Giant extends EntityLike<EntityResource.giant>, MobLike {}
-
-export interface GlowSquid extends EntityLike<EntityResource.glow_squid>, MobLike {
-  DarkTicksRemaining: IntTag;
+#[allow(non_camel_case_types)]
+// Please `minecraft:` prefix this as well, when stringified!! <----
+pub enum FrogVariant {
+    temperate,
+    warm,
+    cold,
 }
 
-export interface Goat extends EntityLike<EntityResource.goat>, MobLike {
-  HasLeftHorn: BooleanTag;
-  HasRightHorn: BooleanTag;
-  IsScreamingGoat: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Ghast {
+    ExplosionPower: ByteTag,
 }
 
-export interface Guardian extends EntityLike<EntityResource.guardian>, MobLike {}
+// extends EntityLike, MobLike
+pub struct Giant {}
 
-export interface Horse extends EntityLike<EntityResource.horse>, MobLike, BreedableLike, HorseLike {
-  ArmorItem?: Item; // Only one of the Horse Armor types, so should be something like `Item<`minecraft:${string}_horse_armor`>`.
-  Variant: IntTag<HorseVariant>;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct GlowSquid {
+    DarkTicksRemaining: IntTag,
 }
 
-export type HorseVariant = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 256 | 257 | 258 | 259 | 260 | 261 | 262 | 512 | 513 | 514 | 515 | 516 | 517 | 518 | 768 | 769 | 770 | 771 | 772 | 773 | 774 | 1024 | 1025 | 1026 | 1027 | 1028 | 1029 | 1030;
-
-export interface Hoglin extends EntityLike<EntityResource.hoglin>, MobLike, BreedableLike, PiglinLike {
-  CannotBeHunted: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Goat {
+    HasLeftHorn: BooleanTag,
+    HasRightHorn: BooleanTag,
+    IsScreamingGoat: BooleanTag,
 }
 
-export interface Husk extends EntityLike<EntityResource.husk>, MobLike, ZombieLike {}
+// extends EntityLike, MobLike
+pub struct Guardian {}
 
-export interface Illusioner extends EntityLike<EntityResource.illusioner>, MobLike, RaidLike {
-  SpellTicks: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike, HorseLike
+pub struct Horse {
+    ArmorItem: Option<Item>, // Only one of the Horse Armor types, so should be something like `Item<`minecraft:${string}_horse_armor`>`.
+    Variant: IntTag<HorseVariant>,
 }
 
-export interface IronGolem extends EntityLike<EntityResource.iron_golem>, MobLike, AngeredLike {
-  PlayerCreated: BooleanTag;
+pub enum HorseVariant {
+    White = 0,
+    Creamy = 1,
+    Chestnut = 2,
+    Brown = 3,
+    Black = 4,
+    Gray = 5,
+    DarkBrown = 6,
+
+    WhiteWhite = 256,
+    CreamyWhite = 257,
+    ChestnutWhite = 258,
+    BrownWhite = 259,
+    BlackWhite = 260,
+    GrayWhite = 261,
+    DarkBrownWhite = 262,
+
+    WhiteWhiteField = 512,
+    CreamyWhiteField = 513,
+    ChestnutWhiteField = 514,
+    BrownWhiteField = 515,
+    BlackWhiteField = 516,
+    GrayWhiteField = 517,
+    DarkBrownWhiteField = 518,
+
+    WhiteWhiteDots = 768,
+    CreamyWhiteDots = 769,
+    ChestnutWhiteDots = 770,
+    BrownWhiteDots = 771,
+    BlackWhiteDots = 772,
+    GrayWhiteDots = 773,
+    DarkBrownWhiteDots = 774,
+
+    WhiteBlackDots = 1024,
+    CreamyBlackDots = 1025,
+    ChestnutBlackDots = 1026,
+    BrownBlackDots = 1027,
+    BlackBlackDots = 1028,
+    GrayBlackDots = 1029,
+    DarkBrownBlackDots = 1030,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike, PiglinLike
+pub struct Hoglin {
+    CannotBeHunted: BooleanTag,
+}
+
+// extends EntityLike, MobLike, ZombieLike
+pub struct Husk {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, RaidLike
+pub struct Illusioner {
+    SpellTicks: IntTag,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, AngeredLike
+pub struct IronGolem {
+    PlayerCreated: BooleanTag,
 }
 
 // I think `HorseLike` could be narrowed a little bit so it can better allow for Llama crossover types.
-export interface Llama extends EntityLike<EntityResource.llama>, MobLike, BreedableLike {
-  Bred: BooleanTag;
-  ChestedHorse: BooleanTag;
-  DecorItem?: Item; // Typically a Carpet, without the Slot tag.
-  EatingHaystack: BooleanTag;
-  Items?: Item[]; // Only if `!!ChestedHorse`, with slot tags.
-  Owner?: IntArrayTag; // `UUIDLike`
-  Variant: IntTag<LlamaVariant>;
-  Strength: IntTag<LlamaStrength>;
-  Tame: BooleanTag; // `TameableLike` as well? I think the wiki was kind of goofed for this one.
-  Temper: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Llama {
+    Bred: BooleanTag,
+    ChestedHorse: BooleanTag,
+    DecorItem: Option<Item>, // Typically a Carpet, without the Slot tag.
+    EatingHaystack: BooleanTag,
+    Items: Option<ListTag<Item>>, // Only if `!!ChestedHorse`, with slot tags.
+    Owner: Option<IntArrayTag>,   // `UUIDLike`
+    Variant: IntTag<LlamaVariant>,
+    Strength: IntTag<LlamaStrength>,
+    Tame: BooleanTag, // `TameableLike` as well? I think the wiki was kind of goofed for this one.
+    Temper: IntTag,
 }
 
-export type LlamaVariant = 0 | 1 | 2 | 3;
-
-export type LlamaStrength = 1 | 2 | 3 | 4 | 5;
-
-export interface MagmaCube extends EntityLike<EntityResource.magma_cube>, MobLike, SlimeLike {}
-
-export interface Mooshroom extends EntityLike<EntityResource.mooshroom>, MobLike, BreedableLike {
-  EffectDuration?: IntTag;
-  EffectId?: ByteTag<EffectID>;
-  Type: MooshroomType;
+#[allow(non_camel_case_types)]
+pub enum LlamaVariant {
+    creamy = 0,
+    white,
+    brown,
+    gray,
 }
 
-export type MooshroomType = "red" | "brown";
-
-export interface Mule extends EntityLike<EntityResource.mule>, MobLike, BreedableLike, HorseLike {
-  ChestedHorse: BooleanTag;
-  Items?: Item[]; // only if `!!ChestedHorse`, and slot tag numbered 2-16.
+pub enum LlamaStrength {
+    // again, lack of names here
+    One = 1,
+    Two,
+    Three,
+    Four,
+    Five,
 }
 
-export interface Ocelot extends EntityLike<EntityResource.ocelot>, MobLike, BreedableLike {
-  Trusting: BooleanTag;
+// extends EntityLike, MobLike, SlimeLike
+pub struct MagmaCube {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Mooshroom {
+    EffectDuration: Option<IntTag>,
+    EffectId: Option<ByteTag<EffectID>>,
+    Type: StringTag<MooshroomType>,
 }
 
-export interface Panda extends EntityLike<EntityResource.panda>, MobLike, BreedableLike {
-  HiddenGene: PandaGene;
-  MainGene: PandaGene;
+// *not* `minecraft:` prefixed, at least not yet.
+#[allow(non_camel_case_types)]
+pub enum MooshroomType {
+    red,
+    brown,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike, HorseLike
+pub struct Mule {
+    ChestedHorse: BooleanTag,
+    Items: Option<ListTag<Item>>, // only if `!!ChestedHorse`, and slot tag numbered 2-16.
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Ocelot {
+    Trusting: BooleanTag,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Panda {
+    HiddenGene: StringTag<PandaGene>,
+    MainGene: StringTag<PandaGene>,
 }
 
 // Are these `minecraft:`-prefixed?
-export type PandaGene = "normal" | "lazy" | "worried" | "playful" | "brown" | "weak" | "aggressive";
-
-export interface Parrot extends EntityLike<EntityResource.parrot>, MobLike, TameableLike {
-  Variant: IntTag<ParrotVariant>;
+#[allow(non_camel_case_types)]
+pub enum PandaGene {
+    normal,
+    lazy,
+    worried,
+    playful,
+    brown,
+    weak,
+    aggressive,
 }
 
-export type ParrotVariant = 0 | 1 | 2 | 3 | 4;
-
-export interface Phantom extends EntityLike<EntityResource.phantom>, MobLike {
-  AX: IntTag;
-  AY: IntTag;
-  AZ: IntTag;
-  Size: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, TameableLike
+pub struct Parrot {
+    Variant: IntTag<ParrotVariant>,
 }
 
-export interface Pig extends EntityLike<EntityResource.pig>, MobLike, BreedableLike, SaddledLike {}
-
-export interface Piglin extends EntityLike<EntityResource.piglin>, MobLike, AngeredLike {
-  CannotHunt: BooleanTag;
-  Inventory: Item[]; // 8 items, with slot tag
-  IsBaby?: BooleanTag;
+#[allow(non_camel_case_types)]
+pub enum ParrotVariant {
+    red_blue = 0,
+    blue,
+    green,
+    yellow_blue,
+    gray,
 }
 
-export interface PiglinBrute extends EntityLike<EntityResource.piglin_brute>, MobLike, AngeredLike, PiglinLike {}
-
-export interface Pillager extends EntityLike<EntityResource.pillager>, MobLike, RaidLike {
-  Inventory: Item[]; // Currently unused, is it optional?
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Phantom {
+    AX: IntTag,
+    AY: IntTag,
+    AZ: IntTag,
+    Size: IntTag,
 }
 
-export interface PolarBear extends EntityLike<EntityResource.polar_bear>, MobLike, BreedableLike, AngeredLike {}
+// extends EntityLike, MobLike, BreedableLike, SaddledLike
+pub struct Pig {}
 
-export interface Pufferfish extends EntityLike<EntityResource.pufferfish>, MobLike, BucketableLike {
-  PuffState: IntTag<PufferfishPuffState>;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, AngeredLike
+pub struct Piglin {
+    CannotHunt: BooleanTag,
+    Inventory: ListTag<Item>, // 8 items, with slot tag
+    IsBaby: Option<BooleanTag>,
 }
 
-export type PufferfishPuffState = 0 | 1 | 2;
+// extends EntityLike, MobLike, AngeredLike, PiglinLike
+pub struct PiglinBrute {}
 
-export interface Rabbit extends EntityLike<EntityResource.rabbit>, MobLike, BreedableLike {
-  MoreCarrotTicks: IntTag;
-  RabbitType: IntTag<RabbitType>;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, RaidLike
+pub struct Pillager {
+    Inventory: ListTag<Item>, // Currently unused, is it optional?
 }
 
-export type RabbitType = 0 | 1 | 2 | 3 | 4 | 5 | 99; // `99` is The Killer Bunny, and adding a custom name "Toast" will be the Toast variant.
+// extends EntityLike, MobLike, BreedableLike, AngeredLike
+pub struct PolarBear {}
 
-export interface Ravager extends EntityLike<EntityResource.ravager>, MobLike, RaidLike {
-  AttackTick: IntTag;
-  RoarTick: IntTag;
-  StunTick: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BucketableLike
+pub struct Pufferfish {
+    PuffState: IntTag<PufferfishPuffState>,
 }
 
-export interface Salmon extends EntityLike<EntityResource.salmon>, MobLike, BucketableLike {}
-
-export interface Sheep extends EntityLike<EntityResource.sheep>, MobLike, BreedableLike {
-  Color: ByteTag<SheepColor>;
-  Sheared: BooleanTag;
+pub enum PufferfishPuffState {
+    Deflated = 0,
+    HalfPuffed,
+    FullPuffed,
 }
 
-export type SheepColor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
-
-export interface Shulker extends EntityLike<EntityResource.shulker>, MobLike {
-  APX: IntTag;
-  APY: IntTag;
-  APZ: IntTag;
-  AttachFace: ByteTag<ShulkerDirection>;
-  Color: ByteTag<ShulkerColor>;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Rabbit {
+    MoreCarrotTicks: IntTag,
+    RabbitType: IntTag<RabbitType>,
 }
 
-export type ShulkerDirection = 0 | 1 | 2 | 3 | 4 | 5;
-
-export type ShulkerColor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16; // 16 is the default color
-
-export interface Silverfish extends EntityLike<EntityResource.silverfish>, MobLike {}
-
-export interface Skeleton extends EntityLike<EntityResource.skeleton>, MobLike {
-  StrayConversionTime: IntTag;
+#[allow(non_camel_case_types)]
+pub enum RabbitType {
+    // `99` is The Killer Bunny, and adding a custom name "Toast" will be the Toast variant.
+    brown = 0,
+    white,
+    black,
+    white_splotched,
+    gold,
+    salt,
+    evil = 99,
 }
 
-export interface SkeletonHorse extends EntityLike<EntityResource.skeleton_horse>, MobLike, BreedableLike, HorseLike {
-  SkeletonTrap: BooleanTag;
-  SkeletonTrapTime: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, RaidLike
+pub struct Ravager {
+    AttackTick: IntTag,
+    RoarTick: IntTag,
+    StunTick: IntTag,
 }
 
-export interface Slime extends EntityLike<EntityResource.slime>, MobLike, SlimeLike {}
+// extends EntityLike, MobLike, BucketableLike
+pub struct Salmon {}
 
-export interface SnowGolem extends EntityLike<EntityResource.snow_golem>, MobLike {
-  Pumpkin: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Sheep {
+    Color: ByteTag<SheepColor>,
+    Sheared: BooleanTag,
 }
 
-export interface Sniffer extends EntityLike<EntityResource.sniffer>, MobLike, BreedableLike {}
+pub enum SheepColor {
+    White = 0,
+    Orange,
+    Magenta,
+    LightBlue,
+    Yellow,
+    Lime,
+    Pink,
+    Gray,
+    LightGray,
+    Cyan,
+    Purple,
+    Blue,
+    Brown,
+    Green,
+    Red,
+    Black,
+}
 
-export interface Spider extends EntityLike<EntityResource.spider>, MobLike {}
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Shulker {
+    APX: IntTag,
+    APY: IntTag,
+    APZ: IntTag,
+    AttachFace: ByteTag<ShulkerDirection>,
+    Color: ByteTag<ShulkerColor>,
+}
 
-export interface Squid extends EntityLike<EntityResource.squid>, MobLike {}
+pub enum ShulkerDirection {
+    Top = 0,
+    Bottom,
+    North,
+    South,
+    West,
+    East,
+}
 
-export interface Stray extends EntityLike<EntityResource.stray>, MobLike {}
+pub enum ShulkerColor {
+    White = 0,
+    Orange,
+    Magenta,
+    LightBlue,
+    Yellow,
+    Lime,
+    Pink,
+    Gray,
+    LightGray,
+    Cyan,
+    Purple,
+    Blue,
+    Brown,
+    Green,
+    Red,
+    Black,
+    Default,
+}
 
-export interface Strider extends EntityLike<EntityResource.strider>, MobLike, BreedableLike, SaddledLike {}
+// extends EntityLike, MobLike
+pub struct Silverfish {}
 
-export interface Tadpole extends EntityLike<EntityResource.tadpole>, MobLike, BucketableLike {
-  Age: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Skeleton {
+    StrayConversionTime: IntTag,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike, HorseLike
+pub struct SkeletonHorse {
+    SkeletonTrap: BooleanTag,
+    SkeletonTrapTime: IntTag,
+}
+
+// extends EntityLike, MobLike, SlimeLike
+pub struct Slime {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct SnowGolem {
+    Pumpkin: BooleanTag,
+}
+
+// extends EntityLike, MobLike, BreedableLike
+pub struct Sniffer {}
+
+// extends EntityLike, MobLike
+pub struct Spider {}
+
+// extends EntityLike, MobLike
+pub struct Squid {}
+
+// extends EntityLike, MobLike
+pub struct Stray {}
+
+// extends EntityLike, MobLike, BreedableLike, SaddledLike
+pub struct Strider {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BucketableLike
+pub struct Tadpole {
+    Age: IntTag,
 }
 
 // I think `HorseLike` could be narrowed a little bit so it can better allow for Llama crossover types.
-export interface TraderLlama extends EntityLike<EntityResource.trader_llama>, MobLike, BreedableLike {
-  Bred: BooleanTag;
-  ChestedHorse: BooleanTag;
-  DecorItem?: Item; // Typically a Carpet, without the Slot tag.
-  DespawnDelay: IntTag; // Unique to Trader Llamas
-  EatingHaystack: BooleanTag;
-  Items?: Item[]; // Only if `!!ChestedHorse`, with slot tags.
-  Owner?: IntArrayTag; // `UUIDLike`
-  Variant: IntTag<LlamaVariant>;
-  Strength: IntTag<LlamaStrength>;
-  Tame: BooleanTag; // `TameableLike` as well? I think the wiki was kind of goofed for this one.
-  Temper: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct TraderLlama {
+    Bred: BooleanTag,
+    ChestedHorse: BooleanTag,
+    DecorItem: Option<Item>, // Typically a Carpet, without the Slot tag.
+    DespawnDelay: IntTag,    // Unique to Trader Llamas
+    EatingHaystack: BooleanTag,
+    Items: Option<ListTag<Item>>, // Only if `!!ChestedHorse`, with slot tags.
+    Owner: Option<IntArrayTag>,   // `UUIDLike`
+    Variant: IntTag<LlamaVariant>,
+    Strength: IntTag<LlamaStrength>,
+    Tame: BooleanTag, // `TameableLike` as well? I think the wiki was kind of goofed for this one.
+    Temper: IntTag,
 }
 
-export interface TropicalFish extends EntityLike<EntityResource.tropical_fish>, MobLike, BucketableLike {
-  Variant: IntTag<TropicalFishVariant>;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BucketableLike
+pub struct TropicalFish {
+    Variant: IntTag<TropicalFishVariant>,
 }
 
-export type TropicalFishVariant = number; // <https://minecraft.wiki/w/Tropical_Fish#Entity_data>
+pub type TropicalFishVariant = i32; // <https://minecraft.wiki/w/Tropical_Fish#Entity_data>
 
-export interface Turtle extends EntityLike<EntityResource.turtle>, MobLike, BreedableLike {
-  HasEgg: BooleanTag;
-  HomePosX: IntTag;
-  HomePosY: IntTag;
-  HomePosZ: IntTag;
-  TravelPosX: IntTag;
-  TravelPosY: IntTag;
-  TravelPosZ: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct Turtle {
+    HasEgg: BooleanTag,
+    HomePosX: IntTag,
+    HomePosY: IntTag,
+    HomePosZ: IntTag,
+    TravelPosX: IntTag,
+    TravelPosY: IntTag,
+    TravelPosZ: IntTag,
 }
 
-export interface Vex extends EntityLike<EntityResource.vex>, MobLike {
-  BoundX: IntTag;
-  BoundY: IntTag;
-  BoundZ: IntTag;
-  LifeTicks: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Vex {
+    BoundX: IntTag,
+    BoundY: IntTag,
+    BoundZ: IntTag,
+    LifeTicks: IntTag,
 }
 
-export interface Villager extends EntityLike<EntityResource.villager>, MobLike, VillagerLike, BreedableLike {
-  Inventory: Item[]; // 8 slots, with slot tag.
-  LastRestock: LongTag;
-  LastGossipDecay: LongTag;
-  RestocksToday: IntTag;
-  Willing: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, VillagerLike, BreedableLike
+pub struct Villager {
+    Inventory: ListTag<Item>, // 8 slots, with slot tag.
+    LastRestock: LongTag,
+    LastGossipDecay: LongTag,
+    RestocksToday: IntTag,
+    Willing: BooleanTag,
 }
 
-export interface Vindicator extends EntityLike<EntityResource.vindicator>, MobLike, RaidLike {
-  Johnny?: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, RaidLike
+pub struct Vindicator {
+    Johnny: Option<BooleanTag>,
 }
 
-export interface WanderingTrader extends EntityLike<EntityResource.wandering_trader>, MobLike, BreedableLike {
-  DespawnDelay: IntTag;
-  Inventory: Item[]; // 8 slots, with slot tag, unused
-  Offers?: WanderingTraderOffers;
-  WanderTarget: WanderTarget;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, BreedableLike
+pub struct WanderingTrader {
+    DespawnDelay: IntTag,
+    Inventory: ListTag<Item>, // 8 slots, with slot tag, unused
+    Offers: Option<WanderingTraderOffers>,
+    WanderTarget: WanderTarget,
 }
 
-export interface WanderingTraderOffers {
-  Recipes: TradeOptionLike[];
+#[allow(non_snake_case)]
+pub struct WanderingTraderOffers {
+    Recipes: ListTag<TradeOptionLike>,
 }
 
 // Could be generalized to `Position` also.
-export interface WanderTarget {
-  X: IntTag;
-  Y: IntTag;
-  Z: IntTag;
+#[allow(non_snake_case)]
+pub struct WanderTarget {
+    X: IntTag,
+    Y: IntTag,
+    Z: IntTag,
 }
 
-export interface Warden extends EntityLike<EntityResource.warden>, MobLike {
-  anger: WardenAnger;
+// extends EntityLike, MobLike
+pub struct Warden {
+    anger: WardenAnger,
 }
 
-export interface WardenAnger {
-  suspects: WardenAngerSuspect[];
+pub struct WardenAnger {
+    suspects: ListTag<WardenAngerSuspect>,
 }
 
-export interface WardenAngerSuspect {
-  anger: IntTag;
-  uuid: IntArrayTag; // `UUIDLike`
+pub struct WardenAngerSuspect {
+    anger: IntTag,
+    uuid: IntArrayTag, // `UUIDLike`
 }
 
-export interface Witch extends EntityLike<EntityResource.witch>, MobLike, RaidLike {}
+// extends EntityLike, MobLike, RaidLike
+pub struct Witch {}
 
-export interface Wither extends EntityLike<EntityResource.wither>, MobLike {
-  Invul: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Wither {
+    Invul: IntTag,
 }
 
-export interface WitherSkeleton extends EntityLike<EntityResource.wither_skeleton>, MobLike {}
+// extends EntityLike, MobLike
+pub struct WitherSkeleton {}
 
-export interface Wolf extends EntityLike<EntityResource.wolf>, MobLike, BreedableLike, TameableLike, AngeredLike, CollaredLike {
-  // v1.20.5
-  // armor: BooleanTag;
+// extends EntityLike, MobLike, BreedableLike, TameableLike, AngeredLike, CollaredLike
+pub struct Wolf {
+    // v1.20.5
+    // armor: BooleanTag,
 }
 
-export interface Zoglin extends EntityLike<EntityResource.zoglin>, MobLike {
-  isBaby?: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct Zoglin {
+    isBaby: Option<BooleanTag>,
 }
 
-export interface Zombie extends EntityLike<EntityResource.zombie>, MobLike, ZombieLike {}
+// extends EntityLike, MobLike, ZombieLike
+pub struct Zombie {}
 
-export interface ZombieHorse extends EntityLike<EntityResource.zombie_horse>, MobLike, BreedableLike, HorseLike {}
+// extends EntityLike, MobLike, BreedableLike, HorseLike
+pub struct ZombieHorse {}
 
-export interface ZombieVillager extends EntityLike<EntityResource.zombie_villager>, MobLike, VillagerLike, ZombieLike {
-  ConversionTime: IntTag;
-  ConcersionPlayer: IntArrayTag; // `UUIDLike`
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike, VillagerLike, ZombieLike
+pub struct ZombieVillager {
+    ConversionTime: IntTag,
+    ConcersionPlayer: IntArrayTag, // `UUIDLike`
 }
 
-export interface ZombifiedPiglin extends EntityLike<EntityResource.zombified_piglin>, MobLike, AngeredLike, ZombieLike {}
+// extends EntityLike, MobLike, AngeredLike, ZombieLike
+pub struct ZombifiedPiglin {}
 
-export interface Boat extends EntityLike<EntityResource.boat>, BoatLike {}
+// extends EntityLike, BoatLike
+pub struct Boat {}
 
-export interface ChestBoat extends EntityLike<EntityResource.chest_boat>, BoatLike, ContainerEntityLike {}
+// extends EntityLike, BoatLike, ContainerEntityLike
+pub struct ChestBoat {}
 
-export interface BoatLike {
-  Type: BoatType;
+#[allow(non_snake_case)]
+pub struct BoatLike {
+    Type: StringTag<BoatType>,
 }
 
 // Is this `minecraft:`-prefixed like `CatVariant`?
-export type BoatType = "oak" | "spruce" | "birch" | "jungle" | "acacia" | "dark_oak" | "mangrove" | "bamboo";
-
-export interface Minecart extends EntityLike<EntityResource.minecart>, MinecartLike {}
-
-export interface ChestMinecart extends EntityLike<EntityResource.chest_minecart>, MinecartLike, ContainerEntityLike {}
-
-export interface FurnaceMinecart extends EntityLike<EntityResource.furnace_minecart>, MinecartLike {
-  Fuel: ShortTag;
-  PushX: DoubleTag;
-  PushZ: DoubleTag;
+#[allow(non_camel_case_types)]
+pub enum BoatType {
+    oak,
+    spruce,
+    birch,
+    jungle,
+    acacia,
+    dark_oak,
+    mangrove,
+    bamboo,
 }
 
-export interface TNTMinecart extends EntityLike<EntityResource.tnt_minecart>, MinecartLike {
-  TNTFuse: IntTag;
+// extends EntityLike, MinecartLike
+pub struct Minecart {}
+
+// extends EntityLike, MinecartLike, ContainerEntityLike
+pub struct ChestMinecart {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, MinecartLike
+pub struct FurnaceMinecart {
+    Fuel: ShortTag,
+    PushX: DoubleTag,
+    PushZ: DoubleTag,
 }
 
-export interface HopperMinecart extends EntityLike<EntityResource.hopper_minecart>, MinecartLike, ContainerEntityLike {
-  Enabled: BooleanTag;
-  TransferCooldown: IntTag<HopperMinecartTransferCooldown>;
+#[allow(non_snake_case)]
+// extends EntityLike, MinecartLike
+pub struct TNTMinecart {
+    TNTFuse: IntTag,
 }
 
-export type HopperMinecartTransferCooldown = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+#[allow(non_snake_case)]
+// extends EntityLike, MinecartLike, ContainerEntityLike
+pub struct HopperMinecart {
+    Enabled: BooleanTag,
+    TransferCooldown: IntTag<HopperMinecartTransferCooldown>, // is this deprecated, or rather removed? can no longer find it on the wiki
+}
 
-export interface SpawnerMinecart extends EntityLike<EntityResource.spawner_minecart>, MinecartLike, MobSpawnerLike {}
+pub enum HopperMinecartTransferCooldown {
+    Zero = 0,
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+}
+
+// extends EntityLike, MinecartLike, MobSpawnerLike
+pub struct SpawnerMinecart {}
 
 // Should this inherit from `./block-entity - CommandBlockLike` of some sort? The wiki doesn't do this, and I'm curious if the docs for this don't match the current NBT, since this one is missing some of the Command Block-ish ones.
-export interface CommandBlockMinecart extends EntityLike<EntityResource.command_block_minecart>, MinecartLike {
-  Command: StringTag;
-  LastOutput: StringTag;
-  SuccessCount: IntTag;
-  TrackOutput: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MinecartLike
+pub struct CommandBlockMinecart {
+    Command: StringTag,
+    LastOutput: StringTag,
+    SuccessCount: IntTag,
+    TrackOutput: BooleanTag,
 }
 
-export interface MinecartLike {
-  CustomDisplayTile?: BooleanTag;
-  DisplayOffset?: IntTag;
-  DisplayState?: MinecartDisplayState;
+#[allow(non_snake_case)]
+pub struct MinecartLike {
+    CustomDisplayTile: Option<BooleanTag>,
+    DisplayOffset: Option<IntTag>,
+    DisplayState: Option<MinecartDisplayState>,
 }
 
-export interface MinecartDisplayState {
-  Name: BlockResource;
-  Properties: BlockState;
+#[allow(non_snake_case)]
+pub struct MinecartDisplayState {
+    Name: BlockResource,
+    Properties: BlockState,
 }
 
-export interface ItemEntity extends EntityLike<EntityResource.item> {
-  Age: ShortTag;
-  Health: ShortTag<ItemHealth>;
-  Item: Item;
-  Owner?: IntArrayTag;
-  PickupDelay: ShortTag;
-  Thrower?: IntArrayTag;
+#[allow(non_snake_case)]
+// extends EntityLike
+pub struct ItemEntity {
+    Age: ShortTag,
+    Health: ShortTag<ItemHealth>,
+    Item: Item,
+    Owner: Option<IntArrayTag>,
+    PickupDelay: ShortTag,
+    Thrower: Option<IntArrayTag>,
 }
 
-export type ItemHealth = 0 | 1 | 2 | 3 | 4 | 5;
-
-export interface ExperienceOrb extends EntityLike<EntityResource.experience_orb> {
-  Age: ShortTag;
-  Count: IntTag;
-  Health: ShortTag;
-  Value: ShortTag;
+pub enum ItemHealth {
+    Zero = 0,
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
 }
 
-export interface Arrow extends EntityLike<EntityResource.arrow>, ArrowLike {}
+#[allow(non_snake_case)]
+// extends EntityLike
+pub struct ExperienceOrb {
+    Age: ShortTag,
+    Count: IntTag,
+    Health: ShortTag,
+    Value: ShortTag,
+}
 
-export interface SpectralArrow extends EntityLike<EntityResource.spectral_arrow>, ArrowLike {}
+// extends EntityLike, ArrowLike
+pub struct Arrow {}
+
+// extends EntityLike, ArrowLike
+pub struct SpectralArrow {}
 
 // How can the potion effect types be optionally added/defined only for tipped arrows? Just with `extends Partial<PotionEffectLike>`?
-export interface ArrowLike extends ProjectileLike, PotionEffectLike {
-  crit: BooleanTag;
-  damage: DoubleTag;
-  inBlockState?: ArrowBlockState;
-  inGround: BooleanTag;
-  life: ShortTag;
-  pickup: ByteTag<ArrowPickup>;
-  PierceLevel: ByteTag;
-  shake: ByteTag;
-  ShotFromCrossbow: BooleanTag;
-  SoundEvent: StringTag; // I don't think this is a SoundResource actually?
+#[allow(non_snake_case)]
+// extends ProjectileLike, PotionEffectLike {
+pub struct ArrowLike {
+    crit: BooleanTag,
+    damage: DoubleTag,
+    inBlockState: Option<ArrowBlockState>,
+    inGround: BooleanTag,
+    life: ShortTag,
+    pickup: ByteTag<ArrowPickup>,
+    PierceLevel: ByteTag,
+    shake: ByteTag,
+    ShotFromCrossbow: BooleanTag,
+    SoundEvent: StringTag, // I don't think this is a SoundResource actually?
 }
 
-export type ArrowPickup = 0 | 1 | 2;
-
-export interface ArrowBlockState {
-  Name: `${BlockResource}`;
-  Properties?: BlockState;
+pub enum ArrowPickup {
+    Immovable = 0,
+    SurvivalOrCreative,
+    Creative,
 }
 
-export interface Trident extends EntityLike<EntityResource.trident>, ArrowLike, ProjectileLike {
-  DealtDamage: BooleanTag;
-  // I think the shape of this looks like this, the formatting on the wiki is a bit weird.
-  Trident: {
-    item: Item; // `minecraft:trident` Item, or `Item<"minecraft:trident">` essentially.
-  };
+#[allow(non_snake_case)]
+pub struct ArrowBlockState {
+    Name: StringTag<BlockResource>,
+    Properties: Option<BlockState>,
 }
 
-export interface Snowball extends EntityLike<EntityResource.snowball>, ProjectileLike, ThrownItemLike {}
+#[allow(non_snake_case)]
+// extends EntityLike, ArrowLike, ProjectileLike
+pub struct Trident {
+    DealtDamage: BooleanTag,
+    // I think the shape of this looks like this, the formatting on the wiki is a bit weird.
+    Trident: TridentData,
+}
 
-export interface Egg extends EntityLike<EntityResource.egg>, ProjectileLike, ThrownItemLike {}
+pub struct TridentData {
+    item: Item, // `minecraft:trident` Item, or `Item<"minecraft:trident">` essentially.
+}
 
-export interface LlamaSpit extends EntityLike<EntityResource.llama_spit>, ProjectileLike {}
+// extends EntityLike, ProjectileLike, ThrownItemLike
+pub struct Snowball {}
 
-export interface EnderPearl extends EntityLike<EntityResource.ender_pearl>, ProjectileLike, ThrownItemLike {}
+// extends EntityLike, ProjectileLike, ThrownItemLike
+pub struct Egg {}
 
-export interface EyeOfEnder extends EntityLike<EntityResource.eye_of_ender>, ThrownItemLike {}
+// extends EntityLike, ProjectileLike
+pub struct LlamaSpit {}
 
-export interface FireworkRocket extends EntityLike<EntityResource.firework_rocket>, ProjectileLike {
-  FireworksItem: FireworksItem;
-  Life: IntTag;
-  LifeTime: IntTag;
-  ShotAtAngle: BooleanTag;
+// extends EntityLike, ProjectileLike, ThrownItemLike
+pub struct EnderPearl {}
+
+// extends EntityLike, ThrownItemLike
+pub struct EyeOfEnder {}
+
+#[allow(non_snake_case)]
+// extends EntityLike, ProjectileLike
+pub struct FireworkRocket {
+    FireworksItem: FireworksItem,
+    Life: IntTag,
+    LifeTime: IntTag,
+    ShotAtAngle: BooleanTag,
 }
 
 // Is this an extension/generic of what would be `Item<"minecraft:firework_rocket">`, with additional Firework properties?
-export interface FireworksItem {
-  Count: ByteTag; // typically one
-  id: `${ItemResource.firework_rocket}`;
-  tag: {
-    Fireworks: { // optional? I don't think so, but the wiki wording is a little off.
-      Explosions: FireworkExplosion[];
-      Flight: ByteTag; // flight duration
-    };
-  };
+#[allow(non_snake_case)]
+pub struct FireworksItem {
+    Count: ByteTag, // typically one
+    id: StringTag,  // StringTag<ItemResource::firework_rocket>,
+    tag: FireworkTag,
 }
 
-export interface FireworkExplosion {
-  Colors: IntArrayTag;
-  FadeColors: IntArrayTag;
-  Flicker?: BooleanTag;
-  Trail?: BooleanTag;
-  Type: ByteTag<FireworkShape>;
+#[allow(non_snake_case)]
+pub struct FireworkTag {
+    Fireworks: FireworkData, // optional? I don't think so, but the wiki wording is a little off.
 }
 
-export type FireworkShape = 0 | 1 | 2 | 3 | 4;
-
-export interface TNT extends EntityLike<EntityResource.tnt> {
-  // looks like it has changed from one to the other at some point
-  Fuse: ShortTag;
-  fuse: ShortTag;
-  // is this just `BlockState`? This gets confusing where they are nested, seems to be this way multiple other instances as well.
-  block_state: {
-    Name: `${BlockResource}`;
-    Properties?: BlockState;
-  };
+#[allow(non_snake_case)]
+pub struct FireworkData {
+    Explosions: ListTag<FireworkExplosion>,
+    Flight: ByteTag, // flight duration
 }
 
-export interface FallingBlock extends EntityLike<EntityResource.falling_block> {
-  // This is the same weird thing as `TNT`.
-  BlockState: {
-    Name: `${BlockResource}`;
-    Properties?: BlockState;
-  };
-  CancelDrop: BooleanTag;
-  DropItem: BooleanTag;
-  FallHurtAmount: FloatTag;
-  FallHurtMax: IntTag;
-  HurtEntities: BooleanTag;
-  TileEntityData?: BlockEntity; // I'm pretty sure this is `BlockEntity`, but the wiki doesn't specifically mention it.
-  Time: IntTag;
+#[allow(non_snake_case)]
+pub struct FireworkExplosion {
+    Colors: IntArrayTag,
+    FadeColors: IntArrayTag,
+    Flicker: Option<BooleanTag>,
+    Trail: Option<BooleanTag>,
+    Type: ByteTag<FireworkShape>,
 }
 
-export interface FishingBobber extends EntityLike<EntityResource.fishing_bobber> {}
-
-export interface LightningBolt extends EntityLike<EntityResource.lightning_bolt> {}
-
-export interface LeashKnot extends EntityLike<EntityResource.leash_knot> {}
-
-export interface Painting extends EntityLike<EntityResource.painting>, HangableLike {
-  variant: StringTag; // `PaintingVariant` union type
+pub enum FireworkShape {
+    SmallBall = 0,
+    LargeBall,
+    Star,
+    Creeper,
+    Burst,
 }
 
-export interface ItemFrame extends EntityLike<EntityResource.item_frame>, HangableLike {
-  Fixed: BooleanTag;
-  Invisible: BooleanTag;
-  Item?: Item;
-  ItemDropChance: FloatTag;
-  ItemRotation: ByteTag;
+#[allow(non_snake_case)]
+// extends EntityLike
+pub struct TNT {
+    // looks like it has changed from one to the other at some point
+    Fuse: ShortTag,
+    fuse: ShortTag,
+    // is this just `BlockState`? This gets confusing where they are nested, seems to be this way multiple other instances as well.
+    block_state: TNTBlockState,
+}
+
+#[allow(non_snake_case)]
+pub struct TNTBlockState {
+    Name: StringTag<BlockResource>,
+    Properties: Option<BlockState>,
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike
+pub struct FallingBlock {
+    // This is the same weird thing as `TNT`.
+    BlockState: FallingBlockBlockState,
+    CancelDrop: BooleanTag,
+    DropItem: BooleanTag,
+    FallHurtAmount: FloatTag,
+    FallHurtMax: IntTag,
+    HurtEntities: BooleanTag,
+    TileEntityData: Option<BlockEntity>, // I'm pretty sure this is `BlockEntity`, but the wiki doesn't specifically mention it.
+    Time: IntTag,
+}
+
+#[allow(non_snake_case)]
+pub struct FallingBlockBlockState {
+    Name: StringTag<BlockResource>,
+    Properties: Option<BlockState>,
+}
+
+// extends EntityLike
+pub struct FishingBobber {}
+
+// extends EntityLike
+pub struct LightningBolt {}
+
+// extends EntityLike
+pub struct LeashKnot {}
+
+// extends EntityLike, HangableLike
+pub struct Painting {
+    variant: StringTag, // `PaintingVariant` union type
+}
+
+#[allow(non_snake_case)]
+// extends EntityLike, HangableLike
+pub struct ItemFrame {
+    Fixed: BooleanTag,
+    Invisible: BooleanTag,
+    Item: Option<Item>,
+    ItemDropChance: FloatTag,
+    ItemRotation: ByteTag,
 }
 
 // Is `MobLike`, except for `LeftHanded`, `DeathLootTable`, `DeathLootTableSeed`, `NoAI`, `Leash`, `CanPickUpLoot` and `PersistenceRequired`.
-export interface ArmorStand extends EntityLike<EntityResource.armor_stand>, MobLike {
-  DisabledSlots: IntTag;
-  Invisible: BooleanTag;
-  Marker?: BooleanTag;
-  NoBasePlate: BooleanTag;
-  Pose: ArmorStandPose;
-  ShowArms: BooleanTag;
-  Small: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike, MobLike
+pub struct ArmorStand {
+    DisabledSlots: IntTag,
+    Invisible: BooleanTag,
+    Marker: Option<BooleanTag>,
+    NoBasePlate: BooleanTag,
+    Pose: ArmorStandPose,
+    ShowArms: BooleanTag,
+    Small: BooleanTag,
 }
 
-export interface ArmorStandPose {
-  Body: ArmorStandPoseEntry;
-  Head: ArmorStandPoseEntry;
-  LeftArm: ArmorStandPoseEntry;
-  LeftLeg: ArmorStandPoseEntry;
-  RightArm: ArmorStandPoseEntry;
-  RightLeg: ArmorStandPoseEntry;
+#[allow(non_snake_case)]
+pub struct ArmorStandPose {
+    Body: ArmorStandPoseEntry,
+    Head: ArmorStandPoseEntry,
+    LeftArm: ArmorStandPoseEntry,
+    LeftLeg: ArmorStandPoseEntry,
+    RightArm: ArmorStandPoseEntry,
+    RightLeg: ArmorStandPoseEntry,
 }
 
-export type ArmorStandPoseEntry = [FloatTag, FloatTag, FloatTag];
+pub type ArmorStandPoseEntry = [FloatTag; 3];
 
-export interface Fireball extends EntityLike<EntityResource.fireball>, ProjectileLike, ThrownItemLike, FireballLike {
-  ExplosionPower: ByteTag;
+#[allow(non_snake_case)]
+// extends EntityLike, ProjectileLike, ThrownItemLike, FireballLike
+pub struct Fireball {
+    ExplosionPower: ByteTag,
 }
 
-export interface WitherSkull extends EntityLike<EntityResource.wither_skull>, ProjectileLike, FireballLike {
-  dangerous: BooleanTag; // might want to be optional <https://minecraft.wiki/w/Wither#cite_ref-11>
+// extends EntityLike, ProjectileLike, FireballLike
+pub struct WitherSkull {
+    dangerous: BooleanTag, // might want to be optional <https://minecraft.wiki/w/Wither#cite_ref-11>
 }
 
-export interface DragonFireball extends EntityLike<EntityResource.dragon_fireball>, ProjectileLike, FireballLike {}
+// extends EntityLike, ProjectileLike, FireballLike
+pub struct DragonFireball {}
 
-export interface ShulkerBullet extends EntityLike<EntityResource.shulker_bullet>, ProjectileLike {
-  Steps: IntTag;
-  Target: IntArrayTag; // `UUIDLike`, `IntArrayTag<[number, number, number, number]>`
-  TXD: DoubleTag;
-  TYD: DoubleTag;
-  TZD: DoubleTag;
+#[allow(non_snake_case)]
+// extends EntityLike, ProjectileLike
+pub struct ShulkerBullet {
+    Steps: IntTag,
+    Target: IntArrayTag, // `UUIDLike`, `IntArrayTag<[number, number, number, number]>`
+    TXD: DoubleTag,
+    TYD: DoubleTag,
+    TZD: DoubleTag,
 }
 
-export interface EndCrystal extends EntityLike<EntityResource.end_crystal> {
-  BeamTarget: EndCrystalBeamTarget;
-  ShowBottom: BooleanTag;
+#[allow(non_snake_case)]
+// extends EntityLike
+pub struct EndCrystal {
+    BeamTarget: EndCrystalBeamTarget,
+    ShowBottom: BooleanTag,
 }
 
-export interface EndCrystalBeamTarget {
-  X: IntTag;
-  Y: IntTag;
-  Z: IntTag;
+#[allow(non_snake_case)]
+pub struct EndCrystalBeamTarget {
+    X: IntTag,
+    Y: IntTag,
+    Z: IntTag,
 }
 
-export interface EvokerFangs extends EntityLike<EntityResource.evoker_fangs> {
-  Owner: IntArrayTag; // `UUIDLike`
-  Warmup: IntTag;
+#[allow(non_snake_case)]
+// extends EntityLike
+pub struct EvokerFangs {
+    Owner: IntArrayTag, // `UUIDLike`
+    Warmup: IntTag,
 }
 
-export interface Marker extends EntityLike<EntityResource.marker> {
-  data: any; // <https://minecraft.wiki/w/Marker#Entity_data>
+// extends EntityLike
+pub struct Marker {
+    data: (), // `unknown`/`any` // <https://minecraft.wiki/w/Marker#Entity_data>
 }
 
-export interface ItemDisplay extends EntityLike<EntityResource.item_display>, DisplayLike {
-  item_display: ItemDisplayModel;
+// extends EntityLike, DisplayLike
+pub struct ItemDisplay {
+    item_display: StringTag<ItemDisplayModel>,
 }
 
-export type ItemDisplayModel = "none" | "thirdperson_lefthand" | "thirdperson_righthand" | "firstperson_lefthand" | "firstperson_righthand" | "head" | "gui" | "ground" | "fixed";
-
-export interface BlockDisplay extends EntityLike<EntityResource.block_display>, DisplayLike {
-  block_state: BlockState;
+#[allow(non_camel_case_types)]
+pub enum ItemDisplayModel {
+    none,
+    thirdperson_lefthand,
+    thirdperson_righthand,
+    firstperson_lefthand,
+    firstperson_righthand,
+    head,
+    gui,
+    ground,
+    fixed,
 }
 
-export interface TextDisplay extends EntityLike<EntityResource.text_display>, DisplayLike {
-  alignment: TextDisplayAlignment;
-  background: IntTag;
-  default_background: BooleanTag;
-  line_width: IntTag;
-  see_through: BooleanTag;
-  shadow: BooleanTag;
-  text: StringTag; // raw JSON text <https://minecraft.wiki/w/Raw_JSON_text_format>
-  text_opacity: ByteTag;
+// extends EntityLike, DisplayLike
+pub struct BlockDisplay {
+    block_state: BlockState,
 }
 
-export type TextDisplayAlignment = "center" | "left" | "right";
-
-export interface Interaction extends EntityLike<EntityResource.interaction> {
-  width: FloatTag;
-  height: FloatTag;
-  response: BooleanTag;
-  attack: InteractionEvent;
-  interaction: InteractionEvent;
+// extends EntityLike, DisplayLike
+pub struct TextDisplay {
+    alignment: StringTag<TextDisplayAlignment>,
+    background: IntTag,
+    default_background: BooleanTag,
+    line_width: IntTag,
+    see_through: BooleanTag,
+    shadow: BooleanTag,
+    text: StringTag, // raw JSON text <https://minecraft.wiki/w/Raw_JSON_text_format>
+    text_opacity: ByteTag,
 }
 
-export interface InteractionEvent {
-  player: IntArrayTag; // `UUIDLike`
-  timestamp: LongTag;
+#[allow(non_camel_case_types)]
+pub enum TextDisplayAlignment {
+    center,
+    left,
+    right,
 }
 
-export interface ContainerEntityLike {
-  Items: Item[]; // `Slot` tag as well, need to add that
-  LootTable?: StringTag; // LootTableResource
-  LootTableSeed?: LongTag;
+// extends EntityLike
+pub struct Interaction {
+    width: FloatTag,
+    height: FloatTag,
+    response: BooleanTag,
+    attack: InteractionEvent,
+    interaction: InteractionEvent,
 }
 
-export interface ProjectileLike {
-  HasBeenShot: BooleanTag;
-  LeftOwner?: BooleanTag; // `?: TrueTag`
-  Owner?: IntArrayTag; // `IntArrayTag<[number, number, number, number]>`
+pub struct InteractionEvent {
+    player: IntArrayTag, // `UUIDLike`
+    timestamp: LongTag,
+}
+
+#[allow(non_snake_case)]
+pub struct ContainerEntityLike {
+    Items: ListTag<Item>,         // `Slot` tag as well, need to add that
+    LootTable: Option<StringTag>, // LootTableResource
+    LootTableSeed: Option<LongTag>,
+}
+
+#[allow(non_snake_case)]
+pub struct ProjectileLike {
+    HasBeenShot: BooleanTag,
+    LeftOwner: Option<BooleanTag>, // `Option<TrueTag>`
+    Owner: Option<IntArrayTag>,    // `IntArrayTag<[number, number, number, number]>`
 }
 
 // should this be generic?
-export interface ThrownItemLike {
-  Item?: Item;
+#[allow(non_snake_case)]
+pub struct ThrownItemLike {
+    Item: Option<Item>,
 }
 
-export interface HangableLike {
-  Facing: ByteTag<HangableFacing>;
-  TileX: IntTag;
-  TileY: IntTag;
-  TileZ: IntTag;
+#[allow(non_snake_case)]
+pub struct HangableLike {
+    Facing: ByteTag<HangableFacing>,
+    TileX: IntTag,
+    TileY: IntTag,
+    TileZ: IntTag,
 }
 
-export type HangableFacing = 0 | 1 | 2 | 3 | 4 | 5;
-
-export interface FireballLike {
-  power: FireballPower;
+pub enum HangableFacing {
+    Bottom = 0,
+    Top,
+    North,
+    South,
+    West,
+    East,
 }
 
-export type FireballPower = [DoubleTag, DoubleTag, DoubleTag];
-
-export interface DisplayLike {
-  billboard: DisplayBillboard;
-  brightness: DisplayBrightness;
-  glow_color_override: IntTag;
-  height: FloatTag;
-  width: FloatTag;
-  interpolation_duration: IntTag;
-  teleport_duration: IntTag;
-  start_interpolation: IntTag;
-  shadow_radius: FloatTag;
-  shadow_strength: FloatTag;
-  view_range: FloatTag;
-  transformation: DisplayTransformation;
+pub struct FireballLike {
+    power: FireballPower,
 }
 
-export type DisplayBillboard = "fixed" | "vertical" | "horizontal" | "center";
+pub type FireballPower = [DoubleTag; 3];
 
-export interface DisplayBrightness {
-  block: IntTag<DisplayBrightnessLevel>;
-  sky: IntTag<DisplayBrightnessLevel>;
+pub struct DisplayLike {
+    billboard: StringTag<DisplayBillboard>,
+    brightness: DisplayBrightness,
+    glow_color_override: IntTag,
+    height: FloatTag,
+    width: FloatTag,
+    interpolation_duration: IntTag,
+    teleport_duration: IntTag,
+    start_interpolation: IntTag,
+    shadow_radius: FloatTag,
+    shadow_strength: FloatTag,
+    view_range: FloatTag,
+    transformation: DisplayTransformation,
 }
 
-export type DisplayBrightnessLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
-
-export type DisplayTransformation = DisplayTransformationMatrix | DisplayTransformationDecomposed;
-
-export type DisplayTransformationMatrix = [FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag, FloatTag];
-
-export interface DisplayTransformationDecomposed {
-  left_rotation: DisplayRotation;
-  translation: DisplayTranslation;
-  right_rotation: DisplayRotation;
-  scale: DisplayScale;
+#[allow(non_camel_case_types)]
+pub enum DisplayBillboard {
+    fixed,
+    vertical,
+    horizontal,
+    center,
 }
 
-export type DisplayRotation = DisplayRotationQuaternion | DisplayRotationAxisAngle;
-
-export type DisplayRotationQuaternion = [FloatTag, FloatTag, FloatTag, FloatTag];
-
-export interface DisplayRotationAxisAngle {
-  angle: FloatTag;
-  axis: DisplayRotationAxis;
+pub struct DisplayBrightness {
+    block: IntTag<DisplayBrightnessLevel>,
+    sky: IntTag<DisplayBrightnessLevel>,
 }
 
-export type DisplayRotationAxis = [FloatTag, FloatTag, FloatTag];
-
-export type DisplayTranslation = [FloatTag, FloatTag, FloatTag];
-
-export type DisplayScale = [FloatTag, FloatTag, FloatTag];
-
-export interface PotionEffectLike {
-  custom_potion_effects: PotionEffectEntry[];
-  Potion: StringTag; // not fully fleshed out <https://minecraft.wiki/w/Arrow#Data_values>, <https://minecraft.wiki/w/Potion#Item_data>
-  CustomPotionColor: IntTag;
-  Color: IntTag; // specific to Arrows..?
+pub enum DisplayBrightnessLevel {
+    Zero = 0,
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Eleven,
+    Twelve,
+    Thirteen,
+    Fourteen,
+    Fifteen,
 }
 
-export interface PotionEffectEntry {
-  id: IntTag<EffectID>;
-  amplifier?: ByteTag;
-  duration?: IntTag;
-  ambient?: BooleanTag;
-  show_particles?: BooleanTag;
-  show_icon: BooleanTag; // also optional?
+pub enum DisplayTransformation {
+    Matrix(DisplayTransformationMatrix),
+    Decomposed(DisplayTransformationDecomposed),
 }
 
-export interface MobLike {
-  AbsorptionAmount: FloatTag;
-  ActiveEffects: Effect[];
-  ArmorDropChances: ArmorDropChances;
-  ArmorItems: ArmorItems;
-  Attributes: Attribute[];
-  Brain: {
-    memories: {}; // `Memories`
-  };
-  CanPickUpLoot: BooleanTag;
-  DeathLootTable?: StringTag; // `LootTableResource`
-  DeathLootTableSeed?: LongTag;
-  DeathTime: ShortTag;
-  FallFlying: ByteTag;
-  Health: FloatTag;
-  HurtByTimestamp: IntTag;
-  HurtTime: ShortTag;
-  HandDropChances: HandDropChances;
-  HandItems: HandItems;
-  Leash?: Leash;
-  LeftHanded: BooleanTag;
-  NoAI: BooleanTag;
-  PersistenceRequired: BooleanTag;
-  SleepingX: IntTag;
-  SleepingY: IntTag;
-  SleepingZ: IntTag;
-  Team?: StringTag; // `ScoreboardTeam` ?
+pub type DisplayTransformationMatrix = [FloatTag; 16];
+
+pub struct DisplayTransformationDecomposed {
+    left_rotation: DisplayRotation,
+    translation: DisplayTranslation,
+    right_rotation: DisplayRotation,
+    scale: DisplayScale,
 }
 
-export interface BreedableLike {
-  Age: IntTag;
-  ForcedAge: IntTag;
-  InLove: IntTag;
-  LoveCause: IntArrayTag; // `UUIDLike`
+pub enum DisplayRotation {
+    Quaternion(DisplayRotationQuaternion),
+    AxisAngle(DisplayRotationAxisAngle),
 }
 
-export interface BucketableLike {
-  FromBucket: BooleanTag;
+pub type DisplayRotationQuaternion = [FloatTag; 4];
+
+pub struct DisplayRotationAxisAngle {
+    angle: FloatTag,
+    axis: DisplayRotationAxis,
 }
 
-export interface TameableLike {
-  Owner?: IntArrayTag; // `UUIDLike`
-  Sitting: BooleanTag;
+pub type DisplayRotationAxis = [FloatTag; 3];
+
+pub type DisplayTranslation = [FloatTag; 3];
+
+pub type DisplayScale = [FloatTag; 3];
+
+#[allow(non_snake_case)]
+pub struct PotionEffectLike {
+    custom_potion_effects: ListTag<PotionEffectEntry>,
+    Potion: StringTag, // not fully fleshed out <https://minecraft.wiki/w/Arrow#Data_values>, <https://minecraft.wiki/w/Potion#Item_data>
+    CustomPotionColor: IntTag,
+    Color: IntTag, // specific to Arrows..?
 }
 
-export interface CollaredLike {
-  CollarColor: ByteTag<CollarColor>;
+pub struct PotionEffectEntry {
+    id: IntTag<EffectID>,
+    amplifier: Option<ByteTag>,
+    duration: Option<IntTag>,
+    ambient: Option<BooleanTag>,
+    show_particles: Option<BooleanTag>,
+    show_icon: BooleanTag, // also optional?
 }
 
-export type CollarColor = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
-
-export interface SaddledLike {
-  Saddle: BooleanTag;
+#[allow(non_snake_case)]
+pub struct MobLike {
+    AbsorptionAmount: FloatTag,
+    ActiveEffects: ListTag<Effect>,
+    ArmorDropChances: ArmorDropChances,
+    ArmorItems: ArmorItems,
+    Attributes: ListTag<Attribute>,
+    Brain: MobBrain,
+    CanPickUpLoot: BooleanTag,
+    DeathLootTable: Option<StringTag>, // `LootTableResource`
+    DeathLootTableSeed: Option<LongTag>,
+    DeathTime: ShortTag,
+    FallFlying: ByteTag,
+    Health: FloatTag,
+    HurtByTimestamp: IntTag,
+    HurtTime: ShortTag,
+    HandDropChances: HandDropChances,
+    HandItems: HandItems,
+    Leash: Option<Leash>,
+    LeftHanded: BooleanTag,
+    NoAI: BooleanTag,
+    PersistenceRequired: BooleanTag,
+    SleepingX: IntTag,
+    SleepingY: IntTag,
+    SleepingZ: IntTag,
+    Team: Option<StringTag>, // `ScoreboardTeam` ?
 }
 
-export interface AngeredLike {
-  AngerTime: IntTag;
-  AngryAt: IntArrayTag; // `UUIDLike`
+pub struct MobBrain {
+    memories: CompoundTag, // `Memories`, needs to be typed eventually. Just an empty object right now, in practice. `{}` in TypeScript.
 }
 
-export interface HorseLike {
-  Bred: BooleanTag;
-  EatingHaystack: BooleanTag;
-  Owner?: IntArrayTag; // `UUIDLike`
-  SaddleItem?: Item; // `Item<"minecraft:saddle">`
-  Tame: BooleanTag;
-  Temper: IntTag;
+#[allow(non_snake_case)]
+pub struct BreedableLike {
+    Age: IntTag,
+    ForcedAge: IntTag,
+    InLove: IntTag,
+    LoveCause: IntArrayTag, // `UUIDLike`
 }
 
-export interface VillagerLike {
-  Gossips: VillagerGossip[];
-  Offers?: VillagerOffers; // "Is generated when the trading menu is opened for the first time.", optional?
-  VillagerData: VillagerData;
-  Xp: IntTag;
+#[allow(non_snake_case)]
+pub struct BucketableLike {
+    FromBucket: BooleanTag,
 }
 
-export interface VillagerGossip {
-  Value: IntTag;
-  Target: IntArrayTag; // `UUIDLike`
-  Type: VillagerGossipType;
+#[allow(non_snake_case)]
+pub struct TameableLike {
+    Owner: Option<IntArrayTag>, // `UUIDLike`
+    Sitting: BooleanTag,
 }
 
-export type VillagerGossipType = "major_negative" | "minor_negative" | "major_positive" | "minor_positive" | "trading";
-
-export interface VillagerOffers {
-  Recipes: VillagerTradeOption[];
+#[allow(non_snake_case)]
+pub struct CollaredLike {
+    CollarColor: ByteTag<CollarColor>,
 }
 
-export interface TradeOptionLike {
-  buy: Item;
-  buyB?: Item;
-  maxUses: IntTag;
-  rewardExp: BooleanTag;
-  sell: Item;
-  uses: IntTag;
+pub enum CollarColor {
+    White = 0,
+    Orange,
+    Magenta,
+    LightBlue,
+    Yellow,
+    Lime,
+    Pink,
+    Gray,
+    LightGray,
+    Cyan,
+    Purple,
+    Blue,
+    Brown,
+    Green,
+    Red,
+    Black,
 }
 
-export interface VillagerTradeOption extends TradeOptionLike {
-  demand: IntTag;
-  priceMultiplier: FloatTag;
-  specialPrice: IntTag;
-  xp: IntTag;
+#[allow(non_snake_case)]
+pub struct SaddledLike {
+    Saddle: BooleanTag,
 }
 
-export interface VillagerData {
-  level: IntTag<VillagerLevel>;
-  profession: VillagerProfession;
-  type: VillagerType;
+#[allow(non_snake_case)]
+pub struct AngeredLike {
+    AngerTime: IntTag,
+    AngryAt: IntArrayTag, // `UUIDLike`
 }
 
-export type VillagerLevel = 1 | 2 | 3 | 4 | 5;
-
-export type VillagerProfession = "minecraft:armorer" | "minecraft:butcher" | "minecraft:cartographer" | "minecraft:cleric" | "minecraft:farmer" | "minecraft:fisherman" | "minecraft:fletcher" | "minecraft:leatherworker" | "minecraft:librarian" | "minecraft:nitwit" | "minecraft:none" | "minecraft:mason" | "minecraft:shepherd" | "minecraft:toolsmith" | "minecraft:weaponsmith";
-
-export type VillagerType = "minecraft:desert" | "minecraft:jungle" | "minecraft:plains" | "minecraft:savanna" | "minecraft:snow" | "minecraft:swamp" | "minecraft:taiga";
-
-export interface ZombieLike {
-  CanBreakDoors: BooleanTag;
-  DrownedConversionTime: IntTag;
-  InWaterTime: IntTag;
-  IsBaby?: BooleanTag;
+#[allow(non_snake_case)]
+pub struct HorseLike {
+    Bred: BooleanTag,
+    EatingHaystack: BooleanTag,
+    Owner: Option<IntArrayTag>, // `UUIDLike`
+    SaddleItem: Option<Item>,   // `Item<"minecraft:saddle">`
+    Tame: BooleanTag,
+    Temper: IntTag,
 }
 
-export interface PiglinLike {
-  IsImmuneToZombification: BooleanTag;
-  TimeInOverworld: IntTag;
+#[allow(non_snake_case)]
+pub struct VillagerLike {
+    Gossips: ListTag<VillagerGossip>,
+    Offers: Option<VillagerOffers>, // "Is generated when the trading menu is opened for the first time.", optional?
+    VillagerData: VillagerData,
+    Xp: IntTag,
 }
 
-export interface SlimeLike {
-  Size: IntTag<SlimeSize>;
-  wasOnGround: BooleanTag;
+#[allow(non_snake_case)]
+pub struct VillagerGossip {
+    Value: IntTag,
+    Target: IntArrayTag, // `UUIDLike`
+    Type: StringTag<VillagerGossipType>,
 }
 
-export type SlimeSize = 0 | 1 | 3; // not a mistake, weird I know lol; allows for larger values, these are the natural ones though.
-
-export interface RaidLike {
-  CanJoinRaid: BooleanTag;
-  PatrolLeader: BooleanTag;
-  Patrolling: BooleanTag;
-  PatrolTarget: RaidPatrolTarget; // This can be made generic to a `Position` kind of thing.
-  RaidId: IntTag;
-  Wave: IntTag; // union of values? probably a min/max for each difficulty I'd assume?
+#[allow(non_camel_case_types)]
+pub enum VillagerGossipType {
+    major_negative,
+    minor_negative,
+    major_positive,
+    minor_positive,
+    trading,
 }
 
-export interface RaidPatrolTarget {
-  X: IntTag;
-  Y: IntTag;
-  Z: IntTag;
+#[allow(non_snake_case)]
+pub struct VillagerOffers {
+    Recipes: ListTag<VillagerTradeOption>,
 }
 
-export type ArmorDropChances = [FloatTag,FloatTag,FloatTag,FloatTag];
-
-export type ArmorItems = [Item,Item,Item,Item];
-
-export interface Attribute {
-  Base: DoubleTag;
-  Modifiers: Modifier[];
-  Name: StringTag; // `AttributeResource` ?
+#[allow(non_snake_case)]
+pub struct TradeOptionLike {
+    buy: Item,
+    buyB: Option<Item>,
+    maxUses: IntTag,
+    rewardExp: BooleanTag,
+    sell: Item,
+    uses: IntTag,
 }
 
-export interface Modifier {
-  Amount: DoubleTag;
-  Name: StringTag; // `ModifierResource` ?
-  Operation: IntTag<ModifierOperation>;
-  UUID: IntArrayTag;
+#[allow(non_snake_case)]
+// extends TradeOptionLike {
+pub struct VillagerTradeOption {
+    demand: IntTag,
+    priceMultiplier: FloatTag,
+    specialPrice: IntTag,
+    xp: IntTag,
 }
 
-export type ModifierOperation = 0 | 1 | 2;
-
-export type HandDropChances = [FloatTag,FloatTag];
-
-export type HandItems = [Item,Item];
-
-export type Leash = IntArrayTag | { X: IntTag; Y: IntTag; Z: IntTag; };
-
-export interface EntityLike<EntityID extends string | undefined> {
-  Air: ShortTag;
-  CustomName?: StringTag;
-  CustomNameVisible?: BooleanTag;
-  FallDistance: FloatTag;
-  Fire: ShortTag;
-  Glowing: BooleanTag;
-  HasVisualFire: BooleanTag;
-  id: EntityID extends string ? `${EntityID}` : EntityID;
-  Invulnerable: BooleanTag;
-  Motion: EntityMotion;
-  NoGravity: BooleanTag;
-  OnGround: BooleanTag;
-  Passengers: Entity[];
-  PortalCooldown: IntTag;
-  Pos: EntityPos;
-  Rotation: EntityRotation;
-  Silent?: BooleanTag;
-  Tags: ScoreboardTag[];
-  TicksFrozen?: IntTag;
-  UUID: IntArrayTag;
+pub struct VillagerData {
+    level: IntTag<VillagerLevel>,
+    profession: StringTag<VillagerProfession>,
+    r#type: StringTag<VillagerType>,
 }
 
-export type EntityMotion = [DoubleTag,DoubleTag,DoubleTag];
+pub enum VillagerLevel {
+    Novice = 1,
+    Apprentice,
+    Journeyman,
+    Expert,
+    Master,
+}
 
-export type EntityPos = [DoubleTag,DoubleTag,DoubleTag];
+#[allow(non_camel_case_types)]
+pub enum VillagerProfession {
+    // needs to be `minecraft:` prefixed when stringified!!
+    armorer,
+    butcher,
+    cartographer,
+    cleric,
+    farmer,
+    fisherman,
+    fletcher,
+    leatherworker,
+    librarian,
+    nitwit,
+    none,
+    mason,
+    shepherd,
+    toolsmith,
+    weaponsmith,
+}
 
-export type EntityRotation = [FloatTag,FloatTag];
+#[allow(non_camel_case_types)]
+pub enum VillagerType {
+    // needs to be `minecraft:` prefixed when stringified!!
+    desert,
+    jungle,
+    plains,
+    savanna,
+    snow,
+    swamp,
+    taiga,
+}
 
-export type ScoreboardTag = string;
+#[allow(non_snake_case)]
+pub struct ZombieLike {
+    CanBreakDoors: BooleanTag,
+    DrownedConversionTime: IntTag,
+    InWaterTime: IntTag,
+    IsBaby: Option<BooleanTag>,
+}
 
-export enum EntityResource {
-  axolotl = "minecraft:axolotl",
-  bat = "minecraft:bat",
-  bee = "minecraft:bee",
-  blaze = "minecraft:blaze",
-  camel = "minecraft:camel",
-  cat = "minecraft:cat",
-  cave_spider = "minecraft:cave_spider",
-  chicken = "minecraft:chicken",
-  cod = "minecraft:cod",
-  cow = "minecraft:cow",
-  creeper = "minecraft:creeper",
-  dolphin = "minecraft:dolphin",
-  donkey = "minecraft:donkey",
-  drowned = "minecraft:drowned",
-  elder_guardian = "minecraft:elder_guardian",
-  ender_dragon = "minecraft:ender_dragon",
-  enderman = "minecraft:enderman",
-  endermite = "minecraft:endermite",
-  evoker = "minecraft:evoker",
-  fox = "minecraft:fox",
-  ghast = "minecraft:ghast",
-  giant = "minecraft:giant",
-  glow_squid = "minecraft:glow_squid",
-  goat = "minecraft:goat",
-  guardian = "minecraft:guardian",
-  hoglin = "minecraft:hoglin",
-  horse = "minecraft:horse",
-  husk = "minecraft:husk",
-  illusioner = "minecraft:illusioner",
-  iron_golem = "minecraft:iron_golem",
-  llama = "minecraft:llama",
-  magma_cube = "minecraft:magma_cube",
-  mooshroom = "minecraft:mooshroom",
-  mule = "minecraft:mule",
-  ocelot = "minecraft:ocelot",
-  panda = "minecraft:panda",
-  parrot = "minecraft:parrot",
-  phantom = "minecraft:phantom",
-  pig = "minecraft:pig",
-  piglin = "minecraft:piglin",
-  piglin_brute = "minecraft:piglin_brute",
-  pillager = "minecraft:pillager",
-  player = "minecraft:player",
-  polar_bear = "minecraft:polar_bear",
-  pufferfish = "minecraft:pufferfish",
-  rabbit = "minecraft:rabbit",
-  ravager = "minecraft:ravager",
-  salmon = "minecraft:salmon",
-  sheep = "minecraft:sheep",
-  shulker = "minecraft:shulker",
-  silverfish = "minecraft:silverfish",
-  sniffer = "minecraft:sniffer",
-  skeleton = "minecraft:skeleton",
-  skeleton_horse = "minecraft:skeleton_horse",
-  slime = "minecraft:slime",
-  snow_golem = "minecraft:snow_golem",
-  spider = "minecraft:spider",
-  squid = "minecraft:squid",
-  stray = "minecraft:stray",
-  strider = "minecraft:strider",
-  trader_llama = "minecraft:trader_llama",
-  tropical_fish = "minecraft:tropical_fish",
-  turtle = "minecraft:turtle",
-  vex = "minecraft:vex",
-  villager = "minecraft:villager",
-  vindicator = "minecraft:vindicator",
-  wandering_trader = "minecraft:wandering_trader",
-  witch = "minecraft:witch",
-  wither = "minecraft:wither",
-  wither_skeleton = "minecraft:wither_skeleton",
-  wolf = "minecraft:wolf",
-  zoglin = "minecraft:zoglin",
-  zombie = "minecraft:zombie",
-  zombie_horse = "minecraft:zombie_horse",
-  zombie_villager = "minecraft:zombie_villager",
-  zombified_piglin = "minecraft:zombified_piglin",
-  allay = "minecraft:allay",
-  frog = "minecraft:frog",
-  tadpole = "minecraft:tadpole",
-  warden = "minecraft:warden",
-  area_effect_cloud = "minecraft:area_effect_cloud",
-  armor_stand = "minecraft:armor_stand",
-  end_crystal = "minecraft:end_crystal",
-  evoker_fangs = "minecraft:evoker_fangs",
-  fishing_bobber = "minecraft:fishing_bobber",
-  item_frame = "minecraft:item_frame",
-  leash_knot = "minecraft:leash_knot",
-  lightning_bolt = "minecraft:lightning_bolt",
-  marker = "minecraft:marker",
-  interaction = "minecraft:interaction",
-  block_display = "minecraft:block_display",
-  text_display = "minecraft:text_display",
-  item_display = "minecraft:item_display",
-  painting = "minecraft:painting",
-  arrow = "minecraft:arrow",
-  dragon_fireball = "minecraft:dragon_fireball",
-  egg = "minecraft:egg",
-  ender_pearl = "minecraft:ender_pearl",
-  experience_bottle = "minecraft:experience_bottle",
-  eye_of_ender = "minecraft:eye_of_ender",
-  fireball = "minecraft:fireball",
-  firework_rocket = "minecraft:firework_rocket",
-  llama_spit = "minecraft:llama_spit",
-  potion = "minecraft:potion",
-  shulker_bullet = "minecraft:shulker_bullet",
-  small_fireball = "minecraft:small_fireball",
-  snowball = "minecraft:snowball",
-  spectral_arrow = "minecraft:spectral_arrow",
-  trident = "minecraft:trident",
-  wither_skull = "minecraft:wither_skull",
-  boat = "minecraft:boat",
-  chest_boat = "minecraft:chest_boat",
-  chest_minecart = "minecraft:chest_minecart",
-  command_block_minecart = "minecraft:command_block_minecart",
-  furnace_minecart = "minecraft:furnace_minecart",
-  hopper_minecart = "minecraft:hopper_minecart",
-  minecart = "minecraft:minecart",
-  spawner_minecart = "minecraft:spawner_minecart",
-  tnt_minecart = "minecraft:tnt_minecart",
-  falling_block = "minecraft:falling_block",
-  tnt = "minecraft:tnt",
-  experience_orb = "minecraft:experience_orb",
-  item = "minecraft:item"
+#[allow(non_snake_case)]
+pub struct PiglinLike {
+    IsImmuneToZombification: BooleanTag,
+    TimeInOverworld: IntTag,
+}
+
+#[allow(non_snake_case)]
+pub struct SlimeLike {
+    Size: IntTag<SlimeSize>,
+    wasOnGround: BooleanTag,
+}
+
+pub enum SlimeSize {
+    // not a mistake, weird I know lol; allows for larger values, these are the natural ones though.
+    Small = 0,
+    Medium,
+    Large = 3,
+}
+
+#[allow(non_snake_case)]
+pub struct RaidLike {
+    CanJoinRaid: BooleanTag,
+    PatrolLeader: BooleanTag,
+    Patrolling: BooleanTag,
+    PatrolTarget: RaidPatrolTarget, // This can be made generic to a `Position` kind of thing.
+    RaidId: IntTag,
+    Wave: IntTag, // union of values? probably a min/max for each difficulty I'd assume?
+}
+
+#[allow(non_snake_case)]
+pub struct RaidPatrolTarget {
+    X: IntTag,
+    Y: IntTag,
+    Z: IntTag,
+}
+
+pub type ArmorDropChances = [FloatTag; 4];
+
+pub type ArmorItems = [Item; 4];
+
+#[allow(non_snake_case)]
+pub struct Attribute {
+    Base: DoubleTag,
+    Modifiers: ListTag<Modifier>,
+    Name: StringTag, // `AttributeResource` ?
+}
+
+#[allow(non_snake_case)]
+pub struct Modifier {
+    Amount: DoubleTag,
+    Name: StringTag, // `ModifierResource` ?
+    Operation: IntTag<ModifierOperation>,
+    UUID: IntArrayTag,
+}
+
+pub enum ModifierOperation {
+    Zero = 0,
+    One,
+    Two,
+}
+
+pub type HandDropChances = [FloatTag; 2];
+
+pub type HandItems = [Item; 2];
+
+#[allow(non_snake_case)]
+pub enum Leash {
+    Array(IntArrayTag),
+    Object { X: IntTag, Y: IntTag, Z: IntTag },
+}
+
+// <EntityID extends string | undefined>
+#[allow(non_snake_case)]
+pub struct EntityLike {
+    Air: ShortTag,
+    CustomName: Option<StringTag>,
+    CustomNameVisible: Option<BooleanTag>,
+    FallDistance: FloatTag,
+    Fire: ShortTag,
+    Glowing: BooleanTag,
+    HasVisualFire: BooleanTag,
+    id: StringTag, // <--- could probably be `EntityResource` // EntityID extends string ? `${EntityID}` : EntityID,
+    Invulnerable: BooleanTag,
+    Motion: EntityMotion,
+    NoGravity: BooleanTag,
+    OnGround: BooleanTag,
+    Passengers: ListTag<Entity>,
+    PortalCooldown: IntTag,
+    Pos: EntityPos,
+    Rotation: EntityRotation,
+    Silent: Option<BooleanTag>,
+    Tags: ListTag<ScoreboardTag>,
+    TicksFrozen: Option<IntTag>,
+    UUID: IntArrayTag,
+}
+
+pub type EntityMotion = [DoubleTag; 3];
+
+pub type EntityPos = [DoubleTag; 3];
+
+pub type EntityRotation = [FloatTag; 2];
+
+pub type ScoreboardTag = String; // I think this was/is eventually meant to be an union/enum of strings
+
+#[allow(non_camel_case_types)]
+pub enum EntityResource {
+    axolotl,
+    bat,
+    bee,
+    blaze,
+    camel,
+    cat,
+    cave_spider,
+    chicken,
+    cod,
+    cow,
+    creeper,
+    dolphin,
+    donkey,
+    drowned,
+    elder_guardian,
+    ender_dragon,
+    enderman,
+    endermite,
+    evoker,
+    fox,
+    ghast,
+    giant,
+    glow_squid,
+    goat,
+    guardian,
+    hoglin,
+    horse,
+    husk,
+    illusioner,
+    iron_golem,
+    llama,
+    magma_cube,
+    mooshroom,
+    mule,
+    ocelot,
+    panda,
+    parrot,
+    phantom,
+    pig,
+    piglin,
+    piglin_brute,
+    pillager,
+    player,
+    polar_bear,
+    pufferfish,
+    rabbit,
+    ravager,
+    salmon,
+    sheep,
+    shulker,
+    silverfish,
+    sniffer,
+    skeleton,
+    skeleton_horse,
+    slime,
+    snow_golem,
+    spider,
+    squid,
+    stray,
+    strider,
+    trader_llama,
+    tropical_fish,
+    turtle,
+    vex,
+    villager,
+    vindicator,
+    wandering_trader,
+    witch,
+    wither,
+    wither_skeleton,
+    wolf,
+    zoglin,
+    zombie,
+    zombie_horse,
+    zombie_villager,
+    zombified_piglin,
+    allay,
+    frog,
+    tadpole,
+    warden,
+    area_effect_cloud,
+    armor_stand,
+    end_crystal,
+    evoker_fangs,
+    fishing_bobber,
+    item_frame,
+    leash_knot,
+    lightning_bolt,
+    marker,
+    interaction,
+    block_display,
+    text_display,
+    item_display,
+    painting,
+    arrow,
+    dragon_fireball,
+    egg,
+    ender_pearl,
+    experience_bottle,
+    eye_of_ender,
+    fireball,
+    firework_rocket,
+    llama_spit,
+    potion,
+    shulker_bullet,
+    small_fireball,
+    snowball,
+    spectral_arrow,
+    trident,
+    wither_skull,
+    boat,
+    chest_boat,
+    chest_minecart,
+    command_block_minecart,
+    furnace_minecart,
+    hopper_minecart,
+    minecart,
+    spawner_minecart,
+    tnt_minecart,
+    falling_block,
+    tnt,
+    experience_orb,
+    item,
 }
