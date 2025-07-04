@@ -1,5 +1,5 @@
+use crate::java::alpha::entity::Player;
 use crate::nbt::tag::{IntTag, LongTag};
-use crate::pi::v0_1_1::entity::Player;
 
 #[allow(non_snake_case)]
 pub struct Level {
