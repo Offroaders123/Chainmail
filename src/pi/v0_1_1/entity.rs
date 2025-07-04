@@ -55,7 +55,7 @@ pub struct AnimalLike {
 }
 
 #[inject_fields(EntityLike)]
-pub struct Particle /*extends EntityLike<EntityResource.Particle>*/ {}
+pub struct Particle {}
 
 #[allow(non_snake_case)]
 #[inject_fields(EntityLike, MobLike)]
@@ -82,23 +82,23 @@ pub struct PlayerAbilities {
 }
 
 #[inject_fields(EntityLike)]
-pub struct TripodCamera /*extends EntityLike<EntityResource.TripodCamera>*/ {}
+pub struct TripodCamera {}
 
 #[inject_fields(EntityLike)]
-pub struct CameraEntity /*extends EntityLike<EntityResource.CameraEntity>*/ {}
+pub struct CameraEntity {}
 
 #[inject_fields(EntityLike, MobLike, AnimalLike)]
-pub struct Chicken /*extends EntityLike<EntityResource.Chicken>, MobLike, AnimalLike*/ {}
+pub struct Chicken {}
 
 #[inject_fields(EntityLike, MobLike, AnimalLike)]
-pub struct Cow /*extends EntityLike<EntityResource.Cow>, MobLike, AnimalLike*/ {}
+pub struct Cow {}
 
 #[inject_fields(EntityLike, MobLike, AnimalLike)]
-pub struct Pig /*extends EntityLike<EntityResource.Pig>, MobLike, AnimalLike*/ {}
+pub struct Pig {}
 
 #[allow(non_snake_case)]
 #[inject_fields(EntityLike, MobLike, AnimalLike)]
-pub struct Sheep /*extends EntityLike<EntityResource.Sheep>, MobLike, AnimalLike*/ {
+pub struct Sheep {
     Sheared: BooleanTag,
     Color: ByteTag<SheepWoolColor>,
 }
@@ -123,45 +123,45 @@ pub enum SheepWoolColor {
 }
 
 #[inject_fields(EntityLike, MobLike)]
-pub struct Zombie /*extends EntityLike<EntityResource.Zombie>, MobLike*/ {}
+pub struct Zombie {}
 
 #[inject_fields(EntityLike, MobLike)]
-pub struct Creeper /*extends EntityLike<EntityResource.Creeper>, MobLike*/ {}
+pub struct Creeper {}
 
 #[inject_fields(EntityLike, MobLike)]
-pub struct Skeleton /*extends EntityLike<EntityResource.Skeleton>, MobLike*/ {}
+pub struct Skeleton {}
 
 #[inject_fields(EntityLike, MobLike)]
-pub struct Spider /*extends EntityLike<EntityResource.Spider>, MobLike*/ {}
+pub struct Spider {}
 
 #[inject_fields(EntityLike, MobLike)]
-pub struct PigZombie /*extends EntityLike<EntityResource.PigZombie>, MobLike*/ {}
+pub struct PigZombie {}
 
 #[allow(non_snake_case)]
 #[inject_fields(EntityLike)]
-pub struct ItemEntity /*extends EntityLike<EntityResource.ItemEntity>*/ {
+pub struct ItemEntity {
     Health: ShortTag,
     Age: ShortTag,
     Item: Item,
 }
 
 #[inject_fields(EntityLike)]
-pub struct PrimedTNT /*extends EntityLike<EntityResource.PrimedTnt>*/ {}
+pub struct PrimedTNT {}
 
 #[inject_fields(EntityLike)]
-pub struct FallingTile /*extends EntityLike<EntityResource.FallingTile>*/ {}
+pub struct FallingTile {}
 
 #[inject_fields(EntityLike)]
-pub struct Arrow /*extends EntityLike<EntityResource.Arrow>*/ {}
+pub struct Arrow {}
 
 #[inject_fields(EntityLike)]
-pub struct Snowball /*extends EntityLike<EntityResource.Snowball>*/ {}
+pub struct Snowball {}
 
 #[inject_fields(EntityLike)]
-pub struct ThrownEgg /*extends EntityLike<EntityResource.ThrownEgg>*/ {}
+pub struct ThrownEgg {}
 
 #[inject_fields(EntityLike)]
-pub struct Painting /*extends EntityLike<EntityResource.Painting>*/ {}
+pub struct Painting {}
 
 pub enum EntityResource { // these first four are all actually `0`, this needs to be fixed with a `Into<u8>` block, or something similar.
     Particle = 0,
