@@ -1,96 +1,138 @@
-import type { BooleanTag, ByteTag, ShortTag, IntTag, FloatTag } from "nbtify";
-import type { Item, SlottedItem } from "./item.js";
+use injectables::{inject_fields, injectable};
 
-export type Entity<K extends keyof EntityNameMap = keyof EntityNameMap> = EntityNameMap[K];
+use crate::java::indev::item::{Item, SlottedItem};
+use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag, StringTag};
 
-export interface EntityNameMap {
-  Arrow: Arrow;
-  Creeper: Creeper;
-  Giant: Giant;
-  Item: ItemEntity;
-  LocalPlayer: LocalPlayer;
-  Painting: Painting;
-  Pig: Pig;
-  PrimedTnt: PrimedTnt;
-  Skeleton: Skeleton;
-  Spider: Spider;
-  Zombie: Zombie;
+pub enum Entity {
+    Arrow(Arrow),
+    Creeper(Creeper),
+    Giant(Giant),
+    Item(ItemEntity),
+    LocalPlayer(LocalPlayer),
+    Painting(Painting),
+    Pig(Pig),
+    PrimedTnt(PrimedTnt),
+    Skeleton(Skeleton),
+    Spider(Spider),
+    Zombie(Zombie),
 }
 
-export interface Arrow extends EntityLike<EntityResource.Arrow> {
-  inGround: BooleanTag;
-  inTile: BooleanTag;
-  shake: BooleanTag;
-  xTile: ShortTag;
-  yTile: ShortTag;
-  zTile: ShortTag;
+#[allow(non_snake_case)]
+#[injectable]
+pub struct EntityLike {
+    Air: ShortTag,
+    FallDistance: FloatTag,
+    Fire: ShortTag,
+    Motion: [FloatTag; 3],
+    Pos: [FloatTag; 3],
+    Rotation: [FloatTag; 2],
+    id: StringTag, // should this be generic for `EntityResource`?
 }
 
-export interface Creeper extends EntityLike<EntityResource.Creeper>, MobLike {}
-
-export interface Giant extends EntityLike<EntityResource.Giant>, MobLike {}
-
-export interface ItemEntity extends EntityLike<EntityResource.Item> {
-  Age: ShortTag;
-  Item: Item;
+#[allow(non_snake_case)]
+#[injectable]
+pub struct MobLike {
+    AttackTime: ShortTag,
+    DeathTime: ShortTag,
+    Health: ShortTag,
+    HurtTime: ShortTag,
 }
 
-export interface LocalPlayer extends EntityLike<EntityResource.LocalPlayer>, MobLike {
-  Score: IntTag;
-  Inventory: SlottedItem[];
+#[allow(non_snake_case)]
+#[inject_fields(EntityLike)]
+pub struct Arrow {
+    inGround: BooleanTag,
+    inTile: BooleanTag,
+    shake: BooleanTag,
+    xTile: ShortTag,
+    yTile: ShortTag,
+    zTile: ShortTag,
+}
+
+#[inject_fields(EntityLike, MobLike)]
+pub struct Creeper {}
+
+#[inject_fields(EntityLike, MobLike)]
+pub struct Giant {}
+
+#[allow(non_snake_case)]
+#[inject_fields(EntityLike)]
+pub struct ItemEntity {
+    Age: ShortTag,
+    Item: Item,
+}
+
+#[allow(non_snake_case)]
+#[inject_fields(EntityLike, MobLike)]
+pub struct LocalPlayer {
+    Score: IntTag,
+    Inventory: ListTag<SlottedItem>,
 }
 
 // yeah weird that it's moblike, I know
-export interface Painting extends EntityLike<EntityResource.Painting>, Omit<MobLike, "Health"> {
-  Dir: ByteTag<PaintingDirection>;
-  Motive: PaintingVariant;
-  TileY: IntTag;
-  TileZ: IntTag;
+#[allow(non_snake_case)]
+#[inject_fields(EntityLike, Omit<MobLike, "Health">)]
+pub struct Painting {
+    Dir: ByteTag<PaintingDirection>,
+    Motive: PaintingVariant,
+    TileY: IntTag,
+    TileZ: IntTag,
 }
 
-export type PaintingDirection = 0 | 1 | 2 | 3;
-
-export type PaintingVariant = "Alban" | "Aztec" | "Aztec2" | "Bomb" | "Bust" | "Courbet" | "Kebab" | "Match" | "Plant" | "Pool" | "Sea" | "SkullAndRoses" | "Stage" | "Void" | "Wanderer" | "Wasteland";
-
-export interface Pig extends EntityLike<EntityResource.Pig>, MobLike {}
-
-export interface Skeleton extends EntityLike<EntityResource.Skeleton>, MobLike {}
-
-export interface Spider extends EntityLike<EntityResource.Spider>, MobLike {}
-
-export interface PrimedTnt extends EntityLike<EntityResource.PrimedTnt>, Omit<MobLike, "Health"> {
-  Fuse: ByteTag;
+pub enum PaintingDirection {
+    East = 0,
+    North,
+    West,
+    South,
 }
 
-export interface Zombie extends EntityLike<EntityResource.Zombie>, MobLike {}
-
-export interface MobLike {
-  AttackTime: ShortTag;
-  DeathTime: ShortTag;
-  Health: ShortTag;
-  HurtTime: ShortTag;
+pub enum PaintingVariant {
+    Alban,
+    Aztec,
+    Aztec2,
+    Bomb,
+    Bust,
+    Courbet,
+    Kebab,
+    Match,
+    Plant,
+    Pool,
+    Sea,
+    SkullAndRoses,
+    Stage,
+    Void,
+    Wanderer,
+    Wasteland,
 }
 
-export interface EntityLike<EntityID extends string> {
-  Air: ShortTag;
-  FallDistance: FloatTag;
-  Fire: ShortTag;
-  Motion: [FloatTag, FloatTag, FloatTag];
-  Pos: [FloatTag, FloatTag, FloatTag];
-  Rotation: [FloatTag, FloatTag];
-  id: `${EntityID}`;
+#[inject_fields(EntityLike, MobLike)]
+pub struct Pig {}
+
+#[inject_fields(EntityLike, MobLike)]
+pub struct Skeleton {}
+
+#[inject_fields(EntityLike, MobLike)]
+pub struct Spider {}
+
+#[allow(non_snake_case)]
+#[inject_fields(EntityLike, Omit<MobLike, "Health">)]
+pub struct PrimedTnt {
+    Fuse: ByteTag,
 }
 
-export enum EntityResource {
-  Arrow = "Arrow",
-  Creeper = "Creeper",
-  Giant = "Giant",
-  Item = "Item",
-  LocalPlayer = "LocalPlayer",
-  Painting = "Painting",
-  Pig = "Pig",
-  PrimedTnt = "PrimedTnt",
-  Skeleton = "Skeleton",
-  Spider = "Spider",
-  Zombie = "Zombie",
+#[inject_fields(EntityLike, MobLike)]
+pub struct Zombie {}
+
+pub enum EntityResource {
+    Arrow,
+    Creeper,
+    Giant,
+    Item,
+    LocalPlayer,
+    Painting,
+    Pig,
+    PrimedTnt,
+    Skeleton,
+    Spider,
+    Zombie,
 }

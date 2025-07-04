@@ -1,39 +1,42 @@
-import type { ByteTag, ShortTag, IntTag, LongTag, StringTag, ByteArrayTag } from "nbtify";
-import type { BlockEntity } from "./block-entity.js";
-import type { Entity } from "./entity.js";
+use crate::java::indev::{block_entity::BlockEntity, entity::Entity};
+use crate::nbt::tag::{ByteArrayTag, ByteTag, IntTag, ListTag, LongTag, ShortTag, StringTag};
 
-export interface Level {
-  Environment: Environment;
-  Map: Map;
-  TileEntities: BlockEntity[];
-  About: About;
-  Entities: Entity[];
+#[allow(non_snake_case)]
+pub struct Level {
+    Environment: Environment,
+    Map: Map,
+    TileEntities: ListTag<BlockEntity>,
+    About: About,
+    Entities: ListTag<Entity>,
 }
 
-export interface Environment {
-  SurroundingGroundHeight: ShortTag;
-  TimeOfDay: ShortTag;
-  CloudHeight: ShortTag;
-  CloudColor: IntTag;
-  SkyBrightness: ByteTag;
-  SkyColor: IntTag;
-  FogColor: IntTag;
-  SurroundingWaterHeight: ShortTag;
-  SurroundingGroundType: ByteTag;
-  SurroundingWaterType: ByteTag;
+#[allow(non_snake_case)]
+pub struct Environment {
+    SurroundingGroundHeight: ShortTag,
+    TimeOfDay: ShortTag,
+    CloudHeight: ShortTag,
+    CloudColor: IntTag,
+    SkyBrightness: ByteTag,
+    SkyColor: IntTag,
+    FogColor: IntTag,
+    SurroundingWaterHeight: ShortTag,
+    SurroundingGroundType: ByteTag,
+    SurroundingWaterType: ByteTag,
 }
 
-export interface Map {
-  Blocks: ByteArrayTag;
-  Length: ShortTag;
-  Height: ShortTag;
-  Data: ByteArrayTag;
-  Width: ShortTag;
-  Spawn: [ShortTag, ShortTag, ShortTag];
+#[allow(non_snake_case)]
+pub struct Map {
+    Blocks: ByteArrayTag,
+    Length: ShortTag,
+    Height: ShortTag,
+    Data: ByteArrayTag,
+    Width: ShortTag,
+    Spawn: [ShortTag; 3],
 }
 
-export interface About {
-  Author: StringTag;
-  CreatedOn: LongTag;
-  Name: StringTag;
+#[allow(non_snake_case)]
+pub struct About {
+    Author: StringTag,
+    CreatedOn: LongTag,
+    Name: StringTag,
 }

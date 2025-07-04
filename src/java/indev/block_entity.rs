@@ -1,29 +1,34 @@
-import type { ShortTag, IntTag } from "nbtify";
-import type { SlottedItem } from "./item.js";
+use injectables::inject_fields;
 
-export type BlockEntity<K extends keyof BlockEntityNameMap = keyof BlockEntityNameMap> = BlockEntityNameMap[K];
+use crate::java::indev::item::SlottedItem;
+use crate::nbt::tag::{IntTag, ListTag, StringTag};
 
-export interface BlockEntityNameMap {
-  Chest: Chest;
-  Furnace: Furnace;
+pub enum BlockEntity {
+    Chest(Chest),
+    Furnace(Furnace),
 }
 
-export interface Chest extends BlockEntityLike<BlockEntityResource.Chest> {
-  Items: SlottedItem[];
+#[allow(non_snake_case)]
+pub struct BlockEntityLike {
+    Pos: IntTag, // not a tuple, interestingly enough, just a composed int of some sort, I think you have to use math to get the actual coordinates out of the value
+    id: StringTag, // should this be a generic of `BlockEntityResource`?
 }
 
-export interface Furnace extends BlockEntityLike<BlockEntityResource.Furnace> {
-  BurnTime: ShortTag;
-  CookTime: ShortTag;
-  Items: [SlottedItem?, SlottedItem?, SlottedItem?];
+#[allow(non_snake_case)]
+#[inject_fields(BlockEntityLike)]
+pub struct Chest {
+    Items: ListTag<SlottedItem>,
 }
 
-export interface BlockEntityLike<BlockEntityID extends string> {
-  Pos: IntTag; // not a tuple, interestingly enough, just a composed int of some sort, I think you have to use math to get the actual coordinates out of the value
-  id: `${BlockEntityID}`;
+#[allow(non_snake_case)]
+#[inject_fields(BlockEntityLike)]
+pub struct Furnace {
+    BurnTime: ShortTag,
+    CookTime: ShortTag,
+    Items: [Option<SlottedItem>; 3],
 }
 
-export enum BlockEntityResource {
-  Chest = "Chest",
-  Furnace = "Furnace"
+pub enum BlockEntityResource {
+    Chest,
+    Furnace,
 }
