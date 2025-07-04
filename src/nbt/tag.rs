@@ -28,7 +28,7 @@ pub type DoubleTag = f64;
 pub struct ByteArrayTag(Vec<i8>);
 pub type StringTag<T: Into<String> = String> = T;
 pub type ListTag<T: TagLike> = Vec<T>;
-pub type CompoundTag = HashMap<String, Tag>;
+pub type CompoundTag<T: TagLike = Tag> = HashMap<String, T>;
 pub struct IntArrayTag(Vec<i32>);
 pub struct LongArrayTag(Vec<i64>);
 
