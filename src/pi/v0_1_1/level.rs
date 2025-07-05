@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use crate::nbt::tag::{IntTag, ListTag, LongTag, StringTag};
 use crate::pi::v0_1_1::{
     entity::{Entity, Player},
@@ -5,6 +7,7 @@ use crate::pi::v0_1_1::{
 };
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct LevelDat {
     pub GameType: IntTag<GameMode>,
     pub LastPlayed: LongTag,
@@ -22,21 +25,25 @@ pub struct LevelDat {
     pub spawnMobs: IntTag<SpawnMobs>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum GameMode {
     Survival = 0,
     Creative,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum StorageVersion {
     Version = 3,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum SpawnMobs {
     True = 0,
     False,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct EntityDat {
     pub Entities: ListTag<Entity>,
     pub TileEntities: ListTag<TileEntity>,

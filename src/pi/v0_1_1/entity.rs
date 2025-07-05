@@ -1,6 +1,9 @@
+use serde::{Deserialize, Serialize};
+
 use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag};
 use crate::pi::v0_1_1::{dimension::DimensionID, item::Item};
 
+#[derive(Serialize, Deserialize)]
 pub enum Entity {
     Particle(Particle),
     Player(Player),
@@ -25,6 +28,7 @@ pub enum Entity {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct EntityLike /*<EntityID extends number | undefined>*/ {
     pub id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
     pub Pos: [FloatTag; 3],
@@ -37,6 +41,7 @@ pub struct EntityLike /*<EntityID extends number | undefined>*/ {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct MobLike {
     pub AttackTime: ShortTag,
     pub DeathTime: ShortTag,
@@ -45,17 +50,23 @@ pub struct MobLike {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct AnimalLike {
     pub Age: IntTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Particle {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
     pub Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
     pub Dimension: IntTag<DimensionID>,
@@ -70,6 +81,7 @@ pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct PlayerAbilities {
     pub mayfly: BooleanTag,
     pub flying: BooleanTag,
@@ -78,41 +90,62 @@ pub struct PlayerAbilities {
     pub instabuild: BooleanTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct TripodCamera {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct CameraEntity {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Chicken {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
+    #[serde(flatten)]
     pub animal_like: AnimalLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Cow {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
+    #[serde(flatten)]
     pub animal_like: AnimalLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Pig {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
+    #[serde(flatten)]
     pub animal_like: AnimalLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Sheep {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
+    #[serde(flatten)]
     pub animal_like: AnimalLike,
     pub Sheared: BooleanTag,
     pub Color: ByteTag<SheepWoolColor>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum SheepWoolColor {
     White = 0,
     Orange,
@@ -132,63 +165,93 @@ pub enum SheepWoolColor {
     Black,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Zombie {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Creeper {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Skeleton {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Spider {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct PigZombie {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct ItemEntity {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
     pub Health: ShortTag,
     pub Age: ShortTag,
     pub Item: Item,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct PrimedTNT {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct FallingTile {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Arrow {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Snowball {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct ThrownEgg {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Painting {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum EntityResource {
     // these first four are all actually `0`, this needs to be fixed with a `Into<u8>` block, or something similar.
     Particle = 0,

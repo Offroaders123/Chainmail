@@ -1,6 +1,9 @@
+use serde::{Deserialize, Serialize};
+
 use crate::nbt::tag::{ByteTag, ShortTag};
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Item {
     pub id: ShortTag<ItemResource>, // how to wrap this enum as a number like you can for a string with template literals?
     pub Damage: ShortTag,
@@ -8,6 +11,7 @@ pub struct Item {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum ItemResource {
     iron_shovel = 256,
     iron_pickaxe,
