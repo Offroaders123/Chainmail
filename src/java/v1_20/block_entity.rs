@@ -1,5 +1,3 @@
-use injectables::{inject_fields, injectable};
-
 use crate::java::v1_20::{
     block::{BlockResource, BlockState},
     entity::Entity,
@@ -51,7 +49,7 @@ pub enum BlockEntity {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike, CustomNameableLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct Banner {
     Patterns: ListTag<BannerPattern>,
 }
@@ -128,11 +126,11 @@ pub enum BannerPatternResource {
     pig,
 }
 
-#[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, ChestLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, ChestLike)]
 pub struct Barrel {}
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike, CustomNameableLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct Beacon {
     Lock: Option<StringTag>,
     Levels: IntTag<BeaconLevel>,
@@ -154,7 +152,7 @@ pub enum BeaconEffectID {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Beehive {
     Bees: ListTag<BeehiveEntity>,
     FlowerPos: BeehiveFlower,
@@ -175,7 +173,7 @@ pub struct BeehiveFlower {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
 pub struct BlastFurnace {
     RecipesUsed: BlastFurnaceRecipesUsed,
 }
@@ -186,7 +184,7 @@ pub struct BlastFurnace {
 pub type BlastFurnaceRecipesUsed = CompoundTag<IntTag>; // temp, look at comment above
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike, CustomNameableLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct BrewingStand {
     BrewTime: ShortTag,
     Fuel: ByteTag<BrewingStandFuelLevel>,
@@ -218,24 +216,24 @@ pub enum BrewingStandFuelLevel {
     Twenty,
 }
 
-#[inject_fields(BlockEntityLike, LootTableLike)]
+// #[inject_fields(BlockEntityLike, LootTableLike)]
 pub struct BrushableBlock {
     item: Option<Item>, // Should this be uppercase? The wiki showed lowercase
 }
 
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct CalibratedSculkSensor {
     // This one doesn't have documention yet :P
 }
 
-#[inject_fields(BlockEntityLike, CampfireLike)]
+// #[inject_fields(BlockEntityLike, CampfireLike)]
 pub struct Campfire {}
 
-#[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, ChestLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, ChestLike)]
 pub struct Chest {}
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct ChiseledBookshelf {
     Items: [Option<Item>; 6], // 0-5, with slot tag
     last_interacted_slot: IntTag<ChiseledBookshelfLastInteractedSlot>,
@@ -252,13 +250,13 @@ pub enum ChiseledBookshelfLastInteractedSlot {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Comparator {
     OutputSignal: IntTag,
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike, CustomNameableLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct CommandBlock {
     auto: BooleanTag,
     Command: StringTag,
@@ -272,22 +270,22 @@ pub struct CommandBlock {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Conduit {
     Target: Option<IntArrayTag>, // `UUIDLike`
 }
 
-#[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, DispenserLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, DispenserLike)]
 pub struct Dispenser {}
 
-#[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, DispenserLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, DispenserLike)]
 pub struct Dropper {}
 
-#[inject_fields(BlockEntityLike, CustomNameableLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct EnchantingTable {}
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct EndGateway {
     Age: LongTag,
     ExactTeleport: BooleanTag,
@@ -297,7 +295,7 @@ pub struct EndGateway {
 pub type EndGatewayExitPortal = [IntTag; 3];
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
 pub struct Furnace {
     RecipesUsed: FurnaceRecipesUsed,
 }
@@ -307,11 +305,11 @@ pub struct Furnace {
 // }
 pub type FurnaceRecipesUsed = CompoundTag<IntTag>;
 
-#[inject_fields(BlockEntityLike, SignLike)]
+// #[inject_fields(BlockEntityLike, SignLike)]
 pub struct HangingSign {}
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike)]
 pub struct Hopper {
     Items: [Option<Item>; 5], // 0-4, with slot tag
     Lock: Option<StringTag>,
@@ -331,7 +329,7 @@ pub enum HopperTransferCooldown {
     Eight,
 }
 
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Jigsaw {
     final_state: StringTag<BlockResource>,
     joint: StringTag<JigsawJoint>,
@@ -347,7 +345,7 @@ pub enum JigsawJoint {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Jukebox {
     IsPlaying: BooleanTag,
     RecordItem: Item, // maybe only music disc items at the type level? optional?
@@ -356,17 +354,16 @@ pub struct Jukebox {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Lectern {
     Book: Option<Item>,
     Page: IntTag,
 }
 
-#[inject_fields(BlockEntityLike, MobSpawnerLike)]
+// #[inject_fields(BlockEntityLike, MobSpawnerLike)]
 pub struct MobSpawner {}
 
 #[allow(non_snake_case)]
-#[injectable]
 // Double check that some of these properties are mandatory; the wiki doesn't quite specify, but it make it sound like they could be optional.
 pub struct MobSpawnerLike {
     Delay: ShortTag,
@@ -401,7 +398,7 @@ pub enum MobSpawnerLightLimit {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Piston {
     blockState: BlockState, // I think this is just the raw `BlockState` type, not totally sure though? Might be a wrapper? I don't think so though.
     extending: BooleanTag,
@@ -419,7 +416,7 @@ pub enum PistonFacing {
     East,
 }
 
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct SculkCatalyst {
     charges: ListTag<SculkCatalystCharge>,
 }
@@ -459,24 +456,24 @@ pub enum SculkCatalystFacing {
     down,
 }
 
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct SculkSensor {
     // Can't find documentation about the Block Data here
 }
 
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct SculkShrieker {
     // Can't find documentation about the Block Data here
 }
 
-#[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, ChestLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, ChestLike)]
 pub struct ShulkerBox {}
 
-#[inject_fields(BlockEntityLike, SignLike)]
+// #[inject_fields(BlockEntityLike, SignLike)]
 pub struct Sign {}
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Skull {
     note_block_sound: Option<StringTag>, // "The sound event this skull plays when played with a note block." probably should be typed to a Resource Location :)
     ExtraType: StringTag,
@@ -537,7 +534,7 @@ pub enum SkinModel {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
 pub struct Smoker {
     RecipesUsed: SmokerRecipesUsed,
 }
@@ -547,11 +544,11 @@ pub struct Smoker {
 // }
 pub type SmokerRecipesUsed = CompoundTag<IntTag>;
 
-#[inject_fields(BlockEntityLike, CampfireLike)]
+// #[inject_fields(BlockEntityLike, CampfireLike)]
 pub struct SoulCampfire {}
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct StructureBlock {
     author: StringTag,
     ignoreEntities: BooleanTag,
@@ -594,11 +591,10 @@ pub enum StructureBlockRotation {
     COUNTERCLOCKWISE_90,
 }
 
-#[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, ChestLike)]
+// #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, ChestLike)]
 pub struct TrappedChest {}
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct CampfireLike {
     // `IntArrayTag<[number, number, number, number]>`
     CookingTimes: IntArrayTag,
@@ -607,27 +603,23 @@ pub struct CampfireLike {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct ChestLike {
     Items: ListTag<Item>, // 0-26, with slot tag
     Lock: Option<StringTag>,
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct CustomNameableLike {
     CustomName: Option<StringTag>, // JSON text component
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct DispenserLike {
     Items: ListTag<Item>, // 0-8, with slot tag
     Lock: Option<StringTag>,
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct FurnaceLike {
     BurnTime: ShortTag,
     CookTime: ShortTag,
@@ -637,13 +629,11 @@ pub struct FurnaceLike {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct LootTableLike {
     LootTable: Option<StringTag>, // `LootTableResource`
     LootTableSeed: Option<LongTag>,
 }
 
-#[injectable]
 pub struct SignLike {
     is_waxed: BooleanTag,
     front_text: SignText,
@@ -678,7 +668,6 @@ pub enum SignColor {
 
 // <BlockEntityID extends string>
 #[allow(non_snake_case)]
-#[injectable]
 pub struct BlockEntityLike {
     id: StringTag, // `BlockEntityResource`?
     keepPacked: BooleanTag,

@@ -1,10 +1,7 @@
-use injectables::injectable;
-
 use crate::java::indev::block::BlockResource;
 use crate::nbt::tag::{ByteTag, ShortTag};
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct Item {
     id: ShortTag<ItemId>,
     Count: ByteTag,
@@ -17,7 +14,6 @@ pub enum ItemId {
 }
 
 #[allow(non_snake_case)]
-#[injectable(Item)]
 pub struct SlottedItem {
     Slot: ByteTag,
 }

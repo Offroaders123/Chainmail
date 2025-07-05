@@ -1,5 +1,3 @@
-use injectables::{inject_fields, injectable};
-
 use crate::java::indev::item::{Item, SlottedItem};
 use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag, StringTag};
 
@@ -18,7 +16,6 @@ pub enum Entity {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct EntityLike {
     Air: ShortTag,
     FallDistance: FloatTag,
@@ -30,7 +27,6 @@ pub struct EntityLike {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct MobLike {
     AttackTime: ShortTag,
     DeathTime: ShortTag,
@@ -39,7 +35,7 @@ pub struct MobLike {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct Arrow {
     inGround: BooleanTag,
     inTile: BooleanTag,
@@ -49,21 +45,21 @@ pub struct Arrow {
     zTile: ShortTag,
 }
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Creeper {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Giant {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct ItemEntity {
     Age: ShortTag,
     Item: Item,
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct LocalPlayer {
     Score: IntTag,
     Inventory: ListTag<SlottedItem>,
@@ -71,7 +67,7 @@ pub struct LocalPlayer {
 
 // yeah weird that it's moblike, I know
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike, Omit<MobLike, "Health">)]
+// #[inject_fields(EntityLike, Omit<MobLike, "Health">)]
 pub struct Painting {
     Dir: ByteTag<PaintingDirection>,
     Motive: PaintingVariant,
@@ -105,22 +101,22 @@ pub enum PaintingVariant {
     Wasteland,
 }
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Pig {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Skeleton {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Spider {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike, Omit<MobLike, "Health">)]
+// #[inject_fields(EntityLike, Omit<MobLike, "Health">)]
 pub struct PrimedTnt {
     Fuse: ByteTag,
 }
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Zombie {}
 
 pub enum EntityResource {

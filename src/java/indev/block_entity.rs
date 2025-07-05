@@ -1,7 +1,5 @@
-use injectables::inject_fields;
-
 use crate::java::indev::item::SlottedItem;
-use crate::nbt::tag::{IntTag, ListTag, StringTag};
+use crate::nbt::tag::{IntTag, ListTag, ShortTag, StringTag};
 
 pub enum BlockEntity {
     Chest(Chest),
@@ -15,13 +13,13 @@ pub struct BlockEntityLike {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Chest {
     Items: ListTag<SlottedItem>,
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(BlockEntityLike)]
+// #[inject_fields(BlockEntityLike)]
 pub struct Furnace {
     BurnTime: ShortTag,
     CookTime: ShortTag,

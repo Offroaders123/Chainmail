@@ -1,5 +1,3 @@
-use injectables::{inject_fields, injectable};
-
 use crate::java::alpha::{
     block::BlockResource,
     dimension::DimensionID,
@@ -37,7 +35,6 @@ pub enum Entity {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct EntityLike {
     id: StringTag, // should this be generic to `EntityResource`?
     Pos: [DoubleTag; 3],
@@ -50,7 +47,6 @@ pub struct EntityLike {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct MobLike {
     AttackTime: ShortTag,
     DeathTime: ShortTag,
@@ -59,7 +55,6 @@ pub struct MobLike {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct ProjectileLike {
     xTile: ShortTag,
     yTile: ShortTag,
@@ -88,38 +83,38 @@ pub struct Player {
     Inventory: ListTag<SlottedItem>,
 }
 
-#[inject_fields(EntityLike, ProjectileLike)]
+// #[inject_fields(EntityLike, ProjectileLike)]
 pub struct Arrow {}
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct Boat {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Chicken {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Cow {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Creeper {}
 
-#[inject_fields(EntityLike, ProjectileLike)]
+// #[inject_fields(EntityLike, ProjectileLike)]
 pub struct Egg {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct FallingSand {
     Tile: ByteTag<BlockResource>,
 }
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Ghast {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Giant {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct ItemEntity {
     Health: ShortTag,
     Age: ShortTag,
@@ -127,7 +122,7 @@ pub struct ItemEntity {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct Minecart {
     Type: ByteTag<MinecartVariant>,
     // Only for Furnace Minecart variant
@@ -145,7 +140,7 @@ pub enum MinecartVariant {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct Painting {
     Dir: ByteTag<PaintingDirection>,
     Motive: PaintingVariant,
@@ -181,42 +176,42 @@ pub enum PaintingVariant {
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Pig {
     Saddle: BooleanTag,
 }
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct PigZombie {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct PrimedTnt {
     Fuse: ByteTag,
 }
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Sheep {
     Sheared: BooleanTag,
 }
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Skeleton {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Slime {
     Size: IntTag,
 }
 
-#[inject_fields(EntityLike, ProjectileLike)]
+// #[inject_fields(EntityLike, ProjectileLike)]
 pub struct Snowball {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Spider {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Zombie {}
 
 pub enum EntityResource {

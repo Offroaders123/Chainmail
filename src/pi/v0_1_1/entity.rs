@@ -1,5 +1,3 @@
-use injectables::{inject_fields, injectable};
-
 use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag};
 use crate::pi::v0_1_1::{dimension::DimensionID, item::Item};
 
@@ -27,7 +25,6 @@ pub enum Entity {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct EntityLike /*<EntityID extends number | undefined>*/ {
     id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
     Pos: [FloatTag; 3],
@@ -40,7 +37,6 @@ pub struct EntityLike /*<EntityID extends number | undefined>*/ {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct MobLike {
     AttackTime: ShortTag,
     DeathTime: ShortTag,
@@ -49,16 +45,15 @@ pub struct MobLike {
 }
 
 #[allow(non_snake_case)]
-#[injectable]
 pub struct AnimalLike {
     Age: IntTag,
 }
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct Particle {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
     Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
     Dimension: IntTag<DimensionID>,
@@ -81,23 +76,23 @@ pub struct PlayerAbilities {
     instabuild: BooleanTag,
 }
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct TripodCamera {}
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct CameraEntity {}
 
-#[inject_fields(EntityLike, MobLike, AnimalLike)]
+// #[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Chicken {}
 
-#[inject_fields(EntityLike, MobLike, AnimalLike)]
+// #[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Cow {}
 
-#[inject_fields(EntityLike, MobLike, AnimalLike)]
+// #[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Pig {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike, MobLike, AnimalLike)]
+// #[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Sheep {
     Sheared: BooleanTag,
     Color: ByteTag<SheepWoolColor>,
@@ -122,45 +117,45 @@ pub enum SheepWoolColor {
     Black,
 }
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Zombie {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Creeper {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Skeleton {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct Spider {}
 
-#[inject_fields(EntityLike, MobLike)]
+// #[inject_fields(EntityLike, MobLike)]
 pub struct PigZombie {}
 
 #[allow(non_snake_case)]
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct ItemEntity {
     Health: ShortTag,
     Age: ShortTag,
     Item: Item,
 }
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct PrimedTNT {}
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct FallingTile {}
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct Arrow {}
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct Snowball {}
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct ThrownEgg {}
 
-#[inject_fields(EntityLike)]
+// #[inject_fields(EntityLike)]
 pub struct Painting {}
 
 pub enum EntityResource {
