@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+use serde::{Deserialize, Serialize};
+
 pub enum Tag {
     Boolean(BooleanTag),
     Byte(ByteTag),
@@ -25,6 +27,7 @@ pub type IntTag<T: Into<i32> = i32> = T;
 pub type LongTag = i64;
 pub type FloatTag = f32;
 pub type DoubleTag = f64;
+#[derive(Serialize, Deserialize)]
 pub struct ByteArrayTag(Vec<i8>);
 pub type StringTag<T: Into<String> = String> = T;
 pub type ListTag<T: TagLike> = Vec<T>;

@@ -1,25 +1,32 @@
+use serde::{Deserialize, Serialize};
+
 use crate::java::alpha::block::BlockResource;
 use crate::nbt::tag::{ByteTag, ShortTag};
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Item {
     pub id: ShortTag<ItemId>,
     pub Damage: ShortTag,
     pub Count: ByteTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum ItemId {
     Block(BlockResource),
     Item(ItemResource),
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct SlottedItem {
+    #[serde(flatten)]
     pub item_like: Item,
     pub Slot: ByteTag, // Inv slot number
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum ItemResource {
     // Indev
     iron_shovel = 256,

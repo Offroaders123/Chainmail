@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use crate::java::alpha::{
     block::BlockResource,
     dimension::DimensionID,
@@ -7,6 +9,7 @@ use crate::nbt::tag::{
     BooleanTag, ByteTag, DoubleTag, FloatTag, IntTag, ListTag, ShortTag, StringTag,
 };
 
+#[derive(Serialize, Deserialize)]
 pub enum Entity {
     // Player(Player), // I'm speculating; not sure where this should be defined
     Arrow(Arrow),
@@ -35,6 +38,7 @@ pub enum Entity {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct EntityLike {
     pub id: StringTag, // should this be generic to `EntityResource`?
     pub Pos: [DoubleTag; 3],
@@ -47,6 +51,7 @@ pub struct EntityLike {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct MobLike {
     pub AttackTime: ShortTag,
     pub DeathTime: ShortTag,
@@ -55,6 +60,7 @@ pub struct MobLike {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct ProjectileLike {
     pub xTile: ShortTag,
     pub yTile: ShortTag,
@@ -66,6 +72,7 @@ pub struct ProjectileLike {
 
 // needs to be 'subclassed' with the new interfaces
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Player {
     pub Dimension: IntTag<DimensionID>,
     pub Pos: [DoubleTag; 3],
@@ -83,53 +90,80 @@ pub struct Player {
     pub Inventory: ListTag<SlottedItem>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Arrow {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub projectile_like: ProjectileLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Boat {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Chicken {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Cow {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Creeper {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Egg {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub projectile_like: ProjectileLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct FallingSand {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
     pub Tile: ByteTag<BlockResource>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Ghast {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Giant {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct ItemEntity {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
     pub Health: ShortTag,
     pub Age: ShortTag,
@@ -137,7 +171,9 @@ pub struct ItemEntity {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Minecart {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
     pub Type: ByteTag<MinecartVariant>,
     // Only for Furnace Minecart variant
@@ -148,6 +184,7 @@ pub struct Minecart {
     pub Items: Option<ListTag<SlottedItem>>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum MinecartVariant {
     Empty = 0,
     Chest,
@@ -155,7 +192,9 @@ pub enum MinecartVariant {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Painting {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
     pub Dir: ByteTag<PaintingDirection>,
     pub Motive: PaintingVariant,
@@ -164,6 +203,7 @@ pub struct Painting {
     pub TileZ: IntTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum PaintingDirection {
     East = 0,
     North,
@@ -171,6 +211,7 @@ pub enum PaintingDirection {
     South,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum PaintingVariant {
     Alban,
     Aztec,
@@ -191,57 +232,84 @@ pub enum PaintingVariant {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Pig {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
     pub Saddle: BooleanTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct PigZombie {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct PrimedTnt {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
     pub Fuse: ByteTag,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Sheep {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
     pub Sheared: BooleanTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Skeleton {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Slime {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
     pub Size: IntTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Snowball {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub projectile_like: ProjectileLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Spider {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Zombie {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum EntityResource {
     // Player, // I'm speculating; unknown if this is defined here
     Arrow,
