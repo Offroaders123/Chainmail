@@ -5,6 +5,3 @@ edition = "2024"
 
 [lib]
 name = "chainmail"
-
-[dependencies]
-injectables = "0.1.0"
