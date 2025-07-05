@@ -1,6 +1,9 @@
+use serde::{Deserialize, Serialize};
+
 use crate::java::indev::item::{Item, SlottedItem};
 use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag, StringTag};
 
+#[derive(Serialize, Deserialize)]
 pub enum Entity {
     Arrow(Arrow),
     Creeper(Creeper),
@@ -16,6 +19,7 @@ pub enum Entity {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct EntityLike {
     pub Air: ShortTag,
     pub FallDistance: FloatTag,
@@ -27,6 +31,7 @@ pub struct EntityLike {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct MobLike {
     pub AttackTime: ShortTag,
     pub DeathTime: ShortTag,
@@ -35,7 +40,9 @@ pub struct MobLike {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Arrow {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
     pub inGround: BooleanTag,
     pub inTile: BooleanTag,
@@ -45,26 +52,37 @@ pub struct Arrow {
     pub zTile: ShortTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Creeper {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Giant {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct ItemEntity {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
     pub Age: ShortTag,
     pub Item: Item,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct LocalPlayer {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
     pub Score: IntTag,
     pub Inventory: ListTag<SlottedItem>,
@@ -72,8 +90,10 @@ pub struct LocalPlayer {
 
 // yeah weird that it's moblike, I know
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Painting {
     // <--------- this needs to be adjusted!!! paintings don't have the Health property, but they are MobLike
+    #[serde(flatten)]
     pub entity_like: EntityLike, // Omit<MobLike, "Health">
     pub Dir: ByteTag<PaintingDirection>,
     pub Motive: StringTag<PaintingVariant>,
@@ -81,6 +101,7 @@ pub struct Painting {
     pub TileZ: IntTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum PaintingDirection {
     East = 0,
     North,
@@ -88,6 +109,7 @@ pub enum PaintingDirection {
     South,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum PaintingVariant {
     Alban,
     Aztec,
@@ -107,30 +129,44 @@ pub enum PaintingVariant {
     Wasteland,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Pig {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Skeleton {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Spider {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct PrimedTnt {
     // <--------- this needs to be adjusted!!! paintings don't have the Health property, but they are MobLike
+    #[serde(flatten)]
     pub entity_like: EntityLike, // Omit<MobLike, "Health">
     pub Fuse: ByteTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Zombie {
+    #[serde(flatten)]
     pub entity_like: EntityLike,
+    #[serde(flatten)]
     pub mob_like: MobLike,
 }
 

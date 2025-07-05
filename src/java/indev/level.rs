@@ -1,7 +1,10 @@
+use serde::{Deserialize, Serialize};
+
 use crate::java::indev::{block_entity::BlockEntity, entity::Entity};
 use crate::nbt::tag::{ByteArrayTag, ByteTag, IntTag, ListTag, LongTag, ShortTag, StringTag};
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Level {
     pub Environment: Environment,
     pub Map: Map,
@@ -11,6 +14,7 @@ pub struct Level {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Environment {
     pub SurroundingGroundHeight: ShortTag,
     pub TimeOfDay: ShortTag,
@@ -25,6 +29,7 @@ pub struct Environment {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Map {
     pub Blocks: ByteArrayTag,
     pub Length: ShortTag,
@@ -35,6 +40,7 @@ pub struct Map {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct About {
     pub Author: StringTag,
     pub CreatedOn: LongTag,
