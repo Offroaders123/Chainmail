@@ -197,7 +197,7 @@ pub struct Painting {
     #[serde(flatten)]
     pub entity_like: EntityLike,
     pub Dir: ByteTag<PaintingDirection>,
-    pub Motive: PaintingVariant,
+    pub Motive: StringTag<PaintingVariant>,
     pub TileX: IntTag, // This isn't in Indev...? It appears to be in modern versions though, so..
     pub TileY: IntTag,
     pub TileZ: IntTag,

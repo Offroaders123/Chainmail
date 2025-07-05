@@ -76,7 +76,7 @@ pub struct Painting {
     // <--------- this needs to be adjusted!!! paintings don't have the Health property, but they are MobLike
     pub entity_like: EntityLike, // Omit<MobLike, "Health">
     pub Dir: ByteTag<PaintingDirection>,
-    pub Motive: PaintingVariant,
+    pub Motive: StringTag<PaintingVariant>,
     pub TileY: IntTag,
     pub TileZ: IntTag,
 }
