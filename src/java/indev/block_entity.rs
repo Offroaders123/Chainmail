@@ -13,14 +13,14 @@ pub struct BlockEntityLike {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(BlockEntityLike)]
 pub struct Chest {
+    pub block_entity_like: BlockEntityLike,
     pub Items: ListTag<SlottedItem>,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(BlockEntityLike)]
 pub struct Furnace {
+    pub block_entity_like: BlockEntityLike,
     pub BurnTime: ShortTag,
     pub CookTime: ShortTag,
     pub Items: [Option<SlottedItem>; 3],

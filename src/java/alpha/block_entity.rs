@@ -17,29 +17,29 @@ pub struct BlockEntityLike {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(BlockEntityLike)]
 pub struct Chest {
+    pub block_entity_like: BlockEntityLike,
     pub Items: SlottedItem,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(BlockEntityLike)]
 pub struct Furnace {
+    pub block_entity_like: BlockEntityLike,
     pub BurnTime: ShortTag,
     pub CookTime: ShortTag,
     pub Items: [Option<SlottedItem>; 3],
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(BlockEntityLike)]
 pub struct MobSpawner {
+    pub block_entity_like: BlockEntityLike,
     pub EntityId: StringTag<EntityResource>,
     pub Delay: ShortTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(BlockEntityLike)]
 pub struct Sign {
+    pub block_entity_like: BlockEntityLike,
     pub Text1: StringTag,
     pub Text2: StringTag,
     pub Text3: StringTag,

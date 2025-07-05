@@ -83,47 +83,62 @@ pub struct Player {
     pub Inventory: ListTag<SlottedItem>,
 }
 
-// #[inject_fields(EntityLike, ProjectileLike)]
-pub struct Arrow {}
+pub struct Arrow {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct Boat {}
+pub struct Boat {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Chicken {}
+pub struct Chicken {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Cow {}
+pub struct Cow {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Creeper {}
+pub struct Creeper {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, ProjectileLike)]
-pub struct Egg {}
+pub struct Egg {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct FallingSand {
+    pub entity_like: EntityLike,
     pub Tile: ByteTag<BlockResource>,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Ghast {}
+pub struct Ghast {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Giant {}
+pub struct Giant {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct ItemEntity {
+    pub entity_like: EntityLike,
     pub Health: ShortTag,
     pub Age: ShortTag,
     pub Item: Item,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct Minecart {
+    pub entity_like: EntityLike,
     pub Type: ByteTag<MinecartVariant>,
     // Only for Furnace Minecart variant
     pub PushX: Option<DoubleTag>,
@@ -140,8 +155,8 @@ pub enum MinecartVariant {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct Painting {
+    pub entity_like: EntityLike,
     pub Dir: ByteTag<PaintingDirection>,
     pub Motive: PaintingVariant,
     pub TileX: IntTag, // This isn't in Indev...? It appears to be in modern versions though, so..
@@ -176,43 +191,56 @@ pub enum PaintingVariant {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Pig {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub Saddle: BooleanTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct PigZombie {}
+pub struct PigZombie {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct PrimedTnt {
+    pub entity_like: EntityLike,
     pub Fuse: ByteTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Sheep {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub Sheared: BooleanTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Skeleton {}
+pub struct Skeleton {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Slime {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub Size: IntTag,
 }
 
-// #[inject_fields(EntityLike, ProjectileLike)]
-pub struct Snowball {}
+pub struct Snowball {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Spider {}
+pub struct Spider {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Zombie {}
+pub struct Zombie {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 pub enum EntityResource {
     // Player, // I'm speculating; unknown if this is defined here

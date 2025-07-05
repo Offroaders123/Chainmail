@@ -1,7 +1,7 @@
 use crate::{
     java::v1_20::{
         block::{BlockResource, BlockState},
-        block_entity::BlockEntity,
+        block_entity::{BlockEntity, MobSpawnerLike},
         dimension::DimensionResource,
         effect::{Effect, EffectID},
         item::Item,
@@ -411,8 +411,8 @@ pub struct TradeOptionLike {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(TradeOptionLike)]
 pub struct VillagerTradeOption {
+    pub trade_option_like: TradeOptionLike,
     pub demand: IntTag,
     pub priceMultiplier: FloatTag,
     pub specialPrice: IntTag,
@@ -581,8 +581,9 @@ pub type ScoreboardTag = String; // I think this was/is eventually meant to be a
 // Tags for all entities, except the id, CustomName and CustomNameVisible
 // Tags for all mobs, except HandItems, ArmorItems, HandDropChances, ArmorDropChances, CanPickUpLoot, PersistenceRequired and Leash
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Player {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub abilities: Abilities,
     pub DataVersion: IntTag,
     pub Dimension: StringTag<DimensionResource>,
@@ -682,8 +683,9 @@ pub enum WardenWarningLevel {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Allay {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub CanDuplicate: BooleanTag,
     pub DuplicationCooldown: LongTag,
     pub Inventory: [Option<Item>; 1],
@@ -724,8 +726,11 @@ pub struct AllayVibrationListenerSourceEntity {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike, BucketableLike)]
 pub struct Axolotl {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub bucketable_like: BucketableLike,
     pub Variant: IntTag<AxolotlVariant>,
 }
 
@@ -739,14 +744,18 @@ pub enum AxolotlVariant {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Bat {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub BatFlags: BooleanTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike, AngeredLike)]
 pub struct Bee {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub angered_like: AngeredLike,
     pub CannotEnterHiveTicks: IntTag,
     pub CropsGrownSincePollination: IntTag,
     pub FlowerPos: BeePositionLike,
@@ -763,17 +772,26 @@ pub struct BeePositionLike {
     pub Z: IntTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Blaze {}
+pub struct Blaze {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike, HorseLike)]
 pub struct Camel {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub horse_like: HorseLike,
     pub LastPoseTick: LongTag,
 }
 
-// #[inject_fields(EntityLike, MobLike, BreedableLike, TameableLike, CollaredLike)]
 pub struct Cat {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub tameable_like: TameableLike,
+    pub collared_like: CollaredLike,
     pub variant: StringTag<CatVariant>,
 }
 
@@ -793,25 +811,36 @@ pub enum CatVariant {
     jellie,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct CaveSpider {}
+pub struct CaveSpider {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Chicken {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub EggLayTime: IntTag,
     pub IsChickenJockey: BooleanTag,
 }
 
-// #[inject_fields(EntityLike, MobLike, BucketableLike)]
-pub struct Cod {}
+pub struct Cod {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub bucketable_like: BucketableLike,
+}
 
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
-pub struct Cow {}
+pub struct Cow {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Creeper {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub ExplosionRadius: ByteTag,
     pub Fuse: ShortTag,
     pub ignited: BooleanTag,
@@ -819,8 +848,9 @@ pub struct Creeper {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Dolphin {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub CanFindTreasure: BooleanTag,
     pub GotFish: BooleanTag,
     pub TreasurePosX: IntTag,
@@ -829,21 +859,30 @@ pub struct Dolphin {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike, HorseLike)]
 pub struct Donkey {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub horse_like: HorseLike,
     pub ChestedHorse: BooleanTag,
     pub Items: Option<ListTag<Item>>, // only if `!!ChestedHorse`, with slot tag, 2-16
 }
 
-// #[inject_fields(EntityLike, MobLike, ZombieLike)]
-pub struct Drowned {}
+pub struct Drowned {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub zombie_like: ZombieLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct ElderGuardian {}
+pub struct ElderGuardian {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct EnderDragon {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub DragonPhase: IntTag<EnderDragonPhase>,
 }
 
@@ -862,8 +901,10 @@ pub enum EnderDragonPhase {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, AngeredLike)]
 pub struct Enderman {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub angered_like: AngeredLike,
     // Another funky block state shape
     pub carriedBlockState: Option<CarriedBlockState>,
 }
@@ -875,20 +916,25 @@ pub struct CarriedBlockState {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Endermite {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub Lifetime: IntTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, RaidLike)]
 pub struct Evoker {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub raid_like: RaidLike,
     pub SpellTicks: IntTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Fox {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub Crouching: BooleanTag,
     pub Sitting: BooleanTag,
     pub Sleeping: BooleanTag,
@@ -903,8 +949,10 @@ pub enum FoxType {
     snow,
 }
 
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Frog {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub variant: StringTag<FrogVariant>,
 }
 
@@ -917,34 +965,44 @@ pub enum FrogVariant {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Ghast {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub ExplosionPower: ByteTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Giant {}
+pub struct Giant {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct GlowSquid {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub DarkTicksRemaining: IntTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Goat {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub HasLeftHorn: BooleanTag,
     pub HasRightHorn: BooleanTag,
     pub IsScreamingGoat: BooleanTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Guardian {}
+pub struct Guardian {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike, HorseLike)]
 pub struct Horse {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub horse_like: HorseLike,
     pub ArmorItem: Option<Item>, // Only one of the Horse Armor types, so should be something like `Item<`minecraft:${string}_horse_armor`>`.
     pub Variant: IntTag<HorseVariant>,
 }
@@ -992,30 +1050,42 @@ pub enum HorseVariant {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike, PiglinLike)]
 pub struct Hoglin {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub piglin_like: PiglinLike,
     pub CannotBeHunted: BooleanTag,
 }
 
-// #[inject_fields(EntityLike, MobLike, ZombieLike)]
-pub struct Husk {}
+pub struct Husk {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub zombie_like: ZombieLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, RaidLike)]
 pub struct Illusioner {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub raid_like: RaidLike,
     pub SpellTicks: IntTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, AngeredLike)]
 pub struct IronGolem {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub angered_like: AngeredLike,
     pub PlayerCreated: BooleanTag,
 }
 
 // I think `HorseLike` could be narrowed a little bit so it can better allow for Llama crossover types.
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Llama {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub Bred: BooleanTag,
     pub ChestedHorse: BooleanTag,
     pub DecorItem: Option<Item>, // Typically a Carpet, without the Slot tag.
@@ -1045,12 +1115,17 @@ pub enum LlamaStrength {
     Five,
 }
 
-// #[inject_fields(EntityLike, MobLike, SlimeLike)]
-pub struct MagmaCube {}
+pub struct MagmaCube {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub slime_like: SlimeLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Mooshroom {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub EffectDuration: Option<IntTag>,
     pub EffectId: Option<ByteTag<EffectID>>,
     pub Type: StringTag<MooshroomType>,
@@ -1064,21 +1139,28 @@ pub enum MooshroomType {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike, HorseLike)]
 pub struct Mule {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub horse_like: HorseLike,
     pub ChestedHorse: BooleanTag,
     pub Items: Option<ListTag<Item>>, // only if `!!ChestedHorse`, and slot tag numbered 2-16.
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Ocelot {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub Trusting: BooleanTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Panda {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub HiddenGene: StringTag<PandaGene>,
     pub MainGene: StringTag<PandaGene>,
 }
@@ -1096,8 +1178,10 @@ pub enum PandaGene {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, TameableLike)]
 pub struct Parrot {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub tameable_like: TameableLike,
     pub Variant: IntTag<ParrotVariant>,
 }
 
@@ -1111,40 +1195,59 @@ pub enum ParrotVariant {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Phantom {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub AX: IntTag,
     pub AY: IntTag,
     pub AZ: IntTag,
     pub Size: IntTag,
 }
 
-// #[inject_fields(EntityLike, MobLike, BreedableLike, SaddledLike)]
-pub struct Pig {}
+pub struct Pig {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub saddled_like: SaddledLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, AngeredLike)]
 pub struct Piglin {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub angered_like: AngeredLike,
     pub CannotHunt: BooleanTag,
     pub Inventory: ListTag<Item>, // 8 items, with slot tag
     pub IsBaby: Option<BooleanTag>,
 }
 
-// #[inject_fields(EntityLike, MobLike, AngeredLike, PiglinLike)]
-pub struct PiglinBrute {}
+pub struct PiglinBrute {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub angered_like: AngeredLike,
+    pub piglin_like: PiglinLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, RaidLike)]
 pub struct Pillager {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub raid_like: RaidLike,
     pub Inventory: ListTag<Item>, // Currently unused, is it optional?
 }
 
-// #[inject_fields(EntityLike, MobLike, BreedableLike, AngeredLike)]
-pub struct PolarBear {}
+pub struct PolarBear {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub angered_like: AngeredLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BucketableLike)]
 pub struct Pufferfish {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub bucketable_like: BucketableLike,
     pub PuffState: IntTag<PufferfishPuffState>,
 }
 
@@ -1155,8 +1258,10 @@ pub enum PufferfishPuffState {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Rabbit {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub MoreCarrotTicks: IntTag,
     pub RabbitType: IntTag<RabbitType>,
 }
@@ -1174,19 +1279,26 @@ pub enum RabbitType {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, RaidLike)]
 pub struct Ravager {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub raid_like: RaidLike,
     pub AttackTick: IntTag,
     pub RoarTick: IntTag,
     pub StunTick: IntTag,
 }
 
-// #[inject_fields(EntityLike, MobLike, BucketableLike)]
-pub struct Salmon {}
+pub struct Salmon {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub bucketable_like: BucketableLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Sheep {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub Color: ByteTag<SheepColor>,
     pub Sheared: BooleanTag,
 }
@@ -1211,8 +1323,9 @@ pub enum SheepColor {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Shulker {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub APX: IntTag,
     pub APY: IntTag,
     pub APZ: IntTag,
@@ -1249,56 +1362,83 @@ pub enum ShulkerColor {
     Default,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Silverfish {}
+pub struct Silverfish {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Skeleton {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub StrayConversionTime: IntTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike, HorseLike)]
 pub struct SkeletonHorse {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub horse_like: HorseLike,
     pub SkeletonTrap: BooleanTag,
     pub SkeletonTrapTime: IntTag,
 }
 
-// #[inject_fields(EntityLike, MobLike, SlimeLike)]
-pub struct Slime {}
+pub struct Slime {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub slime_like: SlimeLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct SnowGolem {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub Pumpkin: BooleanTag,
 }
 
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
-pub struct Sniffer {}
+pub struct Sniffer {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Spider {}
+pub struct Spider {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Squid {}
+pub struct Squid {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Stray {}
+pub struct Stray {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike, BreedableLike, SaddledLike)]
-pub struct Strider {}
+pub struct Strider {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub saddled_like: SaddledLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BucketableLike)]
 pub struct Tadpole {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub bucketable_like: BucketableLike,
     pub Age: IntTag,
 }
 
 // I think `HorseLike` could be narrowed a little bit so it can better allow for Llama crossover types.
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct TraderLlama {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub Bred: BooleanTag,
     pub ChestedHorse: BooleanTag,
     pub DecorItem: Option<Item>, // Typically a Carpet, without the Slot tag.
@@ -1313,16 +1453,20 @@ pub struct TraderLlama {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BucketableLike)]
 pub struct TropicalFish {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub bucketable_like: BucketableLike,
     pub Variant: IntTag<TropicalFishVariant>,
 }
 
 pub type TropicalFishVariant = i32; // <https://minecraft.wiki/w/Tropical_Fish#Entity_data>
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct Turtle {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub HasEgg: BooleanTag,
     pub HomePosX: IntTag,
     pub HomePosY: IntTag,
@@ -1333,8 +1477,9 @@ pub struct Turtle {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Vex {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub BoundX: IntTag,
     pub BoundY: IntTag,
     pub BoundZ: IntTag,
@@ -1342,8 +1487,11 @@ pub struct Vex {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, VillagerLike, BreedableLike)]
 pub struct Villager {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub villager_like: VillagerLike,
+    pub breedable_like: BreedableLike,
     pub Inventory: ListTag<Item>, // 8 slots, with slot tag.
     pub LastRestock: LongTag,
     pub LastGossipDecay: LongTag,
@@ -1352,14 +1500,18 @@ pub struct Villager {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, RaidLike)]
 pub struct Vindicator {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub raid_like: RaidLike,
     pub Johnny: Option<BooleanTag>,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, BreedableLike)]
 pub struct WanderingTrader {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
     pub DespawnDelay: IntTag,
     pub Inventory: ListTag<Item>, // 8 slots, with slot tag, unused
     pub Offers: Option<WanderingTraderOffers>,
@@ -1379,8 +1531,9 @@ pub struct WanderTarget {
     pub Z: IntTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Warden {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub anger: WardenAnger,
 }
 
@@ -1393,58 +1546,82 @@ pub struct WardenAngerSuspect {
     pub uuid: IntArrayTag, // `UUIDLike`
 }
 
-// #[inject_fields(EntityLike, MobLike, RaidLike)]
-pub struct Witch {}
+pub struct Witch {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub raid_like: RaidLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Wither {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub Invul: IntTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct WitherSkeleton {}
+pub struct WitherSkeleton {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(
-//     EntityLike,
-//     MobLike,
-//     BreedableLike,
-//     TameableLike,
-//     AngeredLike,
-//     CollaredLike
-// )]
 pub struct Wolf {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub tameable_like: TameableLike,
+    pub angered_like: AngeredLike,
+    pub collared_like: CollaredLike,
     // v1.20.5
     // pub armor: BooleanTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Zoglin {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub isBaby: Option<BooleanTag>,
 }
 
-// #[inject_fields(EntityLike, MobLike, ZombieLike)]
-pub struct Zombie {}
+pub struct Zombie {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub zombie_like: ZombieLike,
+}
 
-// #[inject_fields(EntityLike, MobLike, BreedableLike, HorseLike)]
-pub struct ZombieHorse {}
+pub struct ZombieHorse {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub breedable_like: BreedableLike,
+    pub horse_like: HorseLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, VillagerLike, ZombieLike)]
 pub struct ZombieVillager {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub villager_like: VillagerLike,
+    pub zombie_like: ZombieLike,
     pub ConversionTime: IntTag,
     pub ConcersionPlayer: IntArrayTag, // `UUIDLike`
 }
 
-// #[inject_fields(EntityLike, MobLike, AngeredLike, ZombieLike)]
-pub struct ZombifiedPiglin {}
+pub struct ZombifiedPiglin {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub angered_like: AngeredLike,
+    pub zombie_like: ZombieLike,
+}
 
-// #[inject_fields(EntityLike, BoatLike)]
-pub struct Boat {}
+pub struct Boat {
+    pub entity_like: EntityLike,
+    pub boat_like: BoatLike,
+}
 
-// #[inject_fields(EntityLike, BoatLike, ContainerEntityLike)]
-pub struct ChestBoat {}
+pub struct ChestBoat {
+    pub entity_like: EntityLike,
+    pub boat_like: BoatLike,
+    pub container_entity_like: ContainerEntityLike,
+}
 
 #[allow(non_snake_case)]
 pub struct BoatLike {
@@ -1464,29 +1641,38 @@ pub enum BoatType {
     bamboo,
 }
 
-// #[inject_fields(EntityLike, MinecartLike)]
-pub struct Minecart {}
+pub struct Minecart {
+    pub entity_like: EntityLike,
+    pub minecart_like: MinecartLike,
+}
 
-// #[inject_fields(EntityLike, MinecartLike, ContainerEntityLike)]
-pub struct ChestMinecart {}
+pub struct ChestMinecart {
+    pub entity_like: EntityLike,
+    pub minecart_like: MinecartLike,
+    pub container_entity_like: ContainerEntityLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MinecartLike)]
 pub struct FurnaceMinecart {
+    pub entity_like: EntityLike,
+    pub minecart_like: MinecartLike,
     pub Fuel: ShortTag,
     pub PushX: DoubleTag,
     pub PushZ: DoubleTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MinecartLike)]
 pub struct TNTMinecart {
+    pub entity_like: EntityLike,
+    pub minecart_like: MinecartLike,
     pub TNTFuse: IntTag,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MinecartLike, ContainerEntityLike)]
 pub struct HopperMinecart {
+    pub entity_like: EntityLike,
+    pub minecart_like: MinecartLike,
+    pub container_entity_like: ContainerEntityLike,
     pub Enabled: BooleanTag,
     pub TransferCooldown: IntTag<HopperMinecartTransferCooldown>, // is this deprecated, or rather removed? can no longer find it on the wiki
 }
@@ -1503,13 +1689,17 @@ pub enum HopperMinecartTransferCooldown {
     Eight,
 }
 
-// #[inject_fields(EntityLike, MinecartLike, MobSpawnerLike)]
-pub struct SpawnerMinecart {}
+pub struct SpawnerMinecart {
+    pub entity_like: EntityLike,
+    pub minecart_like: MinecartLike,
+    pub mob_spawner_like: MobSpawnerLike,
+}
 
 // Should this inherit from `./block-entity - CommandBlockLike` of some sort? The wiki doesn't do this, and I'm curious if the docs for this don't match the current NBT, since this one is missing some of the Command Block-ish ones.
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MinecartLike)]
 pub struct CommandBlockMinecart {
+    pub entity_like: EntityLike,
+    pub minecart_like: MinecartLike,
     pub Command: StringTag,
     pub LastOutput: StringTag,
     pub SuccessCount: IntTag,
@@ -1530,8 +1720,8 @@ pub struct MinecartDisplayState {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct ItemEntity {
+    pub entity_like: EntityLike,
     pub Age: ShortTag,
     pub Health: ShortTag<ItemHealth>,
     pub Item: Item,
@@ -1550,24 +1740,30 @@ pub enum ItemHealth {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct ExperienceOrb {
+    pub entity_like: EntityLike,
     pub Age: ShortTag,
     pub Count: IntTag,
     pub Health: ShortTag,
     pub Value: ShortTag,
 }
 
-// #[inject_fields(EntityLike, ArrowLike)]
-pub struct Arrow {}
+pub struct Arrow {
+    pub entity_like: EntityLike,
+    pub arrow_like: ArrowLike,
+}
 
-// #[inject_fields(EntityLike, ArrowLike)]
-pub struct SpectralArrow {}
+pub struct SpectralArrow {
+    pub entity_like: EntityLike,
+    pub arrow_like: ArrowLike,
+}
 
 // How can the potion effect types be optionally added/defined only for tipped arrows? Just with `extends Partial<PotionEffectLike>`?
 #[allow(non_snake_case)]
-// #[inject_fields(ProjectileLike, PotionEffectLike)]
 pub struct ArrowLike {
+    // please move this to the use sites, rather than in this *-Like* type!!! <---------------------------------
+    pub projectile_like: ProjectileLike, // <-------------------
+    pub potion_effect_like: PotionEffectLike, // <----------------
     pub crit: BooleanTag,
     pub damage: DoubleTag,
     pub inBlockState: Option<ArrowBlockState>,
@@ -1593,8 +1789,10 @@ pub struct ArrowBlockState {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, ArrowLike, ProjectileLike)]
 pub struct Trident {
+    pub entity_like: EntityLike,
+    pub arrow_like: ArrowLike,
+    pub projectile_like: ProjectileLike,
     pub DealtDamage: BooleanTag,
     // I think the shape of this looks like this, the formatting on the wiki is a bit weird.
     pub Trident: TridentData,
@@ -1604,24 +1802,38 @@ pub struct TridentData {
     pub item: Item, // `minecraft:trident` Item, or `Item<"minecraft:trident">` essentially.
 }
 
-// #[inject_fields(EntityLike, ProjectileLike, ThrownItemLike)]
-pub struct Snowball {}
+pub struct Snowball {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+    pub thrown_item_like: ThrownItemLike,
+}
 
-// #[inject_fields(EntityLike, ProjectileLike, ThrownItemLike)]
-pub struct Egg {}
+pub struct Egg {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+    pub thrown_item_like: ThrownItemLike,
+}
 
-// #[inject_fields(EntityLike, ProjectileLike)]
-pub struct LlamaSpit {}
+pub struct LlamaSpit {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+}
 
-// #[inject_fields(EntityLike, ProjectileLike, ThrownItemLike)]
-pub struct EnderPearl {}
+pub struct EnderPearl {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+    pub thrown_item_like: ThrownItemLike,
+}
 
-// #[inject_fields(EntityLike, ThrownItemLike)]
-pub struct EyeOfEnder {}
+pub struct EyeOfEnder {
+    pub entity_like: EntityLike,
+    pub thrown_item_like: ThrownItemLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, ProjectileLike)]
 pub struct FireworkRocket {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
     pub FireworksItem: FireworksItem,
     pub Life: IntTag,
     pub LifeTime: IntTag,
@@ -1665,8 +1877,8 @@ pub enum FireworkShape {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct TNT {
+    pub entity_like: EntityLike,
     // looks like it has changed from one to the other at some point
     pub Fuse: ShortTag,
     pub fuse: ShortTag,
@@ -1681,8 +1893,8 @@ pub struct TNTBlockState {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct FallingBlock {
+    pub entity_like: EntityLike,
     // This is the same weird thing as `TNT`.
     pub BlockState: FallingBlockBlockState,
     pub CancelDrop: BooleanTag,
@@ -1700,23 +1912,28 @@ pub struct FallingBlockBlockState {
     pub Properties: Option<BlockState>,
 }
 
-// #[inject_fields(EntityLike)]
-pub struct FishingBobber {}
+pub struct FishingBobber {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct LightningBolt {}
+pub struct LightningBolt {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct LeashKnot {}
+pub struct LeashKnot {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike, HangableLike)]
 pub struct Painting {
+    pub entity_like: EntityLike,
+    pub hangable_like: HangableLike,
     pub variant: StringTag, // `PaintingVariant` union type
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, HangableLike)]
 pub struct ItemFrame {
+    pub entity_like: EntityLike,
+    pub hangable_like: HangableLike,
     pub Fixed: BooleanTag,
     pub Invisible: BooleanTag,
     pub Item: Option<Item>,
@@ -1726,8 +1943,9 @@ pub struct ItemFrame {
 
 // Is `MobLike`, except for `LeftHanded`, `DeathLootTable`, `DeathLootTableSeed`, `NoAI`, `Leash`, `CanPickUpLoot` and `PersistenceRequired`.
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct ArmorStand {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub DisabledSlots: IntTag,
     pub Invisible: BooleanTag,
     pub Marker: Option<BooleanTag>,
@@ -1750,22 +1968,31 @@ pub struct ArmorStandPose {
 pub type ArmorStandPoseEntry = [FloatTag; 3];
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, ProjectileLike, ThrownItemLike, FireballLike)]
 pub struct Fireball {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+    pub thrown_item_like: ThrownItemLike,
+    pub fireball_like: FireballLike,
     pub ExplosionPower: ByteTag,
 }
 
-// #[inject_fields(EntityLike, ProjectileLike, FireballLike)]
 pub struct WitherSkull {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+    pub thrown_item_like: FireballLike,
     pub dangerous: BooleanTag, // might want to be optional <https://minecraft.wiki/w/Wither#cite_ref-11>
 }
 
-// #[inject_fields(EntityLike, ProjectileLike, FireballLike)]
-pub struct DragonFireball {}
+pub struct DragonFireball {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
+    pub thrown_item_like: FireballLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, ProjectileLike)]
 pub struct ShulkerBullet {
+    pub entity_like: EntityLike,
+    pub projectile_like: ProjectileLike,
     pub Steps: IntTag,
     pub Target: IntArrayTag, // `UUIDLike`, `IntArrayTag<[number, number, number, number]>`
     pub TXD: DoubleTag,
@@ -1774,8 +2001,8 @@ pub struct ShulkerBullet {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct EndCrystal {
+    pub entity_like: EntityLike,
     pub BeamTarget: EndCrystalBeamTarget,
     pub ShowBottom: BooleanTag,
 }
@@ -1788,19 +2015,20 @@ pub struct EndCrystalBeamTarget {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct EvokerFangs {
+    pub entity_like: EntityLike,
     pub Owner: IntArrayTag, // `UUIDLike`
     pub Warmup: IntTag,
 }
 
-// #[inject_fields(EntityLike)]
 pub struct Marker {
+    pub entity_like: EntityLike,
     pub data: (), // `unknown`/`any` // <https://minecraft.wiki/w/Marker#Entity_data>
 }
 
-// #[inject_fields(EntityLike, DisplayLike)]
 pub struct ItemDisplay {
+    pub entity_like: EntityLike,
+    pub display_like: DisplayLike,
     pub item_display: StringTag<ItemDisplayModel>,
 }
 
@@ -1817,13 +2045,15 @@ pub enum ItemDisplayModel {
     fixed,
 }
 
-// #[inject_fields(EntityLike, DisplayLike)]
 pub struct BlockDisplay {
+    pub entity_like: EntityLike,
+    pub display_like: DisplayLike,
     pub block_state: BlockState,
 }
 
-// #[inject_fields(EntityLike, DisplayLike)]
 pub struct TextDisplay {
+    pub entity_like: EntityLike,
+    pub display_like: DisplayLike,
     pub alignment: StringTag<TextDisplayAlignment>,
     pub background: IntTag,
     pub default_background: BooleanTag,
@@ -1841,8 +2071,8 @@ pub enum TextDisplayAlignment {
     right,
 }
 
-// #[inject_fields(EntityLike)]
 pub struct Interaction {
+    pub entity_like: EntityLike,
     pub width: FloatTag,
     pub height: FloatTag,
     pub response: BooleanTag,

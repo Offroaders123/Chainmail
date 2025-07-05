@@ -49,12 +49,14 @@ pub struct AnimalLike {
     pub Age: IntTag,
 }
 
-// #[inject_fields(EntityLike)]
-pub struct Particle {}
+pub struct Particle {
+    pub entity_like: EntityLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
     pub Dimension: IntTag<DimensionID>,
     pub Inventory: ListTag<Item>, // slot tag for sure
@@ -76,24 +78,37 @@ pub struct PlayerAbilities {
     pub instabuild: BooleanTag,
 }
 
-// #[inject_fields(EntityLike)]
-pub struct TripodCamera {}
+pub struct TripodCamera {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct CameraEntity {}
+pub struct CameraEntity {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike, MobLike, AnimalLike)]
-pub struct Chicken {}
+pub struct Chicken {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub animal_like: AnimalLike,
+}
 
-// #[inject_fields(EntityLike, MobLike, AnimalLike)]
-pub struct Cow {}
+pub struct Cow {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub animal_like: AnimalLike,
+}
 
-// #[inject_fields(EntityLike, MobLike, AnimalLike)]
-pub struct Pig {}
+pub struct Pig {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub animal_like: AnimalLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Sheep {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+    pub animal_like: AnimalLike,
     pub Sheared: BooleanTag,
     pub Color: ByteTag<SheepWoolColor>,
 }
@@ -117,46 +132,62 @@ pub enum SheepWoolColor {
     Black,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Zombie {}
+pub struct Zombie {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Creeper {}
+pub struct Creeper {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Skeleton {}
+pub struct Skeleton {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Spider {}
+pub struct Spider {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct PigZombie {}
+pub struct PigZombie {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct ItemEntity {
+    pub entity_like: EntityLike,
     pub Health: ShortTag,
     pub Age: ShortTag,
     pub Item: Item,
 }
 
-// #[inject_fields(EntityLike)]
-pub struct PrimedTNT {}
+pub struct PrimedTNT {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct FallingTile {}
+pub struct FallingTile {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct Arrow {}
+pub struct Arrow {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct Snowball {}
+pub struct Snowball {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct ThrownEgg {}
+pub struct ThrownEgg {
+    pub entity_like: EntityLike,
+}
 
-// #[inject_fields(EntityLike)]
-pub struct Painting {}
+pub struct Painting {
+    pub entity_like: EntityLike,
+}
 
 pub enum EntityResource {
     // these first four are all actually `0`, this needs to be fixed with a `Into<u8>` block, or something similar.

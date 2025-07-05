@@ -14,8 +14,8 @@ pub enum ItemId {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(Item)]
 pub struct SlottedItem {
+    pub item_like: Item,
     pub Slot: ByteTag, // Inv slot number
 }
 

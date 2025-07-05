@@ -35,8 +35,8 @@ pub struct MobLike {
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct Arrow {
+    pub entity_like: EntityLike,
     pub inGround: BooleanTag,
     pub inTile: BooleanTag,
     pub shake: BooleanTag,
@@ -45,30 +45,36 @@ pub struct Arrow {
     pub zTile: ShortTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Creeper {}
+pub struct Creeper {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Giant {}
+pub struct Giant {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike)]
 pub struct ItemEntity {
+    pub entity_like: EntityLike,
     pub Age: ShortTag,
     pub Item: Item,
 }
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, MobLike)]
 pub struct LocalPlayer {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
     pub Score: IntTag,
     pub Inventory: ListTag<SlottedItem>,
 }
 
 // yeah weird that it's moblike, I know
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, Omit<MobLike, "Health">)]
 pub struct Painting {
+    // <--------- this needs to be adjusted!!! paintings don't have the Health property, but they are MobLike
+    pub entity_like: EntityLike, // Omit<MobLike, "Health">
     pub Dir: ByteTag<PaintingDirection>,
     pub Motive: PaintingVariant,
     pub TileY: IntTag,
@@ -101,23 +107,32 @@ pub enum PaintingVariant {
     Wasteland,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Pig {}
+pub struct Pig {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Skeleton {}
+pub struct Skeleton {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Spider {}
+pub struct Spider {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 #[allow(non_snake_case)]
-// #[inject_fields(EntityLike, Omit<MobLike, "Health">)]
 pub struct PrimedTnt {
+    // <--------- this needs to be adjusted!!! paintings don't have the Health property, but they are MobLike
+    pub entity_like: EntityLike, // Omit<MobLike, "Health">
     pub Fuse: ByteTag,
 }
 
-// #[inject_fields(EntityLike, MobLike)]
-pub struct Zombie {}
+pub struct Zombie {
+    pub entity_like: EntityLike,
+    pub mob_like: MobLike,
+}
 
 pub enum EntityResource {
     Arrow,
