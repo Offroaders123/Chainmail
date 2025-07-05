@@ -2,9 +2,9 @@ use crate::nbt::tag::{ByteTag, ShortTag};
 
 #[allow(non_snake_case)]
 pub struct Item {
-    id: ShortTag<ItemResource>, // how to wrap this enum as a number like you can for a string with template literals?
-    Damage: ShortTag,
-    Count: ByteTag,
+    pub id: ShortTag<ItemResource>, // how to wrap this enum as a number like you can for a string with template literals?
+    pub Damage: ShortTag,
+    pub Count: ByteTag,
 }
 
 #[allow(non_camel_case_types)]

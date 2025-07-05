@@ -3,15 +3,15 @@ use crate::nbt::tag::{BooleanTag, ByteArrayTag, IntTag, ListTag, LongTag};
 
 #[allow(non_snake_case)]
 pub struct Chunk {
-    xPos: IntTag,
-    zPos: IntTag,
-    TerrainPopulated: BooleanTag,
-    LastUpdate: LongTag,
-    Blocks: ByteArrayTag,
-    Data: ByteArrayTag,
-    BlockLight: ByteArrayTag,
-    SkyLight: ByteArrayTag,
-    HeightMap: ByteArrayTag,
-    Entities: ListTag<Entity>,
-    TileEntities: ListTag<BlockEntity>,
+    pub xPos: IntTag,
+    pub zPos: IntTag,
+    pub TerrainPopulated: BooleanTag,
+    pub LastUpdate: LongTag,
+    pub Blocks: ByteArrayTag,
+    pub Data: ByteArrayTag,
+    pub BlockLight: ByteArrayTag,
+    pub SkyLight: ByteArrayTag,
+    pub HeightMap: ByteArrayTag,
+    pub Entities: ListTag<Entity>,
+    pub TileEntities: ListTag<BlockEntity>,
 }

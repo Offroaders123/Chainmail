@@ -26,27 +26,27 @@ pub enum Entity {
 
 #[allow(non_snake_case)]
 pub struct EntityLike /*<EntityID extends number | undefined>*/ {
-    id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
-    Pos: [FloatTag; 3],
-    Motion: [FloatTag; 3], // doesn't seem to mention optional
-    Rotation: [FloatTag; 2],
-    FallDistance: FloatTag,
-    Fire: ShortTag,
-    Air: ShortTag,
-    OnGround: BooleanTag,
+    pub id: IntTag<EntityResource>, // id: EntityID extends number ? IntTag<EntityID> : EntityID;
+    pub Pos: [FloatTag; 3],
+    pub Motion: [FloatTag; 3], // doesn't seem to mention optional
+    pub Rotation: [FloatTag; 2],
+    pub FallDistance: FloatTag,
+    pub Fire: ShortTag,
+    pub Air: ShortTag,
+    pub OnGround: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 pub struct MobLike {
-    AttackTime: ShortTag,
-    DeathTime: ShortTag,
-    Health: ShortTag,
-    HurtTime: ShortTag,
+    pub AttackTime: ShortTag,
+    pub DeathTime: ShortTag,
+    pub Health: ShortTag,
+    pub HurtTime: ShortTag,
 }
 
 #[allow(non_snake_case)]
 pub struct AnimalLike {
-    Age: IntTag,
+    pub Age: IntTag,
 }
 
 // #[inject_fields(EntityLike)]
@@ -55,25 +55,25 @@ pub struct Particle {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike, MobLike)]
 pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
-    Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
-    Dimension: IntTag<DimensionID>,
-    Inventory: ListTag<Item>, // slot tag for sure
-    Score: IntTag,
-    Sleeping: BooleanTag,
-    SleepTimer: ShortTag,
-    SpawnX: IntTag,
-    SpawnY: IntTag,
-    SpawnZ: IntTag,
-    abilities: PlayerAbilities,
+    pub Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
+    pub Dimension: IntTag<DimensionID>,
+    pub Inventory: ListTag<Item>, // slot tag for sure
+    pub Score: IntTag,
+    pub Sleeping: BooleanTag,
+    pub SleepTimer: ShortTag,
+    pub SpawnX: IntTag,
+    pub SpawnY: IntTag,
+    pub SpawnZ: IntTag,
+    pub abilities: PlayerAbilities,
 }
 
 #[allow(non_snake_case)]
 pub struct PlayerAbilities {
-    mayfly: BooleanTag,
-    flying: BooleanTag,
-    invulnerable: BooleanTag,
-    mayBuild: BooleanTag,
-    instabuild: BooleanTag,
+    pub mayfly: BooleanTag,
+    pub flying: BooleanTag,
+    pub invulnerable: BooleanTag,
+    pub mayBuild: BooleanTag,
+    pub instabuild: BooleanTag,
 }
 
 // #[inject_fields(EntityLike)]
@@ -94,8 +94,8 @@ pub struct Pig {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike, MobLike, AnimalLike)]
 pub struct Sheep {
-    Sheared: BooleanTag,
-    Color: ByteTag<SheepWoolColor>,
+    pub Sheared: BooleanTag,
+    pub Color: ByteTag<SheepWoolColor>,
 }
 
 pub enum SheepWoolColor {
@@ -135,9 +135,9 @@ pub struct PigZombie {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike)]
 pub struct ItemEntity {
-    Health: ShortTag,
-    Age: ShortTag,
-    Item: Item,
+    pub Health: ShortTag,
+    pub Age: ShortTag,
+    pub Item: Item,
 }
 
 // #[inject_fields(EntityLike)]

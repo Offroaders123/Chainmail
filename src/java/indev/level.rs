@@ -3,40 +3,40 @@ use crate::nbt::tag::{ByteArrayTag, ByteTag, IntTag, ListTag, LongTag, ShortTag,
 
 #[allow(non_snake_case)]
 pub struct Level {
-    Environment: Environment,
-    Map: Map,
-    TileEntities: ListTag<BlockEntity>,
-    About: About,
-    Entities: ListTag<Entity>,
+    pub Environment: Environment,
+    pub Map: Map,
+    pub TileEntities: ListTag<BlockEntity>,
+    pub About: About,
+    pub Entities: ListTag<Entity>,
 }
 
 #[allow(non_snake_case)]
 pub struct Environment {
-    SurroundingGroundHeight: ShortTag,
-    TimeOfDay: ShortTag,
-    CloudHeight: ShortTag,
-    CloudColor: IntTag,
-    SkyBrightness: ByteTag,
-    SkyColor: IntTag,
-    FogColor: IntTag,
-    SurroundingWaterHeight: ShortTag,
-    SurroundingGroundType: ByteTag,
-    SurroundingWaterType: ByteTag,
+    pub SurroundingGroundHeight: ShortTag,
+    pub TimeOfDay: ShortTag,
+    pub CloudHeight: ShortTag,
+    pub CloudColor: IntTag,
+    pub SkyBrightness: ByteTag,
+    pub SkyColor: IntTag,
+    pub FogColor: IntTag,
+    pub SurroundingWaterHeight: ShortTag,
+    pub SurroundingGroundType: ByteTag,
+    pub SurroundingWaterType: ByteTag,
 }
 
 #[allow(non_snake_case)]
 pub struct Map {
-    Blocks: ByteArrayTag,
-    Length: ShortTag,
-    Height: ShortTag,
-    Data: ByteArrayTag,
-    Width: ShortTag,
-    Spawn: [ShortTag; 3],
+    pub Blocks: ByteArrayTag,
+    pub Length: ShortTag,
+    pub Height: ShortTag,
+    pub Data: ByteArrayTag,
+    pub Width: ShortTag,
+    pub Spawn: [ShortTag; 3],
 }
 
 #[allow(non_snake_case)]
 pub struct About {
-    Author: StringTag,
-    CreatedOn: LongTag,
-    Name: StringTag,
+    pub Author: StringTag,
+    pub CreatedOn: LongTag,
+    pub Name: StringTag,
 }

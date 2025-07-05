@@ -17,32 +17,32 @@ pub enum Entity {
 
 #[allow(non_snake_case)]
 pub struct EntityLike {
-    Air: ShortTag,
-    FallDistance: FloatTag,
-    Fire: ShortTag,
-    Motion: [FloatTag; 3],
-    Pos: [FloatTag; 3],
-    Rotation: [FloatTag; 2],
-    id: StringTag, // should this be generic for `EntityResource`?
+    pub Air: ShortTag,
+    pub FallDistance: FloatTag,
+    pub Fire: ShortTag,
+    pub Motion: [FloatTag; 3],
+    pub Pos: [FloatTag; 3],
+    pub Rotation: [FloatTag; 2],
+    pub id: StringTag, // should this be generic for `EntityResource`?
 }
 
 #[allow(non_snake_case)]
 pub struct MobLike {
-    AttackTime: ShortTag,
-    DeathTime: ShortTag,
-    Health: ShortTag,
-    HurtTime: ShortTag,
+    pub AttackTime: ShortTag,
+    pub DeathTime: ShortTag,
+    pub Health: ShortTag,
+    pub HurtTime: ShortTag,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike)]
 pub struct Arrow {
-    inGround: BooleanTag,
-    inTile: BooleanTag,
-    shake: BooleanTag,
-    xTile: ShortTag,
-    yTile: ShortTag,
-    zTile: ShortTag,
+    pub inGround: BooleanTag,
+    pub inTile: BooleanTag,
+    pub shake: BooleanTag,
+    pub xTile: ShortTag,
+    pub yTile: ShortTag,
+    pub zTile: ShortTag,
 }
 
 // #[inject_fields(EntityLike, MobLike)]
@@ -54,25 +54,25 @@ pub struct Giant {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike)]
 pub struct ItemEntity {
-    Age: ShortTag,
-    Item: Item,
+    pub Age: ShortTag,
+    pub Item: Item,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike, MobLike)]
 pub struct LocalPlayer {
-    Score: IntTag,
-    Inventory: ListTag<SlottedItem>,
+    pub Score: IntTag,
+    pub Inventory: ListTag<SlottedItem>,
 }
 
 // yeah weird that it's moblike, I know
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike, Omit<MobLike, "Health">)]
 pub struct Painting {
-    Dir: ByteTag<PaintingDirection>,
-    Motive: PaintingVariant,
-    TileY: IntTag,
-    TileZ: IntTag,
+    pub Dir: ByteTag<PaintingDirection>,
+    pub Motive: PaintingVariant,
+    pub TileY: IntTag,
+    pub TileZ: IntTag,
 }
 
 pub enum PaintingDirection {
@@ -113,7 +113,7 @@ pub struct Spider {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike, Omit<MobLike, "Health">)]
 pub struct PrimedTnt {
-    Fuse: ByteTag,
+    pub Fuse: ByteTag,
 }
 
 // #[inject_fields(EntityLike, MobLike)]

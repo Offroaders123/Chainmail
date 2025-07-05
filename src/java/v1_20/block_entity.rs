@@ -51,13 +51,13 @@ pub enum BlockEntity {
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct Banner {
-    Patterns: ListTag<BannerPattern>,
+    pub Patterns: ListTag<BannerPattern>,
 }
 
 #[allow(non_snake_case)]
 pub struct BannerPattern {
-    Color: IntTag<BannerPatternColor>,
-    Pattern: StringTag<BannerPatternResource>,
+    pub Color: IntTag<BannerPatternColor>,
+    pub Pattern: StringTag<BannerPatternResource>,
 }
 
 #[allow(non_camel_case_types)]
@@ -132,10 +132,10 @@ pub struct Barrel {}
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct Beacon {
-    Lock: Option<StringTag>,
-    Levels: IntTag<BeaconLevel>,
-    Primary: IntTag<BeaconEffectID>,
-    Secondary: IntTag<BeaconEffectID>,
+    pub Lock: Option<StringTag>,
+    pub Levels: IntTag<BeaconLevel>,
+    pub Primary: IntTag<BeaconEffectID>,
+    pub Secondary: IntTag<BeaconEffectID>,
 }
 
 pub enum BeaconLevel {
@@ -154,28 +154,28 @@ pub enum BeaconEffectID {
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Beehive {
-    Bees: ListTag<BeehiveEntity>,
-    FlowerPos: BeehiveFlower,
+    pub Bees: ListTag<BeehiveEntity>,
+    pub FlowerPos: BeehiveFlower,
 }
 
 #[allow(non_snake_case)]
 pub struct BeehiveEntity {
-    EntityData: Entity, // Entity<"bee">, // Probably should allow only `BeeEntity` once that's implemented? Wiki doesn't specify
-    MinOccupationTicks: IntTag,
-    TicksInHive: IntTag,
+    pub EntityData: Entity, // Entity<"bee">, // Probably should allow only `BeeEntity` once that's implemented? Wiki doesn't specify
+    pub MinOccupationTicks: IntTag,
+    pub TicksInHive: IntTag,
 }
 
 #[allow(non_snake_case)]
 pub struct BeehiveFlower {
-    X: IntTag,
-    Y: IntTag,
-    Z: IntTag,
+    pub X: IntTag,
+    pub Y: IntTag,
+    pub Z: IntTag,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
 pub struct BlastFurnace {
-    RecipesUsed: BlastFurnaceRecipesUsed,
+    pub RecipesUsed: BlastFurnaceRecipesUsed,
 }
 
 // pub struct BlastFurnaceRecipesUsed {
@@ -186,10 +186,10 @@ pub type BlastFurnaceRecipesUsed = CompoundTag<IntTag>; // temp, look at comment
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct BrewingStand {
-    BrewTime: ShortTag,
-    Fuel: ByteTag<BrewingStandFuelLevel>,
-    Items: [Option<Item>; 5], // 0-4, with slot tag
-    Lock: Option<StringTag>,
+    pub BrewTime: ShortTag,
+    pub Fuel: ByteTag<BrewingStandFuelLevel>,
+    pub Items: [Option<Item>; 5], // 0-4, with slot tag
+    pub Lock: Option<StringTag>,
 }
 
 pub enum BrewingStandFuelLevel {
@@ -218,7 +218,7 @@ pub enum BrewingStandFuelLevel {
 
 // #[inject_fields(BlockEntityLike, LootTableLike)]
 pub struct BrushableBlock {
-    item: Option<Item>, // Should this be uppercase? The wiki showed lowercase
+    pub item: Option<Item>, // Should this be uppercase? The wiki showed lowercase
 }
 
 // #[inject_fields(BlockEntityLike)]
@@ -235,8 +235,8 @@ pub struct Chest {}
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct ChiseledBookshelf {
-    Items: [Option<Item>; 6], // 0-5, with slot tag
-    last_interacted_slot: IntTag<ChiseledBookshelfLastInteractedSlot>,
+    pub Items: [Option<Item>; 6], // 0-5, with slot tag
+    pub last_interacted_slot: IntTag<ChiseledBookshelfLastInteractedSlot>,
 }
 
 pub enum ChiseledBookshelfLastInteractedSlot {
@@ -252,27 +252,27 @@ pub enum ChiseledBookshelfLastInteractedSlot {
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Comparator {
-    OutputSignal: IntTag,
+    pub OutputSignal: IntTag,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike, CustomNameableLike)]
 pub struct CommandBlock {
-    auto: BooleanTag,
-    Command: StringTag,
-    conditionMet: BooleanTag,
-    LastExecution: LongTag,
-    LastOutput: StringTag,
-    powered: BooleanTag,
-    SuccessCount: IntTag,
-    TrackOutput: BooleanTag,
-    UpdateLastExecution: BooleanTag,
+    pub auto: BooleanTag,
+    pub Command: StringTag,
+    pub conditionMet: BooleanTag,
+    pub LastExecution: LongTag,
+    pub LastOutput: StringTag,
+    pub powered: BooleanTag,
+    pub SuccessCount: IntTag,
+    pub TrackOutput: BooleanTag,
+    pub UpdateLastExecution: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Conduit {
-    Target: Option<IntArrayTag>, // `UUIDLike`
+    pub Target: Option<IntArrayTag>, // `UUIDLike`
 }
 
 // #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike, DispenserLike)]
@@ -287,9 +287,9 @@ pub struct EnchantingTable {}
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct EndGateway {
-    Age: LongTag,
-    ExactTeleport: BooleanTag,
-    ExitPortal: EndGatewayExitPortal,
+    pub Age: LongTag,
+    pub ExactTeleport: BooleanTag,
+    pub ExitPortal: EndGatewayExitPortal,
 }
 
 pub type EndGatewayExitPortal = [IntTag; 3];
@@ -297,7 +297,7 @@ pub type EndGatewayExitPortal = [IntTag; 3];
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
 pub struct Furnace {
-    RecipesUsed: FurnaceRecipesUsed,
+    pub RecipesUsed: FurnaceRecipesUsed,
 }
 
 // pub struct FurnaceRecipesUsed {
@@ -311,9 +311,9 @@ pub struct HangingSign {}
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike, CustomNameableLike, LootTableLike)]
 pub struct Hopper {
-    Items: [Option<Item>; 5], // 0-4, with slot tag
-    Lock: Option<StringTag>,
-    TransferCooldown: IntTag<HopperTransferCooldown>,
+    pub Items: [Option<Item>; 5], // 0-4, with slot tag
+    pub Lock: Option<StringTag>,
+    pub TransferCooldown: IntTag<HopperTransferCooldown>,
 }
 
 // Needs proper
@@ -331,11 +331,11 @@ pub enum HopperTransferCooldown {
 
 // #[inject_fields(BlockEntityLike)]
 pub struct Jigsaw {
-    final_state: StringTag<BlockResource>,
-    joint: StringTag<JigsawJoint>,
-    name: StringTag,
-    pool: StringTag,
-    target: StringTag,
+    pub final_state: StringTag<BlockResource>,
+    pub joint: StringTag<JigsawJoint>,
+    pub name: StringTag,
+    pub pool: StringTag,
+    pub target: StringTag,
 }
 
 #[allow(non_camel_case_types)]
@@ -347,17 +347,17 @@ pub enum JigsawJoint {
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Jukebox {
-    IsPlaying: BooleanTag,
-    RecordItem: Item, // maybe only music disc items at the type level? optional?
-    RecordStartTick: LongTag,
-    TickCount: LongTag,
+    pub IsPlaying: BooleanTag,
+    pub RecordItem: Item, // maybe only music disc items at the type level? optional?
+    pub RecordStartTick: LongTag,
+    pub TickCount: LongTag,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Lectern {
-    Book: Option<Item>,
-    Page: IntTag,
+    pub Book: Option<Item>,
+    pub Page: IntTag,
 }
 
 // #[inject_fields(BlockEntityLike, MobSpawnerLike)]
@@ -366,27 +366,27 @@ pub struct MobSpawner {}
 #[allow(non_snake_case)]
 // Double check that some of these properties are mandatory; the wiki doesn't quite specify, but it make it sound like they could be optional.
 pub struct MobSpawnerLike {
-    Delay: ShortTag,
-    MaxNearbyEntities: ShortTag,
-    MaxSpawnDelay: ShortTag,
-    MinSpawnDelay: ShortTag,
-    RequiredPlayerRange: ShortTag,
-    SpawnCount: ShortTag,
-    SpawnData: Entity, // Also not sure what this should really be, other than a template of properties to add to your supplied mob type? I think?
-    SpawnPotentials: Option<ListTag<MobSpawnerSpawnPotential>>,
-    SpawnRange: ShortTag,
+    pub Delay: ShortTag,
+    pub MaxNearbyEntities: ShortTag,
+    pub MaxSpawnDelay: ShortTag,
+    pub MinSpawnDelay: ShortTag,
+    pub RequiredPlayerRange: ShortTag,
+    pub SpawnCount: ShortTag,
+    pub SpawnData: Entity, // Also not sure what this should really be, other than a template of properties to add to your supplied mob type? I think?
+    pub SpawnPotentials: Option<ListTag<MobSpawnerSpawnPotential>>,
+    pub SpawnRange: ShortTag,
 }
 
 #[allow(non_snake_case)]
 pub struct MobSpawnerSpawnPotential {
-    weight: IntTag,
-    data: Entity, // Related to `SpawnData`, looks like it will override the properties from that one, if this is present instead.
-    customSpawnRules: MobSpawnerSpawnRules,
+    pub weight: IntTag,
+    pub data: Entity, // Related to `SpawnData`, looks like it will override the properties from that one, if this is present instead.
+    pub customSpawnRules: MobSpawnerSpawnRules,
 }
 
 pub struct MobSpawnerSpawnRules {
-    block_light_limit: MobSpawnerLightLimit,
-    sky_light_limit: MobSpawnerLightLimit,
+    pub block_light_limit: MobSpawnerLightLimit,
+    pub sky_light_limit: MobSpawnerLightLimit,
 }
 
 pub enum MobSpawnerLightLimit {
@@ -400,11 +400,11 @@ pub enum MobSpawnerLightLimit {
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Piston {
-    blockState: BlockState, // I think this is just the raw `BlockState` type, not totally sure though? Might be a wrapper? I don't think so though.
-    extending: BooleanTag,
-    facing: IntTag<PistonFacing>,
-    progress: FloatTag,
-    source: BooleanTag,
+    pub blockState: BlockState, // I think this is just the raw `BlockState` type, not totally sure though? Might be a wrapper? I don't think so though.
+    pub extending: BooleanTag,
+    pub facing: IntTag<PistonFacing>,
+    pub progress: FloatTag,
+    pub source: BooleanTag,
 }
 
 pub enum PistonFacing {
@@ -418,12 +418,12 @@ pub enum PistonFacing {
 
 // #[inject_fields(BlockEntityLike)]
 pub struct SculkCatalyst {
-    charges: ListTag<SculkCatalystCharge>,
+    pub charges: ListTag<SculkCatalystCharge>,
 }
 
 pub struct SculkCatalystCharge {
-    charge: IntTag,
-    pos: SculkCatalystChargePosition,
+    pub charge: IntTag,
+    pub pos: SculkCatalystChargePosition,
     /**
      * Does not relate to delay.
      *
@@ -431,9 +431,9 @@ pub struct SculkCatalystCharge {
      * The charge can spread to any block if this tag is 1.
      * If it is 0, all the powers in the charge disappear when it spreads to a block not in sculk family.
      */
-    decay_delay: IntTag<SculkCatalystChargeSpread>,
-    update_delay: IntTag,
-    facings: SculkCatalystFacings,
+    pub decay_delay: IntTag<SculkCatalystChargeSpread>,
+    pub update_delay: IntTag,
+    pub facings: SculkCatalystFacings,
 }
 
 pub type SculkCatalystChargePosition = [IntTag; 3];
@@ -475,16 +475,16 @@ pub struct Sign {}
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Skull {
-    note_block_sound: Option<StringTag>, // "The sound event this skull plays when played with a note block." probably should be typed to a Resource Location :)
-    ExtraType: StringTag,
-    SkullOwner: Option<SkullOwner>,
+    pub note_block_sound: Option<StringTag>, // "The sound event this skull plays when played with a note block." probably should be typed to a Resource Location :)
+    pub ExtraType: StringTag,
+    pub SkullOwner: Option<SkullOwner>,
 }
 
 #[allow(non_snake_case)]
 pub struct SkullOwner {
-    Id: Option<IntArrayTag>, // `UUIDLike`
-    Name: Option<StringTag>,
-    Properties: [SkullTexture; 1],
+    pub Id: Option<IntArrayTag>, // `UUIDLike`
+    pub Name: Option<StringTag>,
+    pub Properties: [SkullTexture; 1],
 }
 
 #[allow(non_snake_case)]
@@ -492,39 +492,39 @@ pub struct SkullTexture {
     /**
      * A Base64-encoded JSON object. Equivalent to the type SkullTextureJSON.
      */
-    Value: StringTag,
-    Signature: Option<StringTag>,
+    pub Value: StringTag,
+    pub Signature: Option<StringTag>,
 }
 
 #[allow(non_snake_case)]
 pub struct SkullTextureJSON {
-    isPublic: Option<bool>,
-    signatureRequired: bool,
-    profileId: Option<String>,
-    textures: SkullTextureTextures,
+    pub isPublic: Option<bool>,
+    pub signatureRequired: bool,
+    pub profileId: Option<String>,
+    pub textures: SkullTextureTextures,
     /**
      * LongTag (BigInt), but not really because it's from JSON.
      */
-    timestamp: i64, // `number` apparently, when it was in TypeScript
+    pub timestamp: i64, // `number` apparently, when it was in TypeScript
 }
 
 #[allow(non_snake_case)]
 pub struct SkullTextureTextures {
-    CAPE: Option<Cape>,
-    SKIN: Skin,
+    pub CAPE: Option<Cape>,
+    pub SKIN: Skin,
 }
 
 pub struct Cape {
-    url: String,
+    pub url: String,
 }
 
 pub struct Skin {
-    url: String,
-    metadata: SkinMetadata,
+    pub url: String,
+    pub metadata: SkinMetadata,
 }
 
 pub struct SkinMetadata {
-    model: SkinModel, // this is a string, a JSON string, not necessarily an NBT string
+    pub model: SkinModel, // this is a string, a JSON string, not necessarily an NBT string
 }
 
 #[allow(non_camel_case_types)]
@@ -536,7 +536,7 @@ pub enum SkinModel {
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike, CustomNameableLike, FurnaceLike)]
 pub struct Smoker {
-    RecipesUsed: SmokerRecipesUsed,
+    pub RecipesUsed: SmokerRecipesUsed,
 }
 
 // pub struct SmokerRecipesUsed {
@@ -550,23 +550,23 @@ pub struct SoulCampfire {}
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct StructureBlock {
-    author: StringTag,
-    ignoreEntities: BooleanTag,
-    integrity: FloatTag,
-    metadata: StringTag,
-    mirror: StringTag<StructureBlockMirror>,
-    mode: StringTag<StructureBlockMode>,
-    name: StringTag,
-    posX: IntTag,
-    posY: IntTag,
-    posZ: IntTag,
-    powered: BooleanTag,
-    rotation: StringTag<StructureBlockRotation>,
-    seed: LongTag,
-    showboundingbox: BooleanTag,
-    sizeX: IntTag,
-    sizeY: IntTag,
-    sizeZ: IntTag,
+    pub author: StringTag,
+    pub ignoreEntities: BooleanTag,
+    pub integrity: FloatTag,
+    pub metadata: StringTag,
+    pub mirror: StringTag<StructureBlockMirror>,
+    pub mode: StringTag<StructureBlockMode>,
+    pub name: StringTag,
+    pub posX: IntTag,
+    pub posY: IntTag,
+    pub posZ: IntTag,
+    pub powered: BooleanTag,
+    pub rotation: StringTag<StructureBlockRotation>,
+    pub seed: LongTag,
+    pub showboundingbox: BooleanTag,
+    pub sizeX: IntTag,
+    pub sizeY: IntTag,
+    pub sizeZ: IntTag,
 }
 
 #[allow(non_camel_case_types)]
@@ -597,53 +597,53 @@ pub struct TrappedChest {}
 #[allow(non_snake_case)]
 pub struct CampfireLike {
     // `IntArrayTag<[number, number, number, number]>`
-    CookingTimes: IntArrayTag,
-    CookingTotalTimes: IntArrayTag,
-    Items: [Option<Item>; 4], // 0-3, with slot tag
+    pub CookingTimes: IntArrayTag,
+    pub CookingTotalTimes: IntArrayTag,
+    pub Items: [Option<Item>; 4], // 0-3, with slot tag
 }
 
 #[allow(non_snake_case)]
 pub struct ChestLike {
-    Items: ListTag<Item>, // 0-26, with slot tag
-    Lock: Option<StringTag>,
+    pub Items: ListTag<Item>, // 0-26, with slot tag
+    pub Lock: Option<StringTag>,
 }
 
 #[allow(non_snake_case)]
 pub struct CustomNameableLike {
-    CustomName: Option<StringTag>, // JSON text component
+    pub CustomName: Option<StringTag>, // JSON text component
 }
 
 #[allow(non_snake_case)]
 pub struct DispenserLike {
-    Items: ListTag<Item>, // 0-8, with slot tag
-    Lock: Option<StringTag>,
+    pub Items: ListTag<Item>, // 0-8, with slot tag
+    pub Lock: Option<StringTag>,
 }
 
 #[allow(non_snake_case)]
 pub struct FurnaceLike {
-    BurnTime: ShortTag,
-    CookTime: ShortTag,
-    CookTimeTotal: ShortTag,
-    Items: [Option<Item>; 3], // 0-2, with slot tag
-    Lock: Option<StringTag>,
+    pub BurnTime: ShortTag,
+    pub CookTime: ShortTag,
+    pub CookTimeTotal: ShortTag,
+    pub Items: [Option<Item>; 3], // 0-2, with slot tag
+    pub Lock: Option<StringTag>,
 }
 
 #[allow(non_snake_case)]
 pub struct LootTableLike {
-    LootTable: Option<StringTag>, // `LootTableResource`
-    LootTableSeed: Option<LongTag>,
+    pub LootTable: Option<StringTag>, // `LootTableResource`
+    pub LootTableSeed: Option<LongTag>,
 }
 
 pub struct SignLike {
-    is_waxed: BooleanTag,
-    front_text: SignText,
-    back_text: SignText,
+    pub is_waxed: BooleanTag,
+    pub front_text: SignText,
+    pub back_text: SignText,
 }
 
 pub struct SignText {
-    has_glowing_text: BooleanTag,
-    color: StringTag<SignColor>,
-    messages: ListTag<StringTag>,
+    pub has_glowing_text: BooleanTag,
+    pub color: StringTag<SignColor>,
+    pub messages: ListTag<StringTag>,
 }
 
 #[allow(non_camel_case_types)]
@@ -669,11 +669,11 @@ pub enum SignColor {
 // <BlockEntityID extends string>
 #[allow(non_snake_case)]
 pub struct BlockEntityLike {
-    id: StringTag, // `BlockEntityResource`?
-    keepPacked: BooleanTag,
-    x: IntTag,
-    y: IntTag,
-    z: IntTag,
+    pub id: StringTag, // `BlockEntityResource`?
+    pub keepPacked: BooleanTag,
+    pub x: IntTag,
+    pub y: IntTag,
+    pub z: IntTag,
 }
 
 // Prefixed with `minecraft:` when stringified

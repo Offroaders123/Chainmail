@@ -10,40 +10,40 @@ pub enum BlockEntity {
 
 #[allow(non_snake_case)]
 pub struct BlockEntityLike {
-    id: StringTag, // should this be a generic to `BlockEntityResource`?
-    x: IntTag,
-    y: IntTag,
-    z: IntTag,
+    pub id: StringTag, // should this be a generic to `BlockEntityResource`?
+    pub x: IntTag,
+    pub y: IntTag,
+    pub z: IntTag,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Chest {
-    Items: SlottedItem,
+    pub Items: SlottedItem,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Furnace {
-    BurnTime: ShortTag,
-    CookTime: ShortTag,
-    Items: [Option<SlottedItem>; 3],
+    pub BurnTime: ShortTag,
+    pub CookTime: ShortTag,
+    pub Items: [Option<SlottedItem>; 3],
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct MobSpawner {
-    EntityId: StringTag<EntityResource>,
-    Delay: ShortTag,
+    pub EntityId: StringTag<EntityResource>,
+    pub Delay: ShortTag,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Sign {
-    Text1: StringTag,
-    Text2: StringTag,
-    Text3: StringTag,
-    Text4: StringTag,
+    pub Text1: StringTag,
+    pub Text2: StringTag,
+    pub Text3: StringTag,
+    pub Text4: StringTag,
 }
 
 pub enum BlockEntityResource {

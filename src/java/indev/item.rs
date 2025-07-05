@@ -3,9 +3,9 @@ use crate::nbt::tag::{ByteTag, ShortTag};
 
 #[allow(non_snake_case)]
 pub struct Item {
-    id: ShortTag<ItemId>,
-    Count: ByteTag,
-    Damage: ShortTag,
+    pub id: ShortTag<ItemId>,
+    pub Count: ByteTag,
+    pub Damage: ShortTag,
 }
 
 pub enum ItemId {
@@ -15,7 +15,7 @@ pub enum ItemId {
 
 #[allow(non_snake_case)]
 pub struct SlottedItem {
-    Slot: ByteTag,
+    pub Slot: ByteTag,
 }
 
 #[allow(non_camel_case_types)]

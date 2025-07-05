@@ -5,73 +5,73 @@ use crate::nbt::tag::{
 
 #[allow(non_snake_case)]
 pub struct LevelDat {
-    Data: LevelDatData,
+    pub Data: LevelDatData,
 }
 
 #[allow(non_snake_case)]
 pub struct LevelDatData {
-    allowCommands: BooleanTag,
-    BorderCenterX: DoubleTag,
-    BorderCenterY: DoubleTag,
-    BorderDamagePerBlock: DoubleTag,
-    BorderSize: DoubleTag,
-    BorderSafeZone: DoubleTag,
-    BorderSizeLerpTarget: DoubleTag,
-    BorderSizeLerpTime: LongTag,
-    BorderWarningBlocks: DoubleTag,
-    BorderWarningTime: DoubleTag,
-    clearWeatherTime: IntTag,
-    CustomBossEvents: CustomBossEvents,
-    DataPacks: DataPacks,
-    DataVersion: IntTag,
-    DayTime: LongTag,
-    Difficulty: ByteTag<Difficulty>,
-    DifficultyLocked: BooleanTag,
-    DimensionData: DimensionData,
-    GameRules: GameRules,
-    WorldGenSettings: WorldGenSettings,
-    GameType: IntTag<GameType>,
-    generatorName: StringTag<GeneratorName>,
-    generatorOptions: CompoundTag, // {}; // `GeneratorOptions`
-    generatorVersion: IntTag,
-    hardcore: BooleanTag,
-    initialized: BooleanTag,
-    LastPlayed: LongTag,
-    LevelName: StringTag,
-    MapFeatures: BooleanTag,
-    Player: Player,
-    raining: BooleanTag,
-    rainTime: IntTag,
-    RandomSeed: LongTag,
-    SizeOnDisk: LongTag,
-    SpawnX: IntTag,
-    SpawnY: IntTag,
-    SpawnZ: IntTag,
-    thundering: BooleanTag,
-    thunderTime: IntTag,
-    Time: LongTag,
-    version: IntTag,
-    Version: Version,
-    WanderingTraderId: IntArrayTag, // `UUIDLike`? Probably, will double check. Moving to Rust will make that really easy, too!! (tuple byte arrays)
-    WanderingTraderSpawnChance: IntTag,
-    WanderingTraderSpawnDelay: IntTag,
-    WasModded: BooleanTag,
+    pub allowCommands: BooleanTag,
+    pub BorderCenterX: DoubleTag,
+    pub BorderCenterY: DoubleTag,
+    pub BorderDamagePerBlock: DoubleTag,
+    pub BorderSize: DoubleTag,
+    pub BorderSafeZone: DoubleTag,
+    pub BorderSizeLerpTarget: DoubleTag,
+    pub BorderSizeLerpTime: LongTag,
+    pub BorderWarningBlocks: DoubleTag,
+    pub BorderWarningTime: DoubleTag,
+    pub clearWeatherTime: IntTag,
+    pub CustomBossEvents: CustomBossEvents,
+    pub DataPacks: DataPacks,
+    pub DataVersion: IntTag,
+    pub DayTime: LongTag,
+    pub Difficulty: ByteTag<Difficulty>,
+    pub DifficultyLocked: BooleanTag,
+    pub DimensionData: DimensionData,
+    pub GameRules: GameRules,
+    pub WorldGenSettings: WorldGenSettings,
+    pub GameType: IntTag<GameType>,
+    pub generatorName: StringTag<GeneratorName>,
+    pub generatorOptions: CompoundTag, // {}; // `GeneratorOptions`
+    pub generatorVersion: IntTag,
+    pub hardcore: BooleanTag,
+    pub initialized: BooleanTag,
+    pub LastPlayed: LongTag,
+    pub LevelName: StringTag,
+    pub MapFeatures: BooleanTag,
+    pub Player: Player,
+    pub raining: BooleanTag,
+    pub rainTime: IntTag,
+    pub RandomSeed: LongTag,
+    pub SizeOnDisk: LongTag,
+    pub SpawnX: IntTag,
+    pub SpawnY: IntTag,
+    pub SpawnZ: IntTag,
+    pub thundering: BooleanTag,
+    pub thunderTime: IntTag,
+    pub Time: LongTag,
+    pub version: IntTag,
+    pub Version: Version,
+    pub WanderingTraderId: IntArrayTag, // `UUIDLike`? Probably, will double check. Moving to Rust will make that really easy, too!! (tuple byte arrays)
+    pub WanderingTraderSpawnChance: IntTag,
+    pub WanderingTraderSpawnDelay: IntTag,
+    pub WasModded: BooleanTag,
 }
 
 pub type CustomBossEvents = CompoundTag<CustomBossEvent>;
 
 #[allow(non_snake_case)]
 pub struct CustomBossEvent {
-    Players: ListTag<IntArrayTag>,
-    Color: StringTag<BossBarColor>,
-    CreateWorldFog: BooleanTag,
-    DarkenScreen: BooleanTag,
-    Max: IntTag,
-    Value: IntTag,
-    Name: StringTag, // JSON text component?
-    Overlay: StringTag<BossBarOverlay>,
-    PlayBossMusic: BooleanTag,
-    Visible: BooleanTag,
+    pub Players: ListTag<IntArrayTag>,
+    pub Color: StringTag<BossBarColor>,
+    pub CreateWorldFog: BooleanTag,
+    pub DarkenScreen: BooleanTag,
+    pub Max: IntTag,
+    pub Value: IntTag,
+    pub Name: StringTag, // JSON text component?
+    pub Overlay: StringTag<BossBarOverlay>,
+    pub PlayBossMusic: BooleanTag,
+    pub Visible: BooleanTag,
 }
 
 #[allow(non_camel_case_types)]
@@ -105,8 +105,8 @@ pub enum BossBarOverlay {
 
 #[allow(non_snake_case)]
 pub struct DataPacks {
-    Disabled: ListTag<StringTag>,
-    Enabled: ListTag<StringTag>,
+    pub Disabled: ListTag<StringTag>,
+    pub Enabled: ListTag<StringTag>,
 }
 
 pub enum Difficulty {
@@ -117,29 +117,29 @@ pub enum Difficulty {
 }
 
 pub struct DimensionData {
-    the_end: EndData,
+    pub the_end: EndData,
 }
 
 #[allow(non_snake_case)]
 pub struct EndData {
-    DragonFight: Option<DragonFight>,
+    pub DragonFight: Option<DragonFight>,
 }
 
 #[allow(non_snake_case)]
 pub struct DragonFight {
-    ExitPortalLocation: ExitPortalLocation,
-    Gateways: ListTag<IntTag>, // 0 - 19
-    DragonKilled: BooleanTag,
-    DragonUUIDLeast: LongTag,
-    DragonUUIDMost: LongTag,
-    PreviouslyKilled: BooleanTag,
+    pub ExitPortalLocation: ExitPortalLocation,
+    pub Gateways: ListTag<IntTag>, // 0 - 19
+    pub DragonKilled: BooleanTag,
+    pub DragonUUIDLeast: LongTag,
+    pub DragonUUIDMost: LongTag,
+    pub PreviouslyKilled: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 pub struct ExitPortalLocation {
-    X: ByteTag,
-    Y: ByteTag,
-    Z: ByteTag,
+    pub X: ByteTag,
+    pub Y: ByteTag,
+    pub Z: ByteTag,
 }
 
 // These are resolved simply as the stringified counterparts to these.
@@ -147,48 +147,48 @@ pub struct ExitPortalLocation {
 // I only did simple ones for the time being, which for the most part represent the values that appear to be documented.
 #[allow(non_snake_case)]
 pub struct GameRules {
-    forgiveDeadPlayers: BooleanTag,
-    doInsomnia: BooleanTag,
-    fallDamage: BooleanTag,
-    doDaylightCycle: BooleanTag,
-    spawnRadius: IntTag, // `${number}`,
-    doWeatherCycle: BooleanTag,
-    doPatrolSpawning: BooleanTag,
-    maxCommandChainLength: IntTag, // `${number}`,
-    universalAnger: BooleanTag,
-    fireDamage: BooleanTag,
-    doImmediateRespawn: BooleanTag,
-    playersSleepingPercentage: ByteTag, // `${number}`,
-    maxEntityCramming: BooleanTag,
-    doMobSpawning: BooleanTag,
-    showDeathMessages: BooleanTag,
-    announceAdvancements: BooleanTag,
-    disableRaids: BooleanTag,
-    naturalRegeneration: BooleanTag,
-    reducedDebugInfo: BooleanTag,
-    drowningDamage: BooleanTag,
-    sendCommandFeedback: BooleanTag,
-    doLimitedCrafting: BooleanTag,
-    commandBlockOutput: BooleanTag,
-    doTraderSpawning: BooleanTag,
-    doFireTick: BooleanTag,
-    mobGriefing: BooleanTag,
-    spectatorsGenerateChunks: BooleanTag,
-    doEntityDrops: BooleanTag,
-    doTileDrops: BooleanTag,
-    keepInventory: BooleanTag,
-    randomTickSpeed: BooleanTag,
-    freezeDamage: BooleanTag,
-    doMobLoot: BooleanTag,
-    disableElytraMovementCheck: BooleanTag,
-    logAdminCommands: BooleanTag,
+    pub forgiveDeadPlayers: BooleanTag,
+    pub doInsomnia: BooleanTag,
+    pub fallDamage: BooleanTag,
+    pub doDaylightCycle: BooleanTag,
+    pub spawnRadius: IntTag, // `${number}`,
+    pub doWeatherCycle: BooleanTag,
+    pub doPatrolSpawning: BooleanTag,
+    pub maxCommandChainLength: IntTag, // `${number}`,
+    pub universalAnger: BooleanTag,
+    pub fireDamage: BooleanTag,
+    pub doImmediateRespawn: BooleanTag,
+    pub playersSleepingPercentage: ByteTag, // `${number}`,
+    pub maxEntityCramming: BooleanTag,
+    pub doMobSpawning: BooleanTag,
+    pub showDeathMessages: BooleanTag,
+    pub announceAdvancements: BooleanTag,
+    pub disableRaids: BooleanTag,
+    pub naturalRegeneration: BooleanTag,
+    pub reducedDebugInfo: BooleanTag,
+    pub drowningDamage: BooleanTag,
+    pub sendCommandFeedback: BooleanTag,
+    pub doLimitedCrafting: BooleanTag,
+    pub commandBlockOutput: BooleanTag,
+    pub doTraderSpawning: BooleanTag,
+    pub doFireTick: BooleanTag,
+    pub mobGriefing: BooleanTag,
+    pub spectatorsGenerateChunks: BooleanTag,
+    pub doEntityDrops: BooleanTag,
+    pub doTileDrops: BooleanTag,
+    pub keepInventory: BooleanTag,
+    pub randomTickSpeed: BooleanTag,
+    pub freezeDamage: BooleanTag,
+    pub doMobLoot: BooleanTag,
+    pub disableElytraMovementCheck: BooleanTag,
+    pub logAdminCommands: BooleanTag,
 }
 
 pub struct WorldGenSettings {
-    bonus_chest: BooleanTag,
-    seed: LongTag,
-    generate_features: BooleanTag,
-    dimensions: CompoundTag, // {}; // `WorldGenDimensions`
+    pub bonus_chest: BooleanTag,
+    pub seed: LongTag,
+    pub generate_features: BooleanTag,
+    pub dimensions: CompoundTag, // {}; // `WorldGenDimensions`
 }
 
 pub enum GameType {
@@ -212,8 +212,8 @@ pub enum GeneratorName {
 
 #[allow(non_snake_case)]
 pub struct Version {
-    Id: IntTag,
-    Name: StringTag,
-    Series: StringTag,
-    Snapshot: BooleanTag,
+    pub Id: IntTag,
+    pub Name: StringTag,
+    pub Series: StringTag,
+    pub Snapshot: BooleanTag,
 }

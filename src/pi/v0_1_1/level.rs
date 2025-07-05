@@ -6,20 +6,20 @@ use crate::pi::v0_1_1::{
 
 #[allow(non_snake_case)]
 pub struct LevelDat {
-    GameType: IntTag<GameMode>,
-    LastPlayed: LongTag,
-    LevelName: StringTag,
-    Platform: IntTag, // might be an enum of values; likely the same case for Bedrock types too, since this is PE essentially
-    Player: Player,
-    RandomSeed: LongTag,
-    SizeOnDisk: LongTag,
-    SpawnX: IntTag,
-    SpawnY: IntTag,
-    SpawnZ: IntTag,
-    StorageVersion: IntTag<StorageVersion>, // always 3?
-    Time: LongTag,
-    dayCycleStopTime: LongTag,
-    spawnMobs: IntTag<SpawnMobs>,
+    pub GameType: IntTag<GameMode>,
+    pub LastPlayed: LongTag,
+    pub LevelName: StringTag,
+    pub Platform: IntTag, // might be an enum of values; likely the same case for Bedrock types too, since this is PE essentially
+    pub Player: Player,
+    pub RandomSeed: LongTag,
+    pub SizeOnDisk: LongTag,
+    pub SpawnX: IntTag,
+    pub SpawnY: IntTag,
+    pub SpawnZ: IntTag,
+    pub StorageVersion: IntTag<StorageVersion>, // always 3?
+    pub Time: LongTag,
+    pub dayCycleStopTime: LongTag,
+    pub spawnMobs: IntTag<SpawnMobs>,
 }
 
 pub enum GameMode {
@@ -38,6 +38,6 @@ pub enum SpawnMobs {
 
 #[allow(non_snake_case)]
 pub struct EntityDat {
-    Entities: ListTag<Entity>,
-    TileEntities: ListTag<TileEntity>,
+    pub Entities: ListTag<Entity>,
+    pub TileEntities: ListTag<TileEntity>,
 }

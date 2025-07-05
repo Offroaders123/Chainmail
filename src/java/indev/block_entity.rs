@@ -8,22 +8,22 @@ pub enum BlockEntity {
 
 #[allow(non_snake_case)]
 pub struct BlockEntityLike {
-    Pos: IntTag, // not a tuple, interestingly enough, just a composed int of some sort, I think you have to use math to get the actual coordinates out of the value
-    id: StringTag, // should this be a generic of `BlockEntityResource`?
+    pub Pos: IntTag, // not a tuple, interestingly enough, just a composed int of some sort, I think you have to use math to get the actual coordinates out of the value
+    pub id: StringTag, // should this be a generic of `BlockEntityResource`?
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Chest {
-    Items: ListTag<SlottedItem>,
+    pub Items: ListTag<SlottedItem>,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(BlockEntityLike)]
 pub struct Furnace {
-    BurnTime: ShortTag,
-    CookTime: ShortTag,
-    Items: [Option<SlottedItem>; 3],
+    pub BurnTime: ShortTag,
+    pub CookTime: ShortTag,
+    pub Items: [Option<SlottedItem>; 3],
 }
 
 pub enum BlockEntityResource {

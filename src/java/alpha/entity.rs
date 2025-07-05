@@ -36,51 +36,51 @@ pub enum Entity {
 
 #[allow(non_snake_case)]
 pub struct EntityLike {
-    id: StringTag, // should this be generic to `EntityResource`?
-    Pos: [DoubleTag; 3],
-    Motion: [DoubleTag; 3],
-    Rotation: [FloatTag; 2],
-    FallDistance: FloatTag,
-    Fire: ShortTag,
-    Air: ShortTag,
-    OnGround: BooleanTag,
+    pub id: StringTag, // should this be generic to `EntityResource`?
+    pub Pos: [DoubleTag; 3],
+    pub Motion: [DoubleTag; 3],
+    pub Rotation: [FloatTag; 2],
+    pub FallDistance: FloatTag,
+    pub Fire: ShortTag,
+    pub Air: ShortTag,
+    pub OnGround: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 pub struct MobLike {
-    AttackTime: ShortTag,
-    DeathTime: ShortTag,
-    Health: ShortTag,
-    HurtTime: ShortTag,
+    pub AttackTime: ShortTag,
+    pub DeathTime: ShortTag,
+    pub Health: ShortTag,
+    pub HurtTime: ShortTag,
 }
 
 #[allow(non_snake_case)]
 pub struct ProjectileLike {
-    xTile: ShortTag,
-    yTile: ShortTag,
-    zTile: ShortTag,
-    inTile: ByteTag, // boolean?
-    shake: ByteTag,  // boolean?
-    inGround: BooleanTag,
+    pub xTile: ShortTag,
+    pub yTile: ShortTag,
+    pub zTile: ShortTag,
+    pub inTile: ByteTag, // boolean?
+    pub shake: ByteTag,  // boolean?
+    pub inGround: BooleanTag,
 }
 
 // needs to be 'subclassed' with the new interfaces
 #[allow(non_snake_case)]
 pub struct Player {
-    Dimension: IntTag<DimensionID>,
-    Pos: [DoubleTag; 3],
-    Rotation: [FloatTag; 2],
-    Motion: [DoubleTag; 3],
-    OnGround: BooleanTag,
-    FallDistance: FloatTag,
-    Health: ShortTag,
-    AttackTime: ShortTag,
-    HurtTime: ShortTag,
-    DeathTime: ShortTag,
-    Air: ShortTag,
-    Fire: ShortTag,
-    Score: IntTag,
-    Inventory: ListTag<SlottedItem>,
+    pub Dimension: IntTag<DimensionID>,
+    pub Pos: [DoubleTag; 3],
+    pub Rotation: [FloatTag; 2],
+    pub Motion: [DoubleTag; 3],
+    pub OnGround: BooleanTag,
+    pub FallDistance: FloatTag,
+    pub Health: ShortTag,
+    pub AttackTime: ShortTag,
+    pub HurtTime: ShortTag,
+    pub DeathTime: ShortTag,
+    pub Air: ShortTag,
+    pub Fire: ShortTag,
+    pub Score: IntTag,
+    pub Inventory: ListTag<SlottedItem>,
 }
 
 // #[inject_fields(EntityLike, ProjectileLike)]
@@ -104,7 +104,7 @@ pub struct Egg {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike)]
 pub struct FallingSand {
-    Tile: ByteTag<BlockResource>,
+    pub Tile: ByteTag<BlockResource>,
 }
 
 // #[inject_fields(EntityLike, MobLike)]
@@ -116,21 +116,21 @@ pub struct Giant {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike)]
 pub struct ItemEntity {
-    Health: ShortTag,
-    Age: ShortTag,
-    Item: Item,
+    pub Health: ShortTag,
+    pub Age: ShortTag,
+    pub Item: Item,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike)]
 pub struct Minecart {
-    Type: ByteTag<MinecartVariant>,
+    pub Type: ByteTag<MinecartVariant>,
     // Only for Furnace Minecart variant
-    PushX: Option<DoubleTag>,
-    PushZ: Option<DoubleTag>,
-    Fuel: Option<ShortTag>,
+    pub PushX: Option<DoubleTag>,
+    pub PushZ: Option<DoubleTag>,
+    pub Fuel: Option<ShortTag>,
     // Only for Chest Minecart variant
-    Items: Option<ListTag<SlottedItem>>,
+    pub Items: Option<ListTag<SlottedItem>>,
 }
 
 pub enum MinecartVariant {
@@ -142,11 +142,11 @@ pub enum MinecartVariant {
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike)]
 pub struct Painting {
-    Dir: ByteTag<PaintingDirection>,
-    Motive: PaintingVariant,
-    TileX: IntTag, // This isn't in Indev...? It appears to be in modern versions though, so..
-    TileY: IntTag,
-    TileZ: IntTag,
+    pub Dir: ByteTag<PaintingDirection>,
+    pub Motive: PaintingVariant,
+    pub TileX: IntTag, // This isn't in Indev...? It appears to be in modern versions though, so..
+    pub TileY: IntTag,
+    pub TileZ: IntTag,
 }
 
 pub enum PaintingDirection {
@@ -178,7 +178,7 @@ pub enum PaintingVariant {
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike, MobLike)]
 pub struct Pig {
-    Saddle: BooleanTag,
+    pub Saddle: BooleanTag,
 }
 
 // #[inject_fields(EntityLike, MobLike)]
@@ -187,13 +187,13 @@ pub struct PigZombie {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike)]
 pub struct PrimedTnt {
-    Fuse: ByteTag,
+    pub Fuse: ByteTag,
 }
 
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike, MobLike)]
 pub struct Sheep {
-    Sheared: BooleanTag,
+    pub Sheared: BooleanTag,
 }
 
 // #[inject_fields(EntityLike, MobLike)]
@@ -202,7 +202,7 @@ pub struct Skeleton {}
 #[allow(non_snake_case)]
 // #[inject_fields(EntityLike, MobLike)]
 pub struct Slime {
-    Size: IntTag,
+    pub Size: IntTag,
 }
 
 // #[inject_fields(EntityLike, ProjectileLike)]

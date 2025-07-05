@@ -2,7 +2,7 @@ use crate::nbt::tag::StringTag;
 
 #[allow(non_snake_case)]
 pub struct BlockState {
-    Name: StringTag<BlockResource>,
+    pub Name: StringTag<BlockResource>,
     // [property: string]: any;
 }
 

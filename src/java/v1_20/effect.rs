@@ -2,13 +2,13 @@ use crate::nbt::tag::{BooleanTag, ByteTag, IntTag};
 
 #[allow(non_snake_case)]
 pub struct Effect {
-    Ambient: BooleanTag,
-    Amplifier: ByteTag,
-    Duration: IntTag,
-    HiddenEffect: Box<Effect>, // Might be optional?
-    Id: EffectID, // I think this should be an enum instead, and it needs to be wrapped in an NBT tag type
-    ShowIcon: BooleanTag,
-    ShowParticles: BooleanTag,
+    pub Ambient: BooleanTag,
+    pub Amplifier: ByteTag,
+    pub Duration: IntTag,
+    pub HiddenEffect: Box<Effect>, // Might be optional?
+    pub Id: EffectID, // I think this should be an enum instead, and it needs to be wrapped in an NBT tag type
+    pub ShowIcon: BooleanTag,
+    pub ShowParticles: BooleanTag,
 }
 
 #[allow(non_camel_case_types)]

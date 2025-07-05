@@ -8,58 +8,58 @@ use crate::nbt::tag::{
 
 #[allow(non_snake_case)]
 pub struct Chunk {
-    DataVersion: IntTag,
-    xPos: IntTag,
-    zPos: IntTag,
-    yPos: IntTag,
-    Status: StringTag,
-    LastUpdate: LongTag,
-    sections: ListTag<Section>,
-    block_entities: ListTag<BlockEntity>,
-    CarvingMasks: CarvingMasks,
-    Heightmaps: Heightmaps,
-    Lights: Lights,
-    Entities: ListTag<Entity>,
-    fluid_ticks: ListTag<TileTick>,
-    block_ticks: ListTag<TileTick>,
-    InhabitedTime: LongTag,
-    PostProcessing: ListTag<ToBeTicked>,
-    structures: Structures,
+    pub DataVersion: IntTag,
+    pub xPos: IntTag,
+    pub zPos: IntTag,
+    pub yPos: IntTag,
+    pub Status: StringTag,
+    pub LastUpdate: LongTag,
+    pub sections: ListTag<Section>,
+    pub block_entities: ListTag<BlockEntity>,
+    pub CarvingMasks: CarvingMasks,
+    pub Heightmaps: Heightmaps,
+    pub Lights: Lights,
+    pub Entities: ListTag<Entity>,
+    pub fluid_ticks: ListTag<TileTick>,
+    pub block_ticks: ListTag<TileTick>,
+    pub InhabitedTime: LongTag,
+    pub PostProcessing: ListTag<ToBeTicked>,
+    pub structures: Structures,
 }
 
 #[allow(non_snake_case)]
 pub struct Section {
-    Y: ByteTag,
-    block_states: BlockStates,
-    biomes: Biomes,
-    BlockLight: ByteArrayTag,
-    SkyLight: ByteArrayTag,
+    pub Y: ByteTag,
+    pub block_states: BlockStates,
+    pub biomes: Biomes,
+    pub BlockLight: ByteArrayTag,
+    pub SkyLight: ByteArrayTag,
 }
 
 pub struct BlockStates {
-    palette: ListTag<BlockState>,
-    data: Option<LongArrayTag>,
+    pub palette: ListTag<BlockState>,
+    pub data: Option<LongArrayTag>,
 }
 
 pub struct Biomes {
-    palette: ListTag<StringTag<BiomeResource>>,
-    data: Option<LongArrayTag>,
+    pub palette: ListTag<StringTag<BiomeResource>>,
+    pub data: Option<LongArrayTag>,
 }
 
 #[allow(non_snake_case)]
 pub struct CarvingMasks {
-    AIR: ByteArrayTag,
-    LIQUID: ByteArrayTag,
+    pub AIR: ByteArrayTag,
+    pub LIQUID: ByteArrayTag,
 }
 
 #[allow(non_snake_case)]
 pub struct Heightmaps {
-    MOTION_BLOCKING: LongArrayTag,
-    MOTION_BLOCKING_NO_LEAVES: LongArrayTag,
-    OCEAN_FLOOR: LongArrayTag,
-    OCEAN_FLOOR_WG: LongArrayTag,
-    WORLD_SURFACE: LongArrayTag,
-    WORLD_SURFACE_WG: LongArrayTag,
+    pub MOTION_BLOCKING: LongArrayTag,
+    pub MOTION_BLOCKING_NO_LEAVES: LongArrayTag,
+    pub OCEAN_FLOOR: LongArrayTag,
+    pub OCEAN_FLOOR_WG: LongArrayTag,
+    pub WORLD_SURFACE: LongArrayTag,
+    pub WORLD_SURFACE_WG: LongArrayTag,
 }
 
 pub type Lights = ListTag<ListTag<ShortTag>>;
@@ -68,8 +68,8 @@ pub type ToBeTicked = ListTag<ShortTag>;
 
 #[allow(non_snake_case)]
 pub struct Structures {
-    References: References,
-    starts: Starts,
+    pub References: References,
+    pub starts: Starts,
 }
 
 pub type References = CompoundTag<Option<LongArrayTag>>; // { [K in StructureResource]: Option<LongArrayTag>, }

@@ -2,12 +2,12 @@ use crate::java::v1_20::block::BlockResource;
 use crate::nbt::tag::{IntTag, StringTag};
 
 pub struct TileTick {
-    i: StringTag<TileTickResource>,
-    p: IntTag,
-    t: IntTag,
-    x: IntTag,
-    y: IntTag,
-    z: IntTag,
+    pub i: StringTag<TileTickResource>,
+    pub p: IntTag,
+    pub t: IntTag,
+    pub x: IntTag,
+    pub y: IntTag,
+    pub z: IntTag,
 }
 
 // Need to check if these actually can be inherited like this; I'm pretty sure they can, because they're just a collection of existing Block values?

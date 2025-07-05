@@ -3,17 +3,17 @@ use crate::nbt::tag::{IntTag, LongTag};
 
 #[allow(non_snake_case)]
 pub struct Level {
-    Data: Data,
+    pub Data: Data,
 }
 
 #[allow(non_snake_case)]
 pub struct Data {
-    LastPlayed: LongTag,
-    SizeOnDisk: LongTag,
-    RandomSeed: LongTag,
-    SpawnX: IntTag,
-    SpawnY: IntTag,
-    SpawnZ: IntTag,
-    Time: LongTag,
-    Player: Player,
+    pub LastPlayed: LongTag,
+    pub SizeOnDisk: LongTag,
+    pub RandomSeed: LongTag,
+    pub SpawnX: IntTag,
+    pub SpawnY: IntTag,
+    pub SpawnZ: IntTag,
+    pub Time: LongTag,
+    pub Player: Player,
 }

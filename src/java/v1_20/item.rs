@@ -2,15 +2,15 @@ use crate::nbt::tag::{ByteTag, IntTag, StringTag};
 
 #[allow(non_snake_case)]
 pub struct Item {
-    Slot: ByteTag,
-    id: StringTag<ItemResource>,
-    tag: Option<ItemTag>,
-    Count: ByteTag,
+    pub Slot: ByteTag,
+    pub id: StringTag<ItemResource>,
+    pub tag: Option<ItemTag>,
+    pub Count: ByteTag,
 }
 
 #[allow(non_snake_case)]
 pub struct ItemTag {
-    Damage: IntTag,
+    pub Damage: IntTag,
 }
 
 #[allow(non_camel_case_types)]
