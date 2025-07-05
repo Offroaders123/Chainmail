@@ -1,24 +1,29 @@
-export enum StructureResource {
-  ancientcity = "minecraft:ancientcity",
-  ancient_city = "minecraft:ancient_city",
-  bastionremnant = "minecraft:bastionremnant",
-  bastion_remnant = "minecraft:bastion_remnant",
-  buriedtreasure = "minecraft:buriedtreasure",
-  buried_treasure = "minecraft:buried_treasure",
-  endcity = "minecraft:endcity",
-  end_city = "minecraft:end_city",
-  fortress = "minecraft:fortress",
-  mansion = "minecraft:mansion",
-  mineshaft = "minecraft:mineshaft",
-  monument = "minecraft:monument",
-  ruins = "minecraft:ruins",
-  pillageroutpost = "minecraft:pillageroutpost",
-  pillager_outpost = "minecraft:pillager_outpost",
-  ruinedportal = "minecraft:ruinedportal",
-  ruined_portal = "minecraft:ruined_portal",
-  shipwreck = "minecraft:shipwreck",
-  stronghold = "minecraft:stronghold",
-  temple = "minecraft:temple",
-  trail_ruins = "minecraft:trail_ruins",
-  village = "minecraft:village"
+use serde::{Deserialize, Serialize};
+
+// These should be `minecraft:` prefixed when serialized
+#[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
+pub enum StructureResource {
+    ancientcity,
+    ancient_city,
+    bastionremnant,
+    bastion_remnant,
+    buriedtreasure,
+    buried_treasure,
+    endcity,
+    end_city,
+    fortress,
+    mansion,
+    mineshaft,
+    monument,
+    ruins,
+    pillageroutpost,
+    pillager_outpost,
+    ruinedportal,
+    ruined_portal,
+    shipwreck,
+    stronghold,
+    temple,
+    trail_ruins,
+    village,
 }

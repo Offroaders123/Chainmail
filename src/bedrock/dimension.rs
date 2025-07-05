@@ -1,11 +1,18 @@
-export enum DimensionResource {
-  nether = "minecraft:nether",
-  overworld = "minecraft:overworld",
-  the_end = "minecraft:the_end"
+use serde::{Deserialize, Serialize};
+
+// These should be `minecraft:` prefixed when serialized
+#[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
+pub enum DimensionResource {
+    nether,
+    overworld,
+    the_end,
 }
 
-export enum DimensionID {
-  overworld = 0,
-  nether,
-  end
+#[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
+pub enum DimensionID {
+    overworld = 0,
+    nether,
+    end,
 }
