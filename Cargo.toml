@@ -7,4 +7,4 @@ edition = "2024"
 name = "chainmail"
 
 [dependencies]
-serde = "1.0.219"
+serde = { version = "1.0.219", features = ["derive"] }
