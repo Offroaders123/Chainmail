@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use crate::java::v1_20::{
     block::{BlockResource, BlockState},
     entity::Entity,
@@ -9,6 +11,7 @@ use crate::nbt::tag::{
 };
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum BlockEntity {
     banner(Banner),
     barrel(Barrel),
@@ -49,19 +52,24 @@ pub enum BlockEntity {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Banner {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
     pub Patterns: ListTag<BannerPattern>,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct BannerPattern {
     pub Color: IntTag<BannerPatternColor>,
     pub Pattern: StringTag<BannerPatternResource>,
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum BannerPatternColor {
     white = 0,
     orange,
@@ -83,6 +91,7 @@ pub enum BannerPatternColor {
 
 // These are used as plain strings
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum BannerPatternResource {
     b,
     bs,
@@ -127,16 +136,24 @@ pub enum BannerPatternResource {
     pig,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Barrel {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub loot_table_like: LootTableLike,
+    #[serde(flatten)]
     pub chest_like: ChestLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Beacon {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
     pub Lock: Option<StringTag>,
     pub Levels: IntTag<BeaconLevel>,
@@ -144,6 +161,7 @@ pub struct Beacon {
     pub Secondary: IntTag<BeaconEffectID>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum BeaconLevel {
     Zero = 0,
     One,
@@ -153,18 +171,22 @@ pub enum BeaconLevel {
 }
 
 // Needs a proper Rust definition. This was a union before
+#[derive(Serialize, Deserialize)]
 pub enum BeaconEffectID {
     // -1 | EffectID,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Beehive {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub Bees: ListTag<BeehiveEntity>,
     pub FlowerPos: BeehiveFlower,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct BeehiveEntity {
     pub EntityData: Entity, // Entity<"bee">, // Probably should allow only `BeeEntity` once that's implemented? Wiki doesn't specify
     pub MinOccupationTicks: IntTag,
@@ -172,6 +194,7 @@ pub struct BeehiveEntity {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct BeehiveFlower {
     pub X: IntTag,
     pub Y: IntTag,
@@ -179,9 +202,13 @@ pub struct BeehiveFlower {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct BlastFurnace {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub furnace_like: FurnaceLike,
     pub RecipesUsed: BlastFurnaceRecipesUsed,
 }
@@ -192,8 +219,11 @@ pub struct BlastFurnace {
 pub type BlastFurnaceRecipesUsed = CompoundTag<IntTag>; // temp, look at comment above
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct BrewingStand {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
     pub BrewTime: ShortTag,
     pub Fuel: ByteTag<BrewingStandFuelLevel>,
@@ -201,6 +231,7 @@ pub struct BrewingStand {
     pub Lock: Option<StringTag>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum BrewingStandFuelLevel {
     Zero = 0,
     One,
@@ -225,36 +256,52 @@ pub enum BrewingStandFuelLevel {
     Twenty,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct BrushableBlock {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub loot_table_like: LootTableLike,
     pub item: Option<Item>, // Should this be uppercase? The wiki showed lowercase
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct CalibratedSculkSensor {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     // This one doesn't have documention yet :P
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Campfire {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub campfire_like: CampfireLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Chest {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub loot_table_like: LootTableLike,
+    #[serde(flatten)]
     pub chest_like: ChestLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct ChiseledBookshelf {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub Items: [Option<Item>; 6], // 0-5, with slot tag
     pub last_interacted_slot: IntTag<ChiseledBookshelfLastInteractedSlot>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum ChiseledBookshelfLastInteractedSlot {
     MinusOne = -1,
     Zero,
@@ -266,14 +313,19 @@ pub enum ChiseledBookshelfLastInteractedSlot {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Comparator {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub OutputSignal: IntTag,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct CommandBlock {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
     pub auto: BooleanTag,
     pub Command: StringTag,
@@ -287,32 +339,49 @@ pub struct CommandBlock {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Conduit {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub Target: Option<IntArrayTag>, // `UUIDLike`
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Dispenser {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub loot_table_like: LootTableLike,
+    #[serde(flatten)]
     pub dispenser_like: DispenserLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Dropper {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub loot_table_like: LootTableLike,
+    #[serde(flatten)]
     pub dispenser_like: DispenserLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct EnchantingTable {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct EndGateway {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub Age: LongTag,
     pub ExactTeleport: BooleanTag,
@@ -322,9 +391,13 @@ pub struct EndGateway {
 pub type EndGatewayExitPortal = [IntTag; 3];
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Furnace {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub furnace_like: FurnaceLike,
     pub RecipesUsed: FurnaceRecipesUsed,
 }
@@ -334,15 +407,22 @@ pub struct Furnace {
 // }
 pub type FurnaceRecipesUsed = CompoundTag<IntTag>;
 
+#[derive(Serialize, Deserialize)]
 pub struct HangingSign {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Hopper {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub loot_table_like: LootTableLike,
     pub Items: [Option<Item>; 5], // 0-4, with slot tag
     pub Lock: Option<StringTag>,
@@ -350,6 +430,7 @@ pub struct Hopper {
 }
 
 // Needs proper
+#[derive(Serialize, Deserialize)]
 pub enum HopperTransferCooldown {
     Zero = 0,
     One,
@@ -362,7 +443,9 @@ pub enum HopperTransferCooldown {
     Eight,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Jigsaw {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub final_state: StringTag<BlockResource>,
     pub joint: StringTag<JigsawJoint>,
@@ -372,13 +455,16 @@ pub struct Jigsaw {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum JigsawJoint {
     rollable,
     aligned,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Jukebox {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub IsPlaying: BooleanTag,
     pub RecordItem: Item, // maybe only music disc items at the type level? optional?
@@ -387,18 +473,24 @@ pub struct Jukebox {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Lectern {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub Book: Option<Item>,
     pub Page: IntTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct MobSpawner {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub mob_spawner_like: MobSpawnerLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 // Double check that some of these properties are mandatory; the wiki doesn't quite specify, but it make it sound like they could be optional.
 pub struct MobSpawnerLike {
     pub Delay: ShortTag,
@@ -413,17 +505,20 @@ pub struct MobSpawnerLike {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct MobSpawnerSpawnPotential {
     pub weight: IntTag,
     pub data: Entity, // Related to `SpawnData`, looks like it will override the properties from that one, if this is present instead.
     pub customSpawnRules: MobSpawnerSpawnRules,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct MobSpawnerSpawnRules {
     pub block_light_limit: MobSpawnerLightLimit,
     pub sky_light_limit: MobSpawnerLightLimit,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum MobSpawnerLightLimit {
     Int(IntTag),
     Compound {
@@ -433,7 +528,9 @@ pub enum MobSpawnerLightLimit {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Piston {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub blockState: BlockState, // I think this is just the raw `BlockState` type, not totally sure though? Might be a wrapper? I don't think so though.
     pub extending: BooleanTag,
@@ -442,6 +539,7 @@ pub struct Piston {
     pub source: BooleanTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum PistonFacing {
     Down = 0,
     Up,
@@ -451,11 +549,14 @@ pub enum PistonFacing {
     East,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct SculkCatalyst {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub charges: ListTag<SculkCatalystCharge>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct SculkCatalystCharge {
     pub charge: IntTag,
     pub pos: SculkCatalystChargePosition,
@@ -473,6 +574,7 @@ pub struct SculkCatalystCharge {
 
 pub type SculkCatalystChargePosition = [IntTag; 3];
 
+#[derive(Serialize, Deserialize)]
 pub enum SculkCatalystChargeSpread {
     Zero = 0,
     One,
@@ -482,6 +584,7 @@ pub enum SculkCatalystChargeSpread {
 pub type SculkCatalystFacings = [StringTag<SculkCatalystFacing>; 6];
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum SculkCatalystFacing {
     north,
     south,
@@ -491,30 +594,44 @@ pub enum SculkCatalystFacing {
     down,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct SculkSensor {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     // Can't find documentation about the Block Data here
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct SculkShrieker {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     // Can't find documentation about the Block Data here
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct ShulkerBox {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub loot_table_like: LootTableLike,
+    #[serde(flatten)]
     pub chest_like: ChestLike,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Sign {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Skull {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub note_block_sound: Option<StringTag>, // "The sound event this skull plays when played with a note block." probably should be typed to a Resource Location :)
     pub ExtraType: StringTag,
@@ -522,6 +639,7 @@ pub struct Skull {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct SkullOwner {
     pub Id: Option<IntArrayTag>, // `UUIDLike`
     pub Name: Option<StringTag>,
@@ -529,6 +647,7 @@ pub struct SkullOwner {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct SkullTexture {
     /**
      * A Base64-encoded JSON object. Equivalent to the type SkullTextureJSON.
@@ -538,6 +657,7 @@ pub struct SkullTexture {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct SkullTextureJSON {
     pub isPublic: Option<bool>,
     pub signatureRequired: bool,
@@ -550,34 +670,43 @@ pub struct SkullTextureJSON {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct SkullTextureTextures {
     pub CAPE: Option<Cape>,
     pub SKIN: Skin,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Cape {
     pub url: String,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Skin {
     pub url: String,
     pub metadata: SkinMetadata,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct SkinMetadata {
     pub model: SkinModel, // this is a string, a JSON string, not necessarily an NBT string
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum SkinModel {
     classic,
     slim,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Smoker {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub furnace_like: FurnaceLike,
     pub RecipesUsed: SmokerRecipesUsed,
 }
@@ -587,13 +716,18 @@ pub struct Smoker {
 // }
 pub type SmokerRecipesUsed = CompoundTag<IntTag>;
 
+#[derive(Serialize, Deserialize)]
 pub struct SoulCampfire {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub campfire_like: CampfireLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct StructureBlock {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
     pub author: StringTag,
     pub ignoreEntities: BooleanTag,
@@ -615,12 +749,14 @@ pub struct StructureBlock {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum StructureBlockMirror {
     NONE,
     LEFT_RIGHT,
     FRONT_BACK,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum StructureBlockMode {
     SAVE,
     LOAD,
@@ -629,6 +765,7 @@ pub enum StructureBlockMode {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum StructureBlockRotation {
     NONE,
     CLOCKWISE_90,
@@ -636,14 +773,20 @@ pub enum StructureBlockRotation {
     COUNTERCLOCKWISE_90,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct TrappedChest {
+    #[serde(flatten)]
     pub block_entity_like: BlockEntityLike,
+    #[serde(flatten)]
     pub custom_nameable_like: CustomNameableLike,
+    #[serde(flatten)]
     pub loot_table_like: LootTableLike,
+    #[serde(flatten)]
     pub chest_like: ChestLike,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct CampfireLike {
     // `IntArrayTag<[number, number, number, number]>`
     pub CookingTimes: IntArrayTag,
@@ -652,23 +795,27 @@ pub struct CampfireLike {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct ChestLike {
     pub Items: ListTag<Item>, // 0-26, with slot tag
     pub Lock: Option<StringTag>,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct CustomNameableLike {
     pub CustomName: Option<StringTag>, // JSON text component
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct DispenserLike {
     pub Items: ListTag<Item>, // 0-8, with slot tag
     pub Lock: Option<StringTag>,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct FurnaceLike {
     pub BurnTime: ShortTag,
     pub CookTime: ShortTag,
@@ -678,17 +825,20 @@ pub struct FurnaceLike {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct LootTableLike {
     pub LootTable: Option<StringTag>, // `LootTableResource`
     pub LootTableSeed: Option<LongTag>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct SignLike {
     pub is_waxed: BooleanTag,
     pub front_text: SignText,
     pub back_text: SignText,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct SignText {
     pub has_glowing_text: BooleanTag,
     pub color: StringTag<SignColor>,
@@ -696,6 +846,7 @@ pub struct SignText {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum SignColor {
     white,
     orange,
@@ -717,6 +868,7 @@ pub enum SignColor {
 
 // <BlockEntityID extends string>
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct BlockEntityLike {
     pub id: StringTag, // `BlockEntityResource`?
     pub keepPacked: BooleanTag,
@@ -727,6 +879,7 @@ pub struct BlockEntityLike {
 
 // Prefixed with `minecraft:` when stringified
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum BlockEntityResource {
     banner,
     barrel,

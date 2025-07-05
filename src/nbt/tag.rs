@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
+#[derive(Serialize, Deserialize)]
 pub enum Tag {
     Boolean(BooleanTag),
     Byte(ByteTag),
@@ -32,7 +33,9 @@ pub struct ByteArrayTag(Vec<i8>);
 pub type StringTag<T: Into<String> = String> = T;
 pub type ListTag<T: TagLike> = Vec<T>;
 pub type CompoundTag<T: TagLike = Tag> = HashMap<String, T>;
+#[derive(Serialize, Deserialize)]
 pub struct IntArrayTag(Vec<i32>);
+#[derive(Serialize, Deserialize)]
 pub struct LongArrayTag(Vec<i64>);
 
 impl TagLike for Tag {}

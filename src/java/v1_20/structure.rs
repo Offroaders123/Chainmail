@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use crate::java::v1_20::{
     biome::BiomeResource,
     block::{BlockResource, BlockState},
@@ -5,6 +7,7 @@ use crate::java::v1_20::{
 use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntArrayTag, IntTag, ListTag, StringTag};
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Structure {
     pub BB: IntArrayTag,
     pub biome: StringTag<BiomeResource>,
@@ -19,6 +22,7 @@ pub struct Structure {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct StructurePiece {
     pub BB: IntArrayTag,
     pub BiomeType: StringTag<BiomeType>,
@@ -83,17 +87,20 @@ pub struct StructurePiece {
     pub Zombie: BooleanTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum BiomeType {
     WARM,
     COLD,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct VillageBlock {
     pub Name: StringTag<BlockResource>,
     pub Properties: BlockState,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct VillageJunction {
     pub source_x: IntTag,
     pub source_ground_y: IntTag,
@@ -103,6 +110,7 @@ pub struct VillageJunction {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum Rotation {
     COUNTERCLOCKWISE_90,
     NONE,
@@ -111,6 +119,7 @@ pub enum Rotation {
 }
 
 // These are probably defined somewhere as to what these are
+#[derive(Serialize, Deserialize)]
 pub enum StructureType {
     Zero = 0,
     One,
@@ -119,12 +128,14 @@ pub enum StructureType {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum DestProj {
     terrain_matching,
     rigid,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct MonumentProcessed {
     pub X: IntTag,
     pub Z: IntTag,
@@ -132,6 +143,7 @@ pub struct MonumentProcessed {
 
 // Prefix with `minecraft:` when stringified!!
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum StructureResource {
     ancient_city,
     bastion_remnant,

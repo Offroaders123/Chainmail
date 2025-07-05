@@ -1,6 +1,9 @@
+use serde::{Deserialize, Serialize};
+
 use crate::java::v1_20::block::BlockResource;
 use crate::nbt::tag::{IntTag, StringTag};
 
+#[derive(Serialize, Deserialize)]
 pub struct TileTick {
     pub i: StringTag<TileTickResource>,
     pub p: IntTag,
@@ -12,6 +15,7 @@ pub struct TileTick {
 
 // Need to check if these actually can be inherited like this; I'm pretty sure they can, because they're just a collection of existing Block values?
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum TileTickResource {
     repeater = BlockResource::repeater as isize,
     redstone_torch = BlockResource::redstone_torch as isize,

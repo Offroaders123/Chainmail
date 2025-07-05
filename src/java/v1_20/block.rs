@@ -1,12 +1,16 @@
+use serde::{Deserialize, Serialize};
+
 use crate::nbt::tag::StringTag;
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct BlockState {
     pub Name: StringTag<BlockResource>,
     // [property: string]: any;
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum BlockResource {
     acacia_button,
     acacia_door,

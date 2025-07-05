@@ -1,6 +1,9 @@
+use serde::{Deserialize, Serialize};
+
 use crate::nbt::tag::{BooleanTag, ByteTag, IntTag};
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Effect {
     pub Ambient: BooleanTag,
     pub Amplifier: ByteTag,
@@ -12,6 +15,7 @@ pub struct Effect {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum EffectID {
     speed = 1,
     slowness,

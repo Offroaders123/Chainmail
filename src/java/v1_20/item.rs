@@ -1,6 +1,9 @@
+use serde::{Deserialize, Serialize};
+
 use crate::nbt::tag::{ByteTag, IntTag, StringTag};
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Item {
     pub Slot: ByteTag,
     pub id: StringTag<ItemResource>,
@@ -9,11 +12,13 @@ pub struct Item {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct ItemTag {
     pub Damage: IntTag,
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum ItemResource {
     acacia_boat,
     amethyst_shard,

@@ -1,14 +1,18 @@
+use serde::{Deserialize, Serialize};
+
 use crate::java::alpha::entity::Player;
 use crate::nbt::tag::{
     BooleanTag, ByteTag, CompoundTag, DoubleTag, IntArrayTag, IntTag, ListTag, LongTag, StringTag,
 };
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct LevelDat {
     pub Data: LevelDatData,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct LevelDatData {
     pub allowCommands: BooleanTag,
     pub BorderCenterX: DoubleTag,
@@ -61,6 +65,7 @@ pub struct LevelDatData {
 pub type CustomBossEvents = CompoundTag<CustomBossEvent>;
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct CustomBossEvent {
     pub Players: ListTag<IntArrayTag>,
     pub Color: StringTag<BossBarColor>,
@@ -75,6 +80,7 @@ pub struct CustomBossEvent {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum BossBarColor {
     black,
     dark_blue,
@@ -95,6 +101,7 @@ pub enum BossBarColor {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum BossBarOverlay {
     progress,
     notched_6,
@@ -104,11 +111,13 @@ pub enum BossBarOverlay {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct DataPacks {
     pub Disabled: ListTag<StringTag>,
     pub Enabled: ListTag<StringTag>,
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum Difficulty {
     Peaceful = 0,
     Easy,
@@ -116,16 +125,19 @@ pub enum Difficulty {
     Hard,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct DimensionData {
     pub the_end: EndData,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct EndData {
     pub DragonFight: Option<DragonFight>,
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct DragonFight {
     pub ExitPortalLocation: ExitPortalLocation,
     pub Gateways: ListTag<IntTag>, // 0 - 19
@@ -136,6 +148,7 @@ pub struct DragonFight {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct ExitPortalLocation {
     pub X: ByteTag,
     pub Y: ByteTag,
@@ -146,6 +159,7 @@ pub struct ExitPortalLocation {
 // The numeric values could use more-accurate types.
 // I only did simple ones for the time being, which for the most part represent the values that appear to be documented.
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct GameRules {
     pub forgiveDeadPlayers: BooleanTag,
     pub doInsomnia: BooleanTag,
@@ -184,6 +198,7 @@ pub struct GameRules {
     pub logAdminCommands: BooleanTag,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct WorldGenSettings {
     pub bonus_chest: BooleanTag,
     pub seed: LongTag,
@@ -191,6 +206,7 @@ pub struct WorldGenSettings {
     pub dimensions: CompoundTag, // {}; // `WorldGenDimensions`
 }
 
+#[derive(Serialize, Deserialize)]
 pub enum GameType {
     Survival = 0,
     Creative,
@@ -199,6 +215,7 @@ pub enum GameType {
 }
 
 #[allow(non_camel_case_types)]
+#[derive(Serialize, Deserialize)]
 pub enum GeneratorName {
     default,
     flat,
@@ -211,6 +228,7 @@ pub enum GeneratorName {
 }
 
 #[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
 pub struct Version {
     pub Id: IntTag,
     pub Name: StringTag,
