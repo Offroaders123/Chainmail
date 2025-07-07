@@ -140,7 +140,7 @@ pub struct EndData {
 #[derive(Serialize, Deserialize)]
 pub struct DragonFight {
     pub ExitPortalLocation: ExitPortalLocation,
-    pub Gateways: ListTag<IntTag>, // 0 - 19
+    pub Gateways: [Option<IntTag>; 19], // 0 - 19
     pub DragonKilled: BooleanTag,
     pub DragonUUIDLeast: LongTag,
     pub DragonUUIDMost: LongTag,

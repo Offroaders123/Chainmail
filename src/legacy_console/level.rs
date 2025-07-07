@@ -1,58 +1,85 @@
-import type { BooleanTag, ByteTag, IntTag, LongTag, StringTag } from "nbtify";
+use serde::{Deserialize, Serialize};
 
-export interface LevelDat {
-  Data: {
-    BiomeCentreXChunk: IntTag;
-    BiomeScale: IntTag;
-    XZSize: IntTag;
-    StrongholdEndPortalZ: IntTag;
-    StrongholdEndPortalX: IntTag;
-    hasStrongholdEndPortal: BooleanTag;
-    StrongholdZ: IntTag;
-    StrongholdY: IntTag;
-    StrongholdX: IntTag;
-    HellScale: IntTag;
-    SizeOnDisk: LongTag;
-    DimensionData: {
-      "The End": {
-        DragonFight: {
-          DragonKilled: BooleanTag;
-          PreviouslyKilled: BooleanTag;
-          Gateways: [IntTag];
-        }
-      }
-    };
-    BiomeCentreZChunk: IntTag;
-    newSeaLevel: BooleanTag;
-    RandomSeed: LongTag;
-    thunderTime: IntTag;
-    raining: BooleanTag;
-    initialized: BooleanTag;
-    version: IntTag;
-    ModernEnd: BooleanTag;
-    generatorVersion: IntTag;
-    LevelName: StringTag;
-    Difficulty: ByteTag<Difficulty>;
-    DataVersion: IntTag;
-    hasStronghold: BooleanTag;
-    SpawnX: IntTag;
-    DayTime: LongTag;
-    hasBeenInCreative: BooleanTag;
-    thundering: BooleanTag;
-    GameType: IntTag;
-    Time: LongTag;
-    spawnBonusChest: BooleanTag;
-    clearWeatherTime: IntTag;
-    MapFeatures: BooleanTag;
-    SpawnY: IntTag;
-    LastPlayed: LongTag;
-    allowCommands: BooleanTag;
-    hardcore: BooleanTag;
-    generatorName: StringTag;
-    DifficultyLocked: BooleanTag;
-    rainTime: IntTag;
-    SpawnZ: IntTag;
-  }
+use crate::nbt::tag::{BooleanTag, ByteTag, IntTag, LongTag, StringTag};
+
+#[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
+pub struct LevelDat {
+    Data: LevelDatData,
 }
 
-export type Difficulty = 0 | 1 | 2 | 3;
+#[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
+pub struct LevelDatData {
+    BiomeCentreXChunk: IntTag,
+    BiomeScale: IntTag,
+    XZSize: IntTag,
+    StrongholdEndPortalZ: IntTag,
+    StrongholdEndPortalX: IntTag,
+    hasStrongholdEndPortal: BooleanTag,
+    StrongholdZ: IntTag,
+    StrongholdY: IntTag,
+    StrongholdX: IntTag,
+    HellScale: IntTag,
+    SizeOnDisk: LongTag,
+    DimensionData: DimensionData,
+    BiomeCentreZChunk: IntTag,
+    newSeaLevel: BooleanTag,
+    RandomSeed: LongTag,
+    thunderTime: IntTag,
+    raining: BooleanTag,
+    initialized: BooleanTag,
+    version: IntTag,
+    ModernEnd: BooleanTag,
+    generatorVersion: IntTag,
+    LevelName: StringTag,
+    Difficulty: ByteTag<Difficulty>,
+    DataVersion: IntTag,
+    hasStronghold: BooleanTag,
+    SpawnX: IntTag,
+    DayTime: LongTag,
+    hasBeenInCreative: BooleanTag,
+    thundering: BooleanTag,
+    GameType: IntTag,
+    Time: LongTag,
+    spawnBonusChest: BooleanTag,
+    clearWeatherTime: IntTag,
+    MapFeatures: BooleanTag,
+    SpawnY: IntTag,
+    LastPlayed: LongTag,
+    allowCommands: BooleanTag,
+    hardcore: BooleanTag,
+    generatorName: StringTag,
+    DifficultyLocked: BooleanTag,
+    rainTime: IntTag,
+    SpawnZ: IntTag,
+}
+
+#[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
+pub struct DimensionData {
+    #[serde(rename = "The End")]
+    TheEnd: TheEndData,
+}
+
+#[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
+pub struct TheEndData {
+    DragonFight: DragonFightData,
+}
+
+#[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
+pub struct DragonFightData {
+    DragonKilled: BooleanTag,
+    PreviouslyKilled: BooleanTag,
+    Gateways: [Option<IntTag>; 19], // assumed length, based on the other versions' typings, likely the same as those
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum Difficulty {
+    Peaceful = 0,
+    Easy,
+    Normal,
+    Hard,
+}
