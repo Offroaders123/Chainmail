@@ -26,7 +26,7 @@ pub type ByteTag<T: Into<i8> = i8> = T;
 pub type ShortTag<T: Into<i16> = i16> = T;
 pub type IntTag<T: Into<i32> = i32> = T;
 pub type LongTag = i64;
-pub type FloatTag = f32;
+pub type FloatTag<T: Into<f32> = f32> = T;
 pub type DoubleTag = f64;
 #[derive(Serialize, Deserialize)]
 pub struct ByteArrayTag(Vec<i8>);
