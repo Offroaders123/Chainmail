@@ -1072,19 +1072,19 @@ pub enum BlockState {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -1094,25 +1094,25 @@ pub struct AcaciaFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -1122,43 +1122,43 @@ pub struct AcaciaPlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AcaciaWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -1220,13 +1220,13 @@ pub struct Andesite {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AndesiteStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Anvil {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     damage: StringTag<AnvilDamage>,
 }
 
@@ -1246,13 +1246,13 @@ pub struct Azalea {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AzaleaLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct AzaleaLeavesFlowered {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
@@ -1281,25 +1281,25 @@ pub enum BambooStalkThickness {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooBlock {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -1309,13 +1309,13 @@ pub struct BambooFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
@@ -1325,19 +1325,19 @@ pub struct BambooMosaic {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooMosaicDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooMosaicSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooMosaicStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -1347,7 +1347,7 @@ pub struct BambooPlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
@@ -1373,37 +1373,37 @@ pub enum BambooSaplingType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BambooWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Barrel {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     open_bit: BooleanTag,
 }
 
@@ -1414,7 +1414,7 @@ pub struct Barrier {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Basalt {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -1424,7 +1424,7 @@ pub struct Beacon {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Bed {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     head_piece_bit: BooleanTag,
     occupied_bit: BooleanTag,
 }
@@ -1438,19 +1438,19 @@ pub struct Bedrock {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BeeNest {
-    // extends BeehiveLike
+    beehive_like: BeehiveLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Beehive {
-    // extends BeehiveLike
+    beehive_like: BeehiveLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BeehiveLike {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     honey_level: IntTag<BeehiveHoneyLevel>,
 }
 
@@ -1487,7 +1487,7 @@ pub enum BeetrootGrowth {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Bell {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     attachment: StringTag<BellAttachment>,
     toggle_bit: BooleanTag,
 }
@@ -1504,7 +1504,7 @@ pub enum BellAttachment {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BigDripleaf {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     big_dripleaf_head: BooleanTag,
     big_dripleaf_tilt: StringTag<BigDripleafTilt>,
 }
@@ -1521,19 +1521,19 @@ pub enum BigDripleafTilt {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -1543,25 +1543,25 @@ pub struct BirchFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -1571,55 +1571,55 @@ pub struct BirchPlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BirchWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlackCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlackCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -1637,7 +1637,7 @@ pub struct BlackConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlackGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -1667,43 +1667,43 @@ pub struct Blackstone {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlackstoneDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlackstoneSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlackstoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlackstoneWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlastFurnace {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlueCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlueCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -1721,7 +1721,7 @@ pub struct BlueConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlueGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -1751,7 +1751,7 @@ pub struct BlueWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BoneBlock {
-    // extends PillarLike
+    pillar_like: PillarLike,
     deprecated: IntTag<BoneBlockDeprecated>,
 }
 
@@ -1771,7 +1771,7 @@ pub struct Bookshelf {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BorderBlock {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -1793,19 +1793,19 @@ pub struct BrickBlock {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BrownCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BrownCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -1823,7 +1823,7 @@ pub struct BrownConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BrownGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -1943,7 +1943,7 @@ pub struct Calcite {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CalibratedSculkSensor {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     sculk_sensor_phase: IntTag<CalibratedSculkSensorPhase>,
 }
 
@@ -1962,20 +1962,20 @@ pub struct Camera {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Campfire {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     extinguished: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Candle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -2004,7 +2004,7 @@ pub struct CartographyTable {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CarvedPumpkin {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -2086,13 +2086,13 @@ pub enum GrowingPlantAge {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Chain {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ChainCommandBlock {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     conditional_bit: BooleanTag,
 }
 
@@ -2103,7 +2103,7 @@ pub struct ChemicalHeat {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ChemistryTable {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     chemistry_table_type: StringTag<ChemistryTableType>,
 }
 
@@ -2119,19 +2119,19 @@ pub enum ChemistryTableType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -2141,25 +2141,25 @@ pub struct CherryFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -2169,7 +2169,7 @@ pub struct CherryPlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
@@ -2181,50 +2181,50 @@ pub struct CherrySapling {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherrySlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CherryWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
     stripped_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Chest {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ChiseledBookshelf {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     books_stored: IntTag<ChiseledBookshelfBooksStored>,
 }
 
@@ -2365,25 +2365,25 @@ pub struct CobbledDeepslate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CobbledDeepslateDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CobbledDeepslateSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CobbledDeepslateStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CobbledDeepslateWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -2393,7 +2393,7 @@ pub struct Cobblestone {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CobblestoneWall {
-    // extends WallLike
+    wall_like: WallLike,
     wall_block_type: StringTag<WallBlockType>,
 }
 
@@ -2419,7 +2419,7 @@ pub enum WallBlockType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Cocoa {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     age: IntTag<CocoaAge>,
 }
 
@@ -2434,21 +2434,21 @@ pub enum CocoaAge {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ColoredTorchBp {
-    // extends TorchLike
+    torch_like: TorchLike,
     color_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ColoredTorchRg {
-    // extends TorchLike
+    torch_like: TorchLike,
     color_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CommandBlock {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     conditional_bit: BooleanTag,
 }
 
@@ -2483,14 +2483,14 @@ pub struct CopperBlock {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CopperBulb {
-    // extends LightLike
+    light_like: LightLike,
     powered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CopperDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -2504,7 +2504,7 @@ pub struct CopperOre {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CopperTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -2617,19 +2617,19 @@ pub struct CraftingTable {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -2639,7 +2639,7 @@ pub struct CrimsonFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
@@ -2649,13 +2649,13 @@ pub struct CrimsonFungus {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonHyphae {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -2669,7 +2669,7 @@ pub struct CrimsonPlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
@@ -2679,37 +2679,37 @@ pub struct CrimsonRoots {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonStem {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CrimsonWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
@@ -2723,25 +2723,25 @@ pub struct CutCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CutCopperStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CyanCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CyanCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -2759,7 +2759,7 @@ pub struct CyanConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CyanGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -2785,19 +2785,19 @@ pub struct CyanWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -2807,25 +2807,25 @@ pub struct DarkOakFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -2835,61 +2835,61 @@ pub struct DarkOakPlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkPrismarineStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DarkOakWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DaylightDetector {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DaylightDetectorInverted {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
@@ -2919,37 +2919,37 @@ pub struct DeadBush {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DecoratedPot {
-    // extends DirectionLike
+    direction_like: DirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Deepslate {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DeepslateBrickDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DeepslateBrickSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DeepslateBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DeepslateBrickWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -2991,25 +2991,25 @@ pub struct DeepslateRedstoneOre {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DeepslateTileDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DeepslateTileSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DeepslateTileStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DeepslateTileWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -3053,7 +3053,7 @@ pub struct Diorite {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DioriteStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -3076,14 +3076,14 @@ pub struct DirtWithRoots {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Dispenser {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     triggered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DoubleCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -3107,7 +3107,7 @@ pub enum DoublePlantType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DoubleStoneBlockSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
     stone_slab_type: StringTag<StoneSlabType>,
 }
 
@@ -3127,7 +3127,7 @@ pub enum StoneSlabType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DoubleStoneBlockSlab2 {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
     stone_slab_type_2: StringTag<StoneSlabType2>,
 }
 
@@ -3147,7 +3147,7 @@ pub enum StoneSlabType2 {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DoubleStoneBlockSlab3 {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
     stone_slab_type_3: StringTag<StoneSlabType3>,
 }
 
@@ -3167,7 +3167,7 @@ pub enum StoneSlabType3 {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DoubleStoneBlockSlab4 {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
     stone_slab_type_4: StringTag<StoneSlabType4>,
 }
 
@@ -3196,7 +3196,7 @@ pub struct DripstoneBlock {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Dropper {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     triggered_bit: BooleanTag,
 }
 
@@ -3691,7 +3691,7 @@ pub struct EnchantingTable {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct EndBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -3709,14 +3709,14 @@ pub struct EndPortal {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct EndPortalFrame {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     end_portal_eye_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct EndRod {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -3726,7 +3726,7 @@ pub struct EndStone {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct EnderChest {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -3740,14 +3740,14 @@ pub struct ExposedCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ExposedCopperBulb {
-    // extends LightLike
+    light_like: LightLike,
     powered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ExposedCopperDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -3757,7 +3757,7 @@ pub struct ExposedCopperGrate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ExposedCopperTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -3767,19 +3767,19 @@ pub struct ExposedCutCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ExposedCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ExposedCutCopperStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ExposedDoubleCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -3804,7 +3804,7 @@ pub enum FarmlandMoisturizedAmount {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct FenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
@@ -3867,7 +3867,7 @@ pub struct FlowingWater {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Frame {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     item_frame_map_bit: BooleanTag,
     item_frame_photo_bit: BooleanTag,
 }
@@ -3895,7 +3895,7 @@ pub enum FrostedIceAge {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Furnace {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -3913,7 +3913,7 @@ pub struct GlassPane {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GlowFrame {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     item_frame_map_bit: BooleanTag,
     item_frame_photo_bit: BooleanTag,
 }
@@ -4034,7 +4034,7 @@ pub struct Granite {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GraniteStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -4052,13 +4052,13 @@ pub struct Gravel {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GrayCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GrayCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -4076,7 +4076,7 @@ pub struct GrayConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GrayGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -4102,13 +4102,13 @@ pub struct GrayWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GreenCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GreenCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -4126,7 +4126,7 @@ pub struct GreenConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GreenGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -4152,7 +4152,7 @@ pub struct GreenWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Grindstone {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     attachment: StringTag<GrindstoneAttachment>,
 }
 
@@ -4312,7 +4312,7 @@ pub struct HardenedClay {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct HayBlock {
-    // extends PillarLike
+    pillar_like: PillarLike,
     deprecated: IntTag<HayBlockDeprecated>,
 }
 
@@ -4329,7 +4329,7 @@ pub enum HayBlockDeprecated {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct HeavyWeightedPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
@@ -4343,7 +4343,7 @@ pub struct HoneycombBlock {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Hopper {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     toggle_bit: BooleanTag,
 }
 
@@ -4358,7 +4358,7 @@ pub struct Ice {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct InfestedDeepslate {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -4384,7 +4384,7 @@ pub struct IronBlock {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct IronDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -4394,13 +4394,13 @@ pub struct IronOre {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct IronTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Jigsaw {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     rotation: IntTag<JigsawRotation>,
 }
 
@@ -4420,19 +4420,19 @@ pub struct Jukebox {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -4442,25 +4442,25 @@ pub struct JungleFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -4470,43 +4470,43 @@ pub struct JunglePlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JunglePressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JungleWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -4549,7 +4549,7 @@ pub enum KelpAge {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Ladder {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -4593,7 +4593,7 @@ pub struct Lava {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Lectern {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     powered_bit: BooleanTag,
 }
 
@@ -4647,13 +4647,13 @@ pub enum LightBlockLightLevel {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LightBlueCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LightBlueCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -4671,7 +4671,7 @@ pub struct LightBlueConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LightBlueGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -4697,13 +4697,13 @@ pub struct LightBlueWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LightGrayCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LightGrayCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -4741,25 +4741,25 @@ pub struct LightGrayWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LightWeightedPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LightningRod {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LimeCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LimeCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -4777,7 +4777,7 @@ pub struct LimeConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LimeGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -4803,7 +4803,7 @@ pub struct LimeWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LitBlastFurnace {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -4813,13 +4813,13 @@ pub struct LitDeepslateRedstoneOre {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LitFurnace {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LitPumpkin {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -4833,7 +4833,7 @@ pub struct LitRedstoneOre {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LitSmoker {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -4843,19 +4843,19 @@ pub struct Lodestone {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Loom {
-    // extends DirectionLike
+    direction_like: DirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MagentaCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MagentaCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -4873,7 +4873,7 @@ pub struct MagentaConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MagentaGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -4903,19 +4903,19 @@ pub struct Magma {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -4925,25 +4925,25 @@ pub struct MangroveFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -4953,7 +4953,7 @@ pub struct MangrovePlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangrovePressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
@@ -4980,37 +4980,37 @@ pub struct MangroveRoots {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MangroveWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
     stripped_bit: BooleanTag,
 }
 
@@ -5039,7 +5039,7 @@ pub struct MelonBlock {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MelonStem {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     growth: IntTag<MelonStemGrowth>,
 }
 
@@ -5092,13 +5092,13 @@ pub struct MossyCobblestone {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MossyCobblestoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MossyStoneBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -5112,25 +5112,25 @@ pub struct Mud {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MudBrickDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MudBrickSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MudBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MudBrickWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -5140,7 +5140,7 @@ pub struct MudBricks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MuddyMangroveRoots {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -5158,7 +5158,7 @@ pub struct NetherBrickFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct NetherBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -5203,7 +5203,7 @@ pub struct NetherReactorCore {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct NormalStoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -5213,7 +5213,7 @@ pub struct NoteBlock {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OakDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -5223,19 +5223,19 @@ pub struct OakFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OakHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OakLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OakLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -5245,19 +5245,19 @@ pub struct OakPlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OakSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OakStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OakWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -5286,19 +5286,19 @@ pub struct Obsidian {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OchreFroglight {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OrangeCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OrangeCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -5316,7 +5316,7 @@ pub struct OrangeConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OrangeGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -5350,14 +5350,14 @@ pub struct OxidizedCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OxidizedCopperBulb {
-    // extends LightLike
+    light_like: LightLike,
     powered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OxidizedCopperDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -5367,7 +5367,7 @@ pub struct OxidizedCopperGrate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OxidizedCopperTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -5377,19 +5377,19 @@ pub struct OxidizedCutCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OxidizedCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OxidizedCutCopperStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct OxidizedDoubleCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -5403,19 +5403,19 @@ pub struct PackedMud {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PearlescentFroglight {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PinkCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PinkCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -5433,13 +5433,13 @@ pub struct PinkConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PinkGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PinkPetals {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     growth: IntTag<PinkPetalsGrowth>,
 }
 
@@ -5479,13 +5479,13 @@ pub struct PinkWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Piston {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PistonArmCollision {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -5542,13 +5542,13 @@ pub struct PolishedAndesite {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedAndesiteStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBasalt {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -5558,25 +5558,25 @@ pub struct PolishedBlackstone {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneBrickDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneBrickSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneBrickWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -5586,37 +5586,37 @@ pub struct PolishedBlackstoneBricks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstonePressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedBlackstoneWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -5626,25 +5626,25 @@ pub struct PolishedDeepslate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedDeepslateDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedDeepslateSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedDeepslateStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedDeepslateWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -5654,7 +5654,7 @@ pub struct PolishedDiorite {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedDioriteStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -5664,7 +5664,7 @@ pub struct PolishedGranite {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedGraniteStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -5674,25 +5674,25 @@ pub struct PolishedTuff {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedTuffDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedTuffSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedTuffStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PolishedTuffWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -5735,7 +5735,7 @@ pub struct PowderSnow {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PoweredComparator {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     output_lit_bit: BooleanTag,
     output_subtract_bit: BooleanTag,
 }
@@ -5743,7 +5743,7 @@ pub struct PoweredComparator {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PoweredRepeater {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     repeater_delay: IntTag<PoweredRepeaterDelay>,
 }
 
@@ -5773,25 +5773,25 @@ pub enum PrismarineBlockType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PrismarineBricksStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PrismarineStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Pumpkin {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PumpkinStem {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     growth: IntTag<PumpkinStepGrowth>,
 }
 
@@ -5811,13 +5811,13 @@ pub enum PumpkinStepGrowth {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PurpleCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PurpleCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -5835,7 +5835,7 @@ pub struct PurpleConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PurpleGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -5861,7 +5861,7 @@ pub struct PurpleWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PurpurBlock {
-    // extends PillarLike
+    pillar_like: PillarLike,
     chisel_type: StringTag<PurpurBlockChiselType>,
 }
 
@@ -5877,13 +5877,13 @@ pub enum PurpurBlockChiselType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PurpurStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct QuartzBlock {
-    // extends PillarLike
+    pillar_like: PillarLike,
     chisel_type: StringTag<QuartzBlockChiselType>,
 }
 
@@ -5907,7 +5907,7 @@ pub struct QuartzOre {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct QuartzStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -5946,13 +5946,13 @@ pub struct RawIronBlock {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct RedCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct RedCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -5992,7 +5992,7 @@ pub enum FlowerType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct RedGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -6033,7 +6033,7 @@ pub struct RedNetherBrick {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct RedNetherBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -6054,7 +6054,7 @@ pub enum RedSandstoneType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct RedSandstoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -6092,13 +6092,13 @@ pub struct RedstoneOre {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct RedstoneTorch {
-    // extends TorchLike
+    torch_like: TorchLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct RedstoneWire {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
@@ -6135,7 +6135,7 @@ pub struct ReinforcedDeepslate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct RepeatingCommandBlock {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     conditional_bit: BooleanTag,
 }
 
@@ -6190,7 +6190,7 @@ pub enum SandstoneType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SandstoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -6378,13 +6378,13 @@ pub struct Shroomlight {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SilverGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Skull {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -6412,7 +6412,7 @@ pub enum SmallAmethystBudBlockFace {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SmallDripleafBlock {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     upper_block_bit: BooleanTag,
 }
 
@@ -6423,7 +6423,7 @@ pub struct SmithingTable {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Smoker {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -6433,19 +6433,19 @@ pub struct SmoothBasalt {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SmoothQuartzStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SmoothRedSandstoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SmoothSandstoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -6493,7 +6493,7 @@ pub enum SnowLayerHeight {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SoulCampfire {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     extinguished: BooleanTag,
 }
 
@@ -6541,7 +6541,7 @@ pub struct SoulSoil {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SoulTorch {
-    // extends TorchLike
+    torch_like: TorchLike,
 }
 
 #[allow(non_snake_case)]
@@ -6564,19 +6564,19 @@ pub struct SporeBlossom {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -6586,25 +6586,25 @@ pub struct SpruceFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceLeaves {
-    // extends LeavesLike
+    leaves_like: LeavesLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -6614,67 +6614,67 @@ pub struct SprucePlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SprucePressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SpruceWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StandingBanner {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StickyPiston {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StickyPistonArmCollision {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -6684,7 +6684,7 @@ pub struct Stone {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StoneBlockSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
     stone_slab_type: StringTag<StoneBlockSlabType>,
 }
 
@@ -6704,7 +6704,7 @@ pub enum StoneBlockSlabType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StoneBlockSlab2 {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
     stone_slab_type_2: StringTag<StoneBlockSlab2Type>,
 }
 
@@ -6724,7 +6724,7 @@ pub enum StoneBlockSlab2Type {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StoneBlockSlab3 {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
     stone_slab_type_3: StringTag<StoneBlockSlab3Type>,
 }
 
@@ -6744,7 +6744,7 @@ pub enum StoneBlockSlab3Type {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StoneBlockSlab4 {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
     stone_slab_type_4: StringTag<StoneBlockSlab4Type>,
 }
 
@@ -6761,25 +6761,25 @@ pub enum StoneBlockSlab4Type {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StoneBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StoneButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StonePressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StoneStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
@@ -6805,133 +6805,133 @@ pub struct Stonecutter {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StonecutterBlock {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedAcaciaLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedAcaciaWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedBambooBlock {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedBirchLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedBirchWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedCherryLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedCherryWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedCrimsonHyphae {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedCrimsonStem {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedDarkOakLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedDarkOakWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedJungleLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedJungleWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedMangroveLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedMangroveWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedOakLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedOakWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedSpruceLog {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedSpruceWood {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedWarpedHyphae {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StrippedWarpedStem {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -7039,7 +7039,7 @@ pub struct TNT {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Torch {
-    // extends TorchLike
+    torch_like: TorchLike,
 }
 
 #[allow(non_snake_case)]
@@ -7068,13 +7068,13 @@ pub enum TorchflowerGrowth {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Trapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TrappedChest {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
 }
 
 #[allow(non_snake_case)]
@@ -7106,7 +7106,7 @@ pub struct TripWire {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TripwireHook {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     attached_bit: BooleanTag,
     powered_bit: BooleanTag,
 }
@@ -7122,25 +7122,25 @@ pub struct Tuff {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TuffBrickDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TuffBrickSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TuffBrickStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TuffBrickWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -7150,25 +7150,25 @@ pub struct TuffBricks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TuffDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TuffSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TuffStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TuffWall {
-    // extends WallLike
+    wall_like: WallLike,
 }
 
 #[allow(non_snake_case)]
@@ -7235,7 +7235,7 @@ pub enum TwistingVinesAge {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct UnderwaterTorch {
-    // extends TorchLike
+    torch_like: TorchLike,
 }
 
 #[allow(non_snake_case)]
@@ -7249,13 +7249,13 @@ pub struct Unknown {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct UnlitRedstoneTorch {
-    // extends TorchLike
+    torch_like: TorchLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct UnpoweredComparator {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     output_lit_bit: BooleanTag,
     output_subtract_bit: BooleanTag,
 }
@@ -7263,7 +7263,7 @@ pub struct UnpoweredComparator {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct UnpoweredRepeater {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     repeater_delay: IntTag<RepeaterDelay>,
 }
 
@@ -7279,7 +7279,7 @@ pub enum RepeaterDelay {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Vault {
-    // extends CardinalDirectionLike
+    cardinal_direction_like: CardinalDirectionLike,
     vault_state: StringTag<VaultState>,
 }
 
@@ -7295,7 +7295,7 @@ pub enum VaultState {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct VerdantFroglight {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -7328,31 +7328,31 @@ pub enum VineDirection {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WallBanner {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedDoubleSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -7362,7 +7362,7 @@ pub struct WarpedFence {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedFenceGate {
-    // extends FenceGateLike
+    fence_gate_like: FenceGateLike,
 }
 
 #[allow(non_snake_case)]
@@ -7372,13 +7372,13 @@ pub struct WarpedFungus {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedHangingSign {
-    // extends HangingSignLike
+    hanging_sign_like: HangingSignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedHyphae {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
@@ -7392,7 +7392,7 @@ pub struct WarpedPlanks {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
@@ -7402,37 +7402,37 @@ pub struct WarpedRoots {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedStandingSign {
-    // extends SignLike
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedStem {
-    // extends PillarLike
+    pillar_like: PillarLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WarpedWallSign {
-    // extends WallSignLike
+    wall_sign_like: WallSignLike,
 }
 
 #[allow(non_snake_case)]
@@ -7481,14 +7481,14 @@ pub struct WaxedCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedCopperBulb {
-    // extends LightLike
+    light_like: LightLike,
     powered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedCopperDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7498,7 +7498,7 @@ pub struct WaxedCopperGrate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedCopperTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7508,19 +7508,19 @@ pub struct WaxedCutCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedCutCopperStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedDoubleCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -7534,14 +7534,14 @@ pub struct WaxedExposedCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedExposedCopperBulb {
-    // extends LightLike
+    light_like: LightLike,
     powered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedExposedCopperDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7551,7 +7551,7 @@ pub struct WaxedExposedCopperGrate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedExposedCopperTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7561,19 +7561,19 @@ pub struct WaxedExposedCutCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedExposedCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedExposedCutCopperStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedExposedDoubleCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -7587,14 +7587,14 @@ pub struct WaxedOxidizedCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedOxidizedCopperBulb {
-    // extends LightLike
+    light_like: LightLike,
     powered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedOxidizedCopperDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7604,7 +7604,7 @@ pub struct WaxedOxidizedCopperGrate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedOxidizedCopperTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7614,19 +7614,19 @@ pub struct WaxedOxidizedCutCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedOxidizedCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedOxidizedCutCopperStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedOxidizedDoubleCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -7640,14 +7640,14 @@ pub struct WaxedWeatheredCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedWeatheredCopperBulb {
-    // extends LightLike
+    light_like: LightLike,
     powered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedWeatheredCopperDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7657,7 +7657,7 @@ pub struct WaxedWeatheredCopperGrate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedWeatheredCopperTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7667,19 +7667,19 @@ pub struct WaxedWeatheredCutCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedWeatheredCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedWeatheredCutCopperStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WaxedWeatheredDoubleCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -7693,14 +7693,14 @@ pub struct WeatheredCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WeatheredCopperBulb {
-    // extends LightLike
+    light_like: LightLike,
     powered_bit: BooleanTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WeatheredCopperDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7710,7 +7710,7 @@ pub struct WeatheredCopperGrate {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WeatheredCopperTrapdoor {
-    // extends TrapdoorLike
+    trapdoor_like: TrapdoorLike,
 }
 
 #[allow(non_snake_case)]
@@ -7720,19 +7720,19 @@ pub struct WeatheredCutCopper {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WeatheredCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WeatheredCutCopperStairs {
-    // extends StairsLike
+    stairs_like: StairsLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WeatheredDoubleCutCopperSlab {
-    // extends DoubleSlabLike
+    double_slab_like: DoubleSlabLike,
 }
 
 #[allow(non_snake_case)]
@@ -7798,13 +7798,13 @@ pub enum WheatGrowth {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WhiteCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WhiteCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -7822,7 +7822,7 @@ pub struct WhiteConcretePowder {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WhiteGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -7852,31 +7852,31 @@ pub struct WitherRose {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WoodenButton {
-    // extends ButtonLike
+    button_like: ButtonLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WoodenDoor {
-    // extends DoorLike
+    door_like: DoorLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WoodenPressurePlate {
-    // extends Powerable
+    powerable: Powerable,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct YellowCandle {
-    // extends CandleLike
+    candle_like: CandleLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct YellowCandleCake {
-    // extends LightLike
+    light_like: LightLike,
 }
 
 #[allow(non_snake_case)]
@@ -7898,7 +7898,7 @@ pub struct YellowFlower {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct YellowGlazedTerracotta {
-    // extends GlazedTerracottaLike
+    glazed_terracotta_like: GlazedTerracottaLike,
 }
 
 #[allow(non_snake_case)]
@@ -7924,7 +7924,7 @@ pub struct YellowWool {}
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ButtonLike {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     button_pressed_bit: BooleanTag,
 }
 
@@ -7945,7 +7945,7 @@ pub enum DoubleSlabVerticalHalf {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CandleLike {
-    // extends LightLike
+    light_like: LightLike,
     candles: IntTag<CandleCount>,
 }
 
@@ -7983,7 +7983,7 @@ pub struct DirectionLike {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DoorLike {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     door_hinge_bit: BooleanTag,
     open_bit: BooleanTag,
     upper_block_bit: BooleanTag,
@@ -7998,7 +7998,7 @@ pub struct FacingDirectionLike {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct FenceGateLike {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     in_wall_bit: BooleanTag,
     open_bit: BooleanTag,
 }
@@ -8006,13 +8006,13 @@ pub struct FenceGateLike {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct GlazedTerracottaLike {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct HangingSignLike {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
     attached_bit: BooleanTag,
     ground_sign_direction: IntTag<SignDirection>,
     hanging: BooleanTag,
@@ -8076,7 +8076,7 @@ pub enum TorchFacingDirection {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct TrapdoorLike {
-    // extends DirectionLike
+    direction_like: DirectionLike,
     open_bit: BooleanTag,
     upside_down_bit: BooleanTag,
 }
@@ -8102,7 +8102,7 @@ pub enum WallConnectionType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct WallSignLike {
-    // extends FacingDirectionLike
+    facing_direction_like: FacingDirectionLike,
 }
 
 #[allow(non_camel_case_types)]
