@@ -69,7 +69,7 @@ pub enum BlockEntity {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Banner {
-    // extends BlockEntityLike<BlockEntityResource.Banner>
+    block_entity_like: BlockEntityLike,
     Base: IntTag, // BannerColor
     Patterns: Option<ListTag<BannerPattern>>,
     Type: IntTag<BannerType>,
@@ -92,13 +92,13 @@ pub enum BannerType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Barrel {
-    // extends BlockEntityLike<BlockEntityResource.Barrel>
+    block_entity_like: BlockEntityLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Beacon {
-    // extends BlockEntityLike<BlockEntityResource.Beacon>
+    block_entity_like: BlockEntityLike,
     primary: IntTag,   // EffectID
     secondary: IntTag, // EffectID
 }
@@ -106,14 +106,14 @@ pub struct Beacon {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Bed {
-    // extends BlockEntityLike<BlockEntityResource.Bed>
+    block_entity_like: BlockEntityLike,
     color: ByteTag, // Bed#Metadata
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Beehive {
-    // extends BlockEntityLike<BlockEntityResource.Beehive>
+    block_entity_like: BlockEntityLike,
     Occupants: Option<ListTag<BeehiveOccupant>>,
     ShouldSpawnBees: BooleanTag,
 }
@@ -129,7 +129,7 @@ pub struct BeehiveOccupant {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Bell {
-    // extends BlockEntityLike<BlockEntityResource.Bell>
+    block_entity_like: BlockEntityLike,
     Direction: IntTag, // May be only two/four values? unknown for sure
     Ringing: BooleanTag,
     Ticks: IntTag,
@@ -138,13 +138,14 @@ pub struct Bell {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BlastFurnace {
-    // extends BlockEntityLike<BlockEntityResource.BlastFurnace>, FurnaceLike
+    block_entity_like: BlockEntityLike,
+    furnace_like: FurnaceLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BrewingStand {
-    // extends BlockEntityLike<BlockEntityResource.BrewingStand>
+    block_entity_like: BlockEntityLike,
     CookTime: ShortTag,
     FuelAmount: ShortTag,
     FuelTotal: ShortTag,
@@ -154,7 +155,7 @@ pub struct BrewingStand {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct BrushableBlock {
-    // extends BlockEntityLike<BlockEntityResource.BrushableBlock>
+    block_entity_like: BlockEntityLike,
     brush_count: IntTag<BrushCount>,
     brush_direction: ByteTag<BrushDirection>,
     item: Option<Item>,
@@ -202,14 +203,14 @@ pub enum BrushBlockType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CalibratedSculkSensor {
-    // extends BlockEntityLike<BlockEntityResource.CalibratedSculkSensor>
+    block_entity_like: BlockEntityLike,
     VibrationListener: SculkVibrationListener,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Campfire {
-    // extends BlockEntityLike<BlockEntityResource.Campfire>
+    block_entity_like: BlockEntityLike,
     Item1: Option<Item>,
     ItemTime1: IntTag,
     Item2: Option<Item>,
@@ -223,7 +224,7 @@ pub struct Campfire {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Cauldron {
-    // extends BlockEntityLike<BlockEntityResource.Cauldron>
+    block_entity_like: BlockEntityLike,
     CustomColor: Option<IntTag>, // 32-bit ARGB-encoded color
     Items: ListTag<Item>,
     PotionId: ShortTag, // `PotionID | -1`
@@ -241,7 +242,7 @@ pub enum PotionType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Chalkboard {
-    // extends BlockEntityLike<BlockEntityResource.Chalkboard>
+    block_entity_like: BlockEntityLike,
     BaseX: IntTag,
     BaseY: IntTag,
     BaseZ: IntTag,
@@ -255,13 +256,14 @@ pub struct Chalkboard {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Chest {
-    // extends BlockEntityLike<BlockEntityResource.Chest>, ChestLike
+    block_entity_like: BlockEntityLike,
+    chest_like: ChestLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ChiseledBookshelf {
-    // extends BlockEntityLike<BlockEntityResource.ChiseledBookshelf>
+    block_entity_like: BlockEntityLike,
     Items: ListTag<Item>,
     LastInteractedSlot: IntTag<ChiseledBookshelfLastInteractedSlot>,
 }
@@ -280,8 +282,11 @@ pub enum ChiseledBookshelfLastInteractedSlot {
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
+// This needs to omit "CustomName"
+// Omit<BlockEntityLike<BlockEntityResource.CommandBlock>, "CustomName">, CommandBlockLike
 pub struct CommandBlock {
-    // extends Omit<BlockEntityLike<BlockEntityResource.CommandBlock>, "CustomName">, CommandBlockLike
+    block_entity_like: BlockEntityLike,
+    command_block_like: CommandBlockLike,
     auto: BooleanTag,
     conditionalMode: Option<BooleanTag>, // I think it's a boolean, not just `ByteTag`, missing docs
     conditionMet: BooleanTag,
@@ -294,20 +299,21 @@ pub struct CommandBlock {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Comparator {
-    // extends BlockEntityLike<BlockEntityResource.Comparator>
+    block_entity_like: BlockEntityLike,
     OutputSignal: IntTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct CompoundCreator {
-    // extends BlockEntityLike<BlockEntityResource.CompoundCreator>, ChemistryTableLike
+    block_entity_like: BlockEntityLike,
+    chemistry_table_like: ChemistryTableLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Conduit {
-    // extends BlockEntityLike<BlockEntityResource.Conduit>
+    block_entity_like: BlockEntityLike,
     Active: BooleanTag,
     Target: LongTag,
 }
@@ -315,20 +321,20 @@ pub struct Conduit {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DaylightDetector {
-    // extends BlockEntityLike<BlockEntityResource.DaylightDetector>
+    block_entity_like: BlockEntityLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct DecoratedPot {
-    // extends BlockEntityLike<BlockEntityResource.DecoratedPot>
+    block_entity_like: BlockEntityLike,
     sherds: ListTag<ItemResource>, // Probably should only be the sherd item ID's and `minecraft:brick`?
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Dispenser {
-    // extends BlockEntityLike<BlockEntityResource.Dispenser>
+    block_entity_like: BlockEntityLike,
     Items: ListTag<Item>,
     LootTable: Option<StringTag>, // `LootTableResource`
     LootTableSeed: Option<IntTag>,
@@ -337,7 +343,7 @@ pub struct Dispenser {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Dropper {
-    // extends BlockEntityLike<BlockEntityResource.Dropper>
+    block_entity_like: BlockEntityLike,
     Items: ListTag<Item>,
     LootTable: Option<StringTag>, // `LootTableResource`
     LootTableSeed: Option<IntTag>,
@@ -346,13 +352,14 @@ pub struct Dropper {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ElementConstructor {
-    // extends BlockEntityLike<BlockEntityResource.ElementConstructor>, ChemistryTableLike
+    block_entity_like: BlockEntityLike,
+    chemistry_table_like: ChemistryTableLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct EnchantTable {
-    // extends BlockEntityLike<BlockEntityResource.EnchantTable>
+    block_entity_like: BlockEntityLike,
     CustomName: Option<StringTag>,
     rott: FloatTag, // Really two t's?
 }
@@ -360,7 +367,7 @@ pub struct EnchantTable {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct EndGateway {
-    // extends BlockEntityLike<BlockEntityResource.EndGateway>
+    block_entity_like: BlockEntityLike,
     Age: IntTag,
     ExitPortal: ExitPortal,
 }
@@ -370,26 +377,28 @@ pub type ExitPortal = [IntTag; 3];
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct FlowerPot {
-    // extends BlockEntityLike<BlockEntityResource.FlowerPot>
+    block_entity_like: BlockEntityLike,
     PlantBlock: Option<Block>,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Furnace {
-    // extends BlockEntityLike<BlockEntityResource.Furnace>, FurnaceLike
+    block_entity_like: BlockEntityLike,
+    furnace_like: FurnaceLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct HangingSign {
-    // extends BlockEntityLike<BlockEntityResource.HangingSign>, SignLike
+    block_entity_like: BlockEntityLike,
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Hopper {
-    // extends BlockEntityLike<BlockEntityResource.Hopper>
+    block_entity_like: BlockEntityLike,
     Items: ListTag<Item>, // `[Item,Item,Item,Item,Item]`?
     TransferCooldown: IntTag,
 }
@@ -397,7 +406,7 @@ pub struct Hopper {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ItemFrame {
-    // extends BlockEntityLike<BlockEntityResource.ItemFrame>
+    block_entity_like: BlockEntityLike,
     ItemDropChance: Option<FloatTag>,
     ItemRotation: Option<FloatTag>,
 }
@@ -405,7 +414,7 @@ pub struct ItemFrame {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct JigsawBlock {
-    // extends BlockEntityLike<BlockEntityResource.JigsawBlock>
+    block_entity_like: BlockEntityLike,
     final_state: BlockResource,
     joint: StringTag<JigsawBlockJoint>,
     name: StringTag,
@@ -423,20 +432,21 @@ pub enum JigsawBlockJoint {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Jukebox {
-    // extends BlockEntityLike<BlockEntityResource.Jukebox>
+    block_entity_like: BlockEntityLike,
     RecordItem: Option<Item>,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct LabTable {
-    // extends BlockEntityLike<BlockEntityResource.LabTable>, ChemistryTableLike
+    block_entity_like: BlockEntityLike,
+    chemistry_table_like: ChemistryTableLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Lectern {
-    // extends BlockEntityLike<BlockEntityResource.Lectern>
+    block_entity_like: BlockEntityLike,
     book: Option<Item>,
     hasBook: Option<BooleanTag>,
     page: Option<IntTag>,
@@ -446,20 +456,21 @@ pub struct Lectern {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Lodestone {
-    // extends BlockEntityLike<BlockEntityResource.Lodestone>
+    block_entity_like: BlockEntityLike,
     trackingHandle: Option<IntTag>,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MaterialReducer {
-    // extends BlockEntityLike<BlockEntityResource.MaterialReducer>, ChemistryTableLike
+    block_entity_like: BlockEntityLike,
+    chemistry_table_like: ChemistryTableLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MobSpawner {
-    // extends BlockEntityLike<BlockEntityResource.MobSpawner>
+    block_entity_like: BlockEntityLike,
     Delay: ShortTag,
     DisplayEntityHeight: FloatTag,
     DisplayEntityScale: FloatTag,
@@ -494,7 +505,7 @@ pub struct SpawnPotential {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct MovingBlock {
-    // extends BlockEntityLike<BlockEntityResource.MovingBlock>
+    block_entity_like: BlockEntityLike,
     movingBlock: Block,
     movingBlockExtra: Block,
     movingEntity: Option<Box<BlockEntity>>,
@@ -504,14 +515,14 @@ pub struct MovingBlock {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Music {
-    // extends BlockEntityLike<BlockEntityResource.Music>
+    block_entity_like: BlockEntityLike,
     note: ByteTag, // Might be a union type since there are only a certain amount of keys/notes?
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct NetherReactor {
-    // extends BlockEntityLike<BlockEntityResource.NetherReactor>
+    block_entity_like: BlockEntityLike,
     HasFinished: BooleanTag,
     IsInitialized: BooleanTag,
     Progress: ShortTag,
@@ -520,7 +531,7 @@ pub struct NetherReactor {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct PistonArm {
-    // extends BlockEntityLike<BlockEntityResource.PistonArm>
+    block_entity_like: BlockEntityLike,
     AttachedBlocks: PistonAssociatedBlocks,
     BreakBlocks: PistonAssociatedBlocks,
     LastProgress: FloatTag,
@@ -552,13 +563,13 @@ pub enum PistonProgress {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Poster {
-    // extends BlockEntityLike<BlockEntityResource.Poster>
+    block_entity_like: BlockEntityLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SculkCatalyst {
-    // extends BlockEntityLike<BlockEntityResource.SculkCatalyst>
+    block_entity_like: BlockEntityLike,
     cursors: ListTag<SculkCatalystCharge>,
 }
 
@@ -577,34 +588,36 @@ pub struct SculkCatalystCharge {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SculkSensor {
-    // extends BlockEntityLike<BlockEntityResource.SculkSensor>
+    block_entity_like: BlockEntityLike,
     VibrationListener: SculkVibrationListener,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct SculkShrieker {
-    // extends BlockEntityLike<BlockEntityResource.SculkShrieker>
+    block_entity_like: BlockEntityLike,
     VibrationListener: SculkVibrationListener,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct ShulkerBox {
-    // extends BlockEntityLike<BlockEntityResource.ShulkerBox>, ChestLike
+    block_entity_like: BlockEntityLike,
+    chest_like: ChestLike,
     facing: FloatTag,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Sign {
-    // extends BlockEntityLike<BlockEntityResource.Sign>, SignLike
+    block_entity_like: BlockEntityLike,
+    sign_like: SignLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Skull {
-    // extends BlockEntityLike<BlockEntityResource.Skull>
+    block_entity_like: BlockEntityLike,
     MouthMoving: BooleanTag,
     MouthTickCount: IntTag,
     Rotation: FloatTag,
@@ -626,19 +639,20 @@ pub enum SkullType {
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Slate {
-    // extends BlockEntityLike<BlockEntityResource.Slate>
+    block_entity_like: BlockEntityLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct Smoker {
-    // extends BlockEntityLike<BlockEntityResource.Smoker>, FurnaceLike
+    block_entity_like: BlockEntityLike,
+    furnace_like: FurnaceLike,
 }
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]
 pub struct StructureBlock {
-    // extends BlockEntityLike<BlockEntityResource.StructureBlock>
+    block_entity_like: BlockEntityLike,
     animationMode: ByteTag, // Union type? boolean?
     animationSeconds: FloatTag,
     data: IntTag<StructureBlockMode>,
