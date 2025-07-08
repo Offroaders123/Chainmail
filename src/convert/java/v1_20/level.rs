@@ -1,12 +1,12 @@
 use crate::{
     convert::convert_to::ConvertTo,
     nbt::tag::BooleanTag,
-    schema::{java::v1_20 as java, pi::v0_1_1 as pi},
+    schema::{java::v1_20::level as java, pi::v0_1_1::level as pi},
 };
 
-impl ConvertTo<pi::level::LevelDat> for java::level::LevelDat {
-    fn convert(&self) -> pi::level::LevelDat {
-        pi::level::LevelDat {
+impl ConvertTo<pi::LevelDat> for java::LevelDat {
+    fn convert(&self) -> pi::LevelDat {
+        pi::LevelDat {
             GameType: self.Data.GameType.convert(),
             LastPlayed: self.Data.LastPlayed,
             LevelName: self.Data.LevelName,
@@ -25,28 +25,22 @@ impl ConvertTo<pi::level::LevelDat> for java::level::LevelDat {
     }
 }
 
-impl ConvertTo<pi::level::GameMode> for java::level::GameType {
-    fn convert(&self) -> pi::level::GameMode {
+impl ConvertTo<pi::GameMode> for java::GameType {
+    fn convert(&self) -> pi::GameMode {
         match self {
-            java::level::GameType::Survival => pi::level::GameMode::Survival,
-            java::level::GameType::Creative => pi::level::GameMode::Creative,
-            java::level::GameType::Adventure => pi::level::GameMode::Survival,
-            java::level::GameType::Spectator => pi::level::GameMode::Creative,
+            java::GameType::Survival => pi::GameMode::Survival,
+            java::GameType::Creative => pi::GameMode::Creative,
+            java::GameType::Adventure => pi::GameMode::Survival,
+            java::GameType::Spectator => pi::GameMode::Creative,
         }
     }
 }
 
-impl ConvertTo<pi::entity::Player> for java::entity::Player {
-    fn convert(&self) -> pi::entity::Player {
-        pi::entity::Player {}
-    }
-}
-
-impl ConvertTo<pi::level::SpawnMobs> for BooleanTag {
-    fn convert(&self) -> pi::level::SpawnMobs {
+impl ConvertTo<pi::SpawnMobs> for BooleanTag {
+    fn convert(&self) -> pi::SpawnMobs {
         match self {
-            true => pi::level::SpawnMobs::True,
-            false => pi::level::SpawnMobs::False,
+            true => pi::SpawnMobs::True,
+            false => pi::SpawnMobs::False,
         }
     }
 }
