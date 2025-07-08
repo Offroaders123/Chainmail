@@ -4,5 +4,7 @@ use crate::{
 };
 
 impl ConvertTo<java::LevelDat> for pi::LevelDat {
-    fn convert(&self) -> java::LevelDat {}
+    fn convert(&self) -> java::LevelDat {
+        java::LevelDat {}
+    }
 }
