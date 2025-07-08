@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::indev::item::{Item, SlottedItem};
-use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag, StringTag};
+use crate::{
+    nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag, StringTag},
+    schema::java::indev::item::{Item, SlottedItem},
+};
 
 #[derive(Serialize, Deserialize)]
 pub enum Entity {

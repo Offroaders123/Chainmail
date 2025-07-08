@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag};
-use crate::schema::pi::v0_1_1::{dimension::DimensionID, item::Item};
+use crate::{
+    nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, ShortTag},
+    schema::pi::v0_1_1::{dimension::DimensionID, item::Item},
+};
 
 #[derive(Serialize, Deserialize)]
 pub enum Entity {

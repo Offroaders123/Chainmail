@@ -1,10 +1,12 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::v1_20::{
-    biome::BiomeResource,
-    block::{BlockResource, BlockState},
+use crate::{
+    nbt::tag::{BooleanTag, ByteTag, FloatTag, IntArrayTag, IntTag, ListTag, StringTag},
+    schema::java::v1_20::{
+        biome::BiomeResource,
+        block::{BlockResource, BlockState},
+    },
 };
-use crate::nbt::tag::{BooleanTag, ByteTag, FloatTag, IntArrayTag, IntTag, ListTag, StringTag};
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]

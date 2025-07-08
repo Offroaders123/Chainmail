@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::alpha::{entity::EntityResource, item::SlottedItem};
-use crate::nbt::tag::{IntTag, ShortTag, StringTag};
+use crate::{
+    nbt::tag::{IntTag, ShortTag, StringTag},
+    schema::java::alpha::{entity::EntityResource, item::SlottedItem},
+};
 
 #[derive(Serialize, Deserialize)]
 pub enum BlockEntity {

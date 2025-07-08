@@ -1,11 +1,15 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::bedrock::block_entity::BlockEntity;
-use crate::schema::bedrock::dimension::DimensionID;
-use crate::schema::bedrock::entity::{Entity, Player};
-use crate::nbt::tag::{
-    BooleanTag, ByteArrayTag, ByteTag, CompoundTag, FloatTag, IntArrayTag, IntTag, ListTag,
-    LongTag, ShortTag, StringTag,
+use crate::{
+    nbt::tag::{
+        BooleanTag, ByteArrayTag, ByteTag, CompoundTag, FloatTag, IntArrayTag, IntTag, ListTag,
+        LongTag, ShortTag, StringTag,
+    },
+    schema::bedrock::{
+        block_entity::BlockEntity,
+        dimension::DimensionID,
+        entity::{Entity, Player},
+    },
 };
 
 pub type Buffer = Vec<u8>; // temp

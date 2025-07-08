@@ -1,9 +1,11 @@
 use serde::{Deserialize, Serialize};
 
-use crate::nbt::tag::{IntTag, ListTag, LongTag, StringTag};
-use crate::schema::pi::v0_1_1::{
-    entity::{Entity, Player},
-    tile_entity::TileEntity,
+use crate::{
+    nbt::tag::{IntTag, ListTag, LongTag, StringTag},
+    schema::pi::v0_1_1::{
+        entity::{Entity, Player},
+        tile_entity::TileEntity,
+    },
 };
 
 #[allow(non_snake_case)]

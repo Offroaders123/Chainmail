@@ -1,11 +1,14 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::v1_20::{
-    biome::BiomeResource, block::BlockState, block_entity::BlockEntity, entity::Entity,
-    structure::Structure, tile_tick::TileTick,
-};
-use crate::nbt::tag::{
-    ByteArrayTag, ByteTag, CompoundTag, IntTag, ListTag, LongArrayTag, LongTag, ShortTag, StringTag,
+use crate::{
+    nbt::tag::{
+        ByteArrayTag, ByteTag, CompoundTag, IntTag, ListTag, LongArrayTag, LongTag, ShortTag,
+        StringTag,
+    },
+    schema::java::v1_20::{
+        biome::BiomeResource, block::BlockState, block_entity::BlockEntity, entity::Entity,
+        structure::Structure, tile_tick::TileTick,
+    },
 };
 
 #[allow(non_snake_case)]

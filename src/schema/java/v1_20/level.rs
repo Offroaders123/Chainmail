@@ -1,8 +1,11 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::alpha::entity::Player;
-use crate::nbt::tag::{
-    BooleanTag, ByteTag, CompoundTag, DoubleTag, IntArrayTag, IntTag, ListTag, LongTag, StringTag,
+use crate::{
+    nbt::tag::{
+        BooleanTag, ByteTag, CompoundTag, DoubleTag, IntArrayTag, IntTag, ListTag, LongTag,
+        StringTag,
+    },
+    schema::java::alpha::entity::Player,
 };
 
 #[allow(non_snake_case)]

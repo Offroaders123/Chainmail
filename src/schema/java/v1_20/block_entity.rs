@@ -1,13 +1,15 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::v1_20::{
-    block::{BlockResource, BlockState},
-    entity::Entity,
-    item::Item,
-};
-use crate::nbt::tag::{
-    BooleanTag, ByteTag, CompoundTag, FloatTag, IntArrayTag, IntTag, ListTag, LongTag, ShortTag,
-    StringTag,
+use crate::{
+    nbt::tag::{
+        BooleanTag, ByteTag, CompoundTag, FloatTag, IntArrayTag, IntTag, ListTag, LongTag,
+        ShortTag, StringTag,
+    },
+    schema::java::v1_20::{
+        block::{BlockResource, BlockState},
+        entity::Entity,
+        item::Item,
+    },
 };
 
 #[allow(non_camel_case_types)]

@@ -1,12 +1,12 @@
 use serde::{Deserialize, Serialize};
 
 use crate::{
+    nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, LongTag, ShortTag, StringTag},
     schema::bedrock::{
         block::{Block, BlockResource},
         entity::{Entity, EntityResource},
         item::{Item, ItemResource},
     },
-    nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, LongTag, ShortTag, StringTag},
 };
 
 #[allow(non_camel_case_types)]

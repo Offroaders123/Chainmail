@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::alpha::entity::Player;
-use crate::nbt::tag::{IntTag, LongTag};
+use crate::{
+    nbt::tag::{IntTag, LongTag},
+    schema::java::alpha::entity::Player,
+};
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]

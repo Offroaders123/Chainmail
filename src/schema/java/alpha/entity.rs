@@ -1,12 +1,12 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::alpha::{
-    block::BlockResource,
-    dimension::DimensionID,
-    item::{Item, SlottedItem},
-};
-use crate::nbt::tag::{
-    BooleanTag, ByteTag, DoubleTag, FloatTag, IntTag, ListTag, ShortTag, StringTag,
+use crate::{
+    nbt::tag::{BooleanTag, ByteTag, DoubleTag, FloatTag, IntTag, ListTag, ShortTag, StringTag},
+    schema::java::alpha::{
+        block::BlockResource,
+        dimension::DimensionID,
+        item::{Item, SlottedItem},
+    },
 };
 
 #[derive(Serialize, Deserialize)]

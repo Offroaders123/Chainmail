@@ -1,6 +1,10 @@
 use serde::{Deserialize, Serialize};
 
 use crate::{
+    nbt::tag::{
+        BooleanTag, ByteTag, CompoundTag, DoubleTag, FloatTag, IntArrayTag, IntTag, ListTag,
+        LongTag, ShortTag, StringTag,
+    },
     schema::java::v1_20::{
         block::{BlockResource, BlockState},
         block_entity::{BlockEntity, MobSpawnerLike},
@@ -8,10 +12,6 @@ use crate::{
         effect::{Effect, EffectID},
         item::Item,
         recipe::RecipeResource,
-    },
-    nbt::tag::{
-        BooleanTag, ByteTag, CompoundTag, DoubleTag, FloatTag, IntArrayTag, IntTag, ListTag,
-        LongTag, ShortTag, StringTag,
     },
 };
 

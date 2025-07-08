@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::alpha::{block_entity::BlockEntity, entity::Entity};
-use crate::nbt::tag::{BooleanTag, ByteArrayTag, IntTag, ListTag, LongTag};
+use crate::{
+    nbt::tag::{BooleanTag, ByteArrayTag, IntTag, ListTag, LongTag},
+    schema::java::alpha::{block_entity::BlockEntity, entity::Entity},
+};
 
 #[allow(non_snake_case)]
 #[derive(Serialize, Deserialize)]

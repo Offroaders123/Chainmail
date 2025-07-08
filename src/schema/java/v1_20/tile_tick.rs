@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::schema::java::v1_20::block::BlockResource;
-use crate::nbt::tag::{IntTag, StringTag};
+use crate::{
+    nbt::tag::{IntTag, StringTag},
+    schema::java::v1_20::block::BlockResource,
+};
 
 #[derive(Serialize, Deserialize)]
 pub struct TileTick {

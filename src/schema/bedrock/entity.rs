@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::{
+    nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, LongTag, ShortTag, StringTag},
     schema::bedrock::{
         block::Block,
         dimension::DimensionID,
@@ -8,7 +9,6 @@ use crate::{
         item::Item,
         level::{Abilities, GameType},
     },
-    nbt::tag::{BooleanTag, ByteTag, FloatTag, IntTag, ListTag, LongTag, ShortTag, StringTag},
 };
 
 #[allow(non_camel_case_types)]
