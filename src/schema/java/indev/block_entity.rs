@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::java::indev::item::SlottedItem;
+use crate::schema::java::indev::item::SlottedItem;
 use crate::nbt::tag::{IntTag, ListTag, ShortTag, StringTag};
 
 #[derive(Serialize, Deserialize)]

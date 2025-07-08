@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::java::v1_20::block::BlockResource;
+use crate::schema::java::v1_20::block::BlockResource;
 use crate::nbt::tag::{IntTag, StringTag};
 
 #[derive(Serialize, Deserialize)]

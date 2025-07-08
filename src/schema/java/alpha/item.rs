@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::java::alpha::block::BlockResource;
+use crate::schema::java::alpha::block::BlockResource;
 use crate::nbt::tag::{ByteTag, ShortTag};
 
 #[allow(non_snake_case)]

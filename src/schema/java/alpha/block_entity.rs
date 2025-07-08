@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::java::alpha::{entity::EntityResource, item::SlottedItem};
+use crate::schema::java::alpha::{entity::EntityResource, item::SlottedItem};
 use crate::nbt::tag::{IntTag, ShortTag, StringTag};
 
 #[derive(Serialize, Deserialize)]

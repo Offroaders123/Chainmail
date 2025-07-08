@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::java::v1_20::{
+use crate::schema::java::v1_20::{
     biome::BiomeResource,
     block::{BlockResource, BlockState},
 };

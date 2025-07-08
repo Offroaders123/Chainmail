@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::java::alpha::{
+use crate::schema::java::alpha::{
     block::BlockResource,
     dimension::DimensionID,
     item::{Item, SlottedItem},

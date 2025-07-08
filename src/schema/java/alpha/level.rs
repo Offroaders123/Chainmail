@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::java::alpha::entity::Player;
+use crate::schema::java::alpha::entity::Player;
 use crate::nbt::tag::{IntTag, LongTag};
 
 #[allow(non_snake_case)]

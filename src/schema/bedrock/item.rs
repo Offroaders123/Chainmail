@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::bedrock::block::Block;
+use crate::schema::bedrock::block::Block;
 use crate::nbt::tag::{BooleanTag, ByteTag, IntTag, ListTag, ShortTag, StringTag};
 
 #[allow(non_snake_case)]

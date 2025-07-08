@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    java::v1_20::{
+    schema::java::v1_20::{
         block::{BlockResource, BlockState},
         block_entity::{BlockEntity, MobSpawnerLike},
         dimension::DimensionResource,

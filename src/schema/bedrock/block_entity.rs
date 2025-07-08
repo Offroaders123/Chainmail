@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    bedrock::{
+    schema::bedrock::{
         block::{Block, BlockResource},
         entity::{Entity, EntityResource},
         item::{Item, ItemResource},

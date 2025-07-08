@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 
-use crate::bedrock::block_entity::BlockEntity;
-use crate::bedrock::dimension::DimensionID;
-use crate::bedrock::entity::{Entity, Player};
+use crate::schema::bedrock::block_entity::BlockEntity;
+use crate::schema::bedrock::dimension::DimensionID;
+use crate::schema::bedrock::entity::{Entity, Player};
 use crate::nbt::tag::{
     BooleanTag, ByteArrayTag, ByteTag, CompoundTag, FloatTag, IntArrayTag, IntTag, ListTag,
     LongTag, ShortTag, StringTag,

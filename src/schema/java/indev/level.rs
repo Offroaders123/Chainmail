@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::java::indev::{block_entity::BlockEntity, entity::Entity};
+use crate::schema::java::indev::{block_entity::BlockEntity, entity::Entity};
 use crate::nbt::tag::{ByteArrayTag, ByteTag, IntTag, ListTag, LongTag, ShortTag, StringTag};
 
 #[allow(non_snake_case)]

@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::nbt::tag::{IntTag, ListTag, LongTag, StringTag};
-use crate::pi::v0_1_1::{
+use crate::schema::pi::v0_1_1::{
     entity::{Entity, Player},
     tile_entity::TileEntity,
 };
