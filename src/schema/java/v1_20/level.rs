@@ -5,7 +5,7 @@ use crate::{
         BooleanTag, ByteTag, CompoundTag, DoubleTag, IntArrayTag, IntTag, ListTag, LongTag,
         StringTag,
     },
-    schema::java::alpha::entity::Player,
+    schema::java::v1_20::entity::Player,
 };
 
 #[allow(non_snake_case)]
