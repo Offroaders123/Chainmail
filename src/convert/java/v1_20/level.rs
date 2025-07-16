@@ -28,10 +28,10 @@ impl ConvertTo<pi::LevelDat> for java::LevelDat {
 impl ConvertTo<pi::GameMode> for java::GameType {
     fn convert(&self) -> pi::GameMode {
         match self {
-            java::GameType::Survival => pi::GameMode::Survival,
-            java::GameType::Creative => pi::GameMode::Creative,
-            java::GameType::Adventure => pi::GameMode::Survival,
-            java::GameType::Spectator => pi::GameMode::Creative,
+            Self::Survival => pi::GameMode::Survival,
+            Self::Creative => pi::GameMode::Creative,
+            Self::Adventure => pi::GameMode::Survival,
+            Self::Spectator => pi::GameMode::Creative,
         }
     }
 }
