@@ -12,11 +12,13 @@ impl ConvertTo<pi::Player> for java::Player {
             Dimension: self.Dimension.convert(),
             Inventory: self.Inventory.convert(),
             Score: self.Score,
-            Sleeping: self.Sleeping,
+            Sleeping: self.SleepTimer == 0,
             SleepTimer: self.SleepTimer,
-            SpawnX: self.SpawnX,
-            SpawnY: self.SpawnY,
-            SpawnZ: self.SpawnZ,
+            // https://minecraft.wiki/w/Player.dat_format#NBT_Structure
+            // https://minecraft.wiki/w/Bedrock_Edition_level_format/History#NBT_Structure
+            SpawnX: self.SpawnX.unwrap_or(0),
+            SpawnY: self.SpawnY.unwrap_or(64),
+            SpawnZ: self.SpawnZ.unwrap_or(0),
             abilities: self.abilities.convert(),
         }
     }
