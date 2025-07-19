@@ -70,7 +70,7 @@ pub struct Player /*extends EntityLike<undefined>, MobLike*/ {
     pub entity_like: EntityLike,
     #[serde(flatten)]
     pub mob_like: MobLike,
-    pub Armor: ListTag<Item>, // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
+    pub Armor: [Item; 4], // no slot tag actually, ignore. // with slot tag, right? docs doesn't say here. and are these optional? it's actually `[Item, Item, Item, Item]`
     pub Dimension: IntTag<DimensionID>,
     pub Inventory: ListTag<Item>, // slot tag for sure
     pub Score: IntTag,

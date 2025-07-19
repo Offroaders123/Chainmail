@@ -8,9 +8,9 @@ impl ConvertTo<pi::Player> for java::Player {
         pi::Player {
             entity_like: self.entity_like.convert(),
             mob_like: self.mob_like.convert(),
-            Armor: self.Armor,
+            Armor: self.mob_like.ArmorItems.map(|item| item.convert()),
             Dimension: self.Dimension.convert(),
-            Inventory: self.Inventory.convert(),
+            Inventory: self.Inventory.iter().map(|item| item.convert()).collect(),
             Score: self.Score,
             Sleeping: self.SleepTimer == 0,
             SleepTimer: self.SleepTimer,
