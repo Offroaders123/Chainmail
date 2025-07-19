@@ -1,6 +1,9 @@
 use crate::{
-    convert::convert_to::ConvertTo,
-    schema::{java::v1_20::level as java, pi::v0_1_1::level as pi},
+    convert::convert_to::{ConvertTo, TryConvertTo},
+    schema::{
+        java::v1_20::level::{self as java, CustomBossEvents, DataPacks},
+        pi::v0_1_1::level as pi,
+    },
 };
 
 impl ConvertTo<java::LevelDat> for pi::LevelDat {
@@ -14,52 +17,52 @@ impl ConvertTo<java::LevelDat> for pi::LevelDat {
 impl ConvertTo<java::LevelDatData> for pi::LevelDat {
     fn convert(&self) -> java::LevelDatData {
         java::LevelDatData {
-            allowCommands: self.allowCommands,
-            BorderCenterX: self.BorderCenterX,
-            BorderCenterY: self.BorderCenterY,
-            BorderDamagePerBlock: self.BorderDamagePerBlock,
-            BorderSize: self.BorderSize,
-            BorderSafeZone: self.BorderSafeZone,
-            BorderSizeLerpTarget: self.BorderSizeLerpTarget,
-            BorderSizeLerpTime: self.BorderSizeLerpTime,
-            BorderWarningBlocks: self.BorderWarningBlocks,
-            BorderWarningTime: self.BorderWarningTime,
-            clearWeatherTime: self.clearWeatherTime,
-            CustomBossEvents: self.CustomBossEvents,
-            DataPacks: self.DataPacks,
-            DataVersion: self.DataVersion,
-            DayTime: self.DayTime,
+            allowCommands: false,
+            BorderCenterX: 0.0,
+            BorderCenterY: 0.0,
+            BorderDamagePerBlock: 0.2,
+            BorderSize: 60000000.0,
+            BorderSafeZone: 5.0,
+            BorderSizeLerpTarget: 60000000.0,
+            BorderSizeLerpTime: 0,
+            BorderWarningBlocks: 5.0,
+            BorderWarningTime: 15.0,
+            clearWeatherTime: 0,
+            CustomBossEvents: CustomBossEvents { ..Default::default() },
+            DataPacks: DataPacks { ..Default::default() },
+            DataVersion: self.DataVersion, // also a very technical upgrade
+            DayTime: self.dayCycleStopTime.unwrap_or(0),
             Difficulty: self.Difficulty,
             DifficultyLocked: self.DifficultyLocked,
             DimensionData: self.DimensionData,
             GameRules: self.GameRules,
             WorldGenSettings: self.WorldGenSettings,
             GameType: self.GameType.convert(),
-            generatorName: self.generatorName,
-            generatorOptions: self.generatorOptions,
-            generatorVersion: self.generatorVersion,
-            hardcore: self.hardcore,
-            initialized: self.initialized,
+            generatorName: java::GeneratorName::default,
+            generatorOptions: None, // these are unique to 1.15 and below, likely will remove these aliases
+            generatorVersion: None, // these are unique to 1.15 and below, likely will remove these aliases
+            hardcore: false,
+            initialized: true,
             LastPlayed: self.LastPlayed,
             LevelName: self.LevelName,
-            MapFeatures: self.MapFeatures,
+            MapFeatures: true,
             Player: self.Player.convert(),
-            raining: self.raining,
-            rainTime: self.rainTime,
+            raining: false,
+            rainTime: 18000, // Midpoint of normal range (15 min)
             RandomSeed: self.RandomSeed,
             SizeOnDisk: self.SizeOnDisk,
             SpawnX: self.SpawnX,
             SpawnY: self.SpawnY,
             SpawnZ: self.SpawnZ,
-            thundering: self.thundering,
-            thunderTime: self.thunderTime,
+            thundering: false,
+            thunderTime: 8000, // Midpoint of thunder range (~6.5 min)
             Time: self.Time,
-            version: self.version,
-            Version: self.Version,
+            version: self.version, // needs very technical handling https://minecraft.wiki/w/Java_Edition_level_format#level.dat_format
+            Version: self.Version, // needs very technical handling
             WanderingTraderId: self.WanderingTraderId,
             WanderingTraderSpawnChance: self.WanderingTraderSpawnChance,
             WanderingTraderSpawnDelay: self.WanderingTraderSpawnDelay,
-            WasModded: self.WasModded,
+            WasModded: false,
         }
     }
 }

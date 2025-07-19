@@ -23,8 +23,8 @@ pub struct LevelDat {
     pub SpawnZ: IntTag,
     pub StorageVersion: IntTag<StorageVersion>, // always 3?
     pub Time: LongTag,
-    pub dayCycleStopTime: LongTag,
-    pub spawnMobs: IntTag<SpawnMobs>,
+    pub dayCycleStopTime: Option<LongTag>,
+    pub spawnMobs: Option<IntTag<SpawnMobs>>,
 }
 
 #[derive(Serialize, Deserialize)]

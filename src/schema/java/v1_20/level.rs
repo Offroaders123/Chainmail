@@ -39,8 +39,8 @@ pub struct LevelDatData {
     pub WorldGenSettings: WorldGenSettings,
     pub GameType: IntTag<GameType>,
     pub generatorName: StringTag<GeneratorName>,
-    pub generatorOptions: CompoundTag, // {}; // `GeneratorOptions`
-    pub generatorVersion: IntTag,
+    pub generatorOptions: Option<CompoundTag>, // only used in 1.15 and below, https://minecraft.wiki/w/Java_Edition_level_format#level.dat_format // {}; // `GeneratorOptions`
+    pub generatorVersion: Option<IntTag>, // also only used in 1.15 and below
     pub hardcore: BooleanTag,
     pub initialized: BooleanTag,
     pub LastPlayed: LongTag,
@@ -114,7 +114,7 @@ pub enum BossBarOverlay {
 }
 
 #[allow(non_snake_case)]
-#[derive(Serialize, Deserialize)]
+#[derive(Default, Serialize, Deserialize)]
 pub struct DataPacks {
     pub Disabled: ListTag<StringTag>,
     pub Enabled: ListTag<StringTag>,
