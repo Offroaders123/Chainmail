@@ -40,7 +40,7 @@ pub struct LevelDatData {
     pub GameType: IntTag<GameType>,
     pub generatorName: StringTag<GeneratorName>,
     pub generatorOptions: Option<CompoundTag>, // only used in 1.15 and below, https://minecraft.wiki/w/Java_Edition_level_format#level.dat_format // {}; // `GeneratorOptions`
-    pub generatorVersion: Option<IntTag>, // also only used in 1.15 and below
+    pub generatorVersion: Option<IntTag>,      // also only used in 1.15 and below
     pub hardcore: BooleanTag,
     pub initialized: BooleanTag,
     pub LastPlayed: LongTag,

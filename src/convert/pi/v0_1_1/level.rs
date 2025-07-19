@@ -28,8 +28,12 @@ impl ConvertTo<java::LevelDatData> for pi::LevelDat {
             BorderWarningBlocks: 5.0,
             BorderWarningTime: 15.0,
             clearWeatherTime: 0,
-            CustomBossEvents: CustomBossEvents { ..Default::default() },
-            DataPacks: DataPacks { ..Default::default() },
+            CustomBossEvents: CustomBossEvents {
+                ..Default::default()
+            },
+            DataPacks: DataPacks {
+                ..Default::default()
+            },
             DataVersion: self.DataVersion, // also a very technical upgrade
             DayTime: self.dayCycleStopTime.unwrap_or(0),
             Difficulty: self.Difficulty,
